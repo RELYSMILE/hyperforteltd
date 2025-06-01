@@ -5,13 +5,14 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Screens/Home.jsx'
 import Login from './Screens/Login.jsx'
+import App from './App.jsx'
 
 const a = 1
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <App />,
     errorElement: <div>Not found</div>
   },
 ])
