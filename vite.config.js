@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['vite-192.png', 'vite-192.png'],
+      includeAssets: ['android-launchericon-192-192.png', 'android-launchericon-512-512.png', 'LargeTile.scale-400.png'],
       manifest: {
         name: 'My Cool App',
         short_name: 'CoolApp',
@@ -18,12 +18,12 @@ export default defineConfig({
         start_url: '/',
         icons: [
           {
-            src: 'vite-192.png',
+            src: 'android-launchericon-192-192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'vite-192.png',
+            src: 'android-launchericon-512-512.png',
             sizes: '512x512',
             type: 'image/png'
           }
