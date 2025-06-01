@@ -6,7 +6,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Screens/Home.jsx'
 import Login from './Screens/Login.jsx'
 
-const a = 1
 
 const router = createBrowserRouter([
   {
@@ -14,6 +13,12 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <div>Not found</div>
   },
+  {
+    path: '/home',
+    element: <Home />,
+    errorElement: <div>Not found</div>
+  },
+
 ])
 
 
