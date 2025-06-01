@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Hero from './components/Hero/Hero';
 import './App.css'
 
 function App() {

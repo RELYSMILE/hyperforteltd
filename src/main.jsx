@@ -3,24 +3,36 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Hero from './components/Hero/Hero.jsx'
-import Base from './components/Base.jsx'
+import Home from './Screens/Home.jsx'
+import Login from './Screens/Login.jsx'
+
+const a = 1
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Hero />,
+    element: <Home />,
     errorElement: <div>Not found</div>
   },
-
+])
+const route = createBrowserRouter([
   {
-    path: '/base',
-    element: <Base />
-  }
+    path: '/',
+    element: <Login />,
+    errorElement: <div>Not found</div>
+  },
+  {
+    path: '/login',
+    element: <Login />,
+    errorElement: <div>Not found</div>
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    {a === 1 ?
       <RouterProvider router={ router} />
+    :
+    <RouterProvider router={ route} />}
   </React.StrictMode>,
 )
