@@ -12,8 +12,8 @@ export default defineConfig({
         name: 'Stake Pi',
         short_name: 'StakePi',
         description: 'Stake and Unlock PI',
-        theme_color: '#fffff',
-        background_color: '#fffff',
+        theme_color: '#ffffff',
+        background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
         icons: [
