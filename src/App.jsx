@@ -80,11 +80,11 @@ function App() {
         <button onClick={handleAlert}>Need Help?</button>
       </div>
     </div>
-      {showInstallButton && (
+      {/* {showInstallButton && (
         <button onClick={handleInstallClick}>
           Install App
         </button>
-      )}
+      )} */}
     </div>
   );
 }
