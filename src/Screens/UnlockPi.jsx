@@ -42,7 +42,7 @@ const UnlockPi = () => {
           <input className='btn' type="submit" value='Confirm Your Wallet' /><br />
         </form>
 
-        <div className='info-u'>Confirm your wallet to unlock your lock pi coins</div>
+        <div className='info-u'>Confirm your wallet to unlock your locked pi coins</div>
     </div>
     )
 }
