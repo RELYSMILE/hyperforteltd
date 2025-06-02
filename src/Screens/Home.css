@@ -89,6 +89,13 @@ body{
                 }
               }
             }
+
+            .avarta{
+                img{
+                    width: 20rem;
+                    opacity: .5;
+                }
+            }
         }
     }
     .auth{
