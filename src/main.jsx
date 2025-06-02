@@ -18,7 +18,6 @@ const router = createBrowserRouter([
   {
     path: '/home',
     element: <Home />,
-    errorElement: <div>Not found</div>
   },
   {
     path: '/wallet',

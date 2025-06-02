@@ -46,10 +46,12 @@ body{
             font-size: 16px;
             font-family: 'Gotham';
             margin-bottom: 1rem;
-            color: #808080;
+            color: #3a3a3a;
         }
         .info-x{
             color: red;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 600;
         }
     }
     .passphrase{
@@ -59,31 +61,33 @@ body{
 
         textarea{
             width: 85%;
-            height: 20rem;
+            height: 12rem;
             background: transparent;
             color: #000;
             font-family: 'Gotham';
-            font-size: 16px;
+            font-size: 21px;
             outline: none;
-            border: 1px solid #808080;
+            border: 1px solid #d3d3d3;
             padding: 1.5rem;
             border-radius: .5rem;
         }
     }
     .info-u{
         padding: 0 1.5rem;
-        margin-top: 6.5rem;
+        margin-top: 5.5rem;
+        text-align: center;
         color: #808080;
     }
     .btn{
-        background: #2a0033;
+        background: #350058;
         margin: 2rem auto;
-        width: 90%;
+        width: 100%;
         text-align: center;
-        padding: .7rem 0;
+        padding: 1rem 0;
         border-radius: .5rem;
         color: #fff;
-        font-family: 'satoshi1';
+        font-family: 'Gotham';
+        font-size: 17px;
         cursor: pointer;
     }
     .btn-u{

@@ -85,7 +85,6 @@ function App() {
           Install App
         </button>
       )}
-      {/* rest of your app UI */}
     </div>
   );
 }

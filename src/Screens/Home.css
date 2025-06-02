@@ -11,6 +11,9 @@
     font-family: 'Gotham';
     src: url('../assets/fonts/Gotham-Book.otf');
 }
+html{
+    background: #3b0142;
+}
 body{
     padding: 1rem 2rem;
 }
@@ -238,7 +241,7 @@ body{
 
                 .stake-btn{
                     width: 100%;
-                    padding: .4rem 0;
+                    padding: .7rem 0;
                     text-align: center;
                 }
               }
