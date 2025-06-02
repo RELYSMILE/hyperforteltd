@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Auth from '../Components/Auth'
 import appBg from '../assets/bg/bg.png'
 import logo from '../assets/icons/logo.png'
-import stakeImg from '../assets/images/stake1.png'
+import stakeImg from '../assets/images/stake.png'
 import { Link } from 'react-router-dom'
 import './Home.css'
 
