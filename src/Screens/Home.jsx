@@ -1,41 +1,64 @@
-import React, { useState } from 'react'
-import Moves from '../Components/Moves'
+import React, { useEffect, useState } from 'react'
+import Auth from '../Components/Auth'
+import appBg from '../assets/bg/bg.png'
+import logo from '../assets/icons/logo.png'
+import stakeImg from '../assets/images/stake1.png'
+import { Link } from 'react-router-dom'
+import './Home.css'
 
 const Home = () => {
-    const [search, setSearch] = useState('')
-    const Movies = [
-        {id: 1, title: 'Prison break', release_date: '2009', producer: 'Wentworth Miller'},
-        {id: 2, title: 'Money Heist', release_date: '2023', producer: 'Professor Miller'},
-        {id: 3, title: 'Ant Man', release_date: '2020', producer: 'Lincon Miller'},
-    ]
+    const [authState, setAuthState] = useState(false)
+    const [state, setState] = useState(false)
+    
+    const handleAuthComponentState = () => {
+        setAuthState(true)
+    }
+    const handleCloseAuthComponent = () => {
+        setAuthState(false)
+    }
 
-const pageStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    background: '#fff',
-    gap: '2rem',
-    color: '#000',
-    height: '100vh'
-}
+    useEffect(() => {
+        const timeOut =  setTimeout(() => {
+            setState(true)
+    }, 3000)
 
-  return <div style={pageStyle}>
-    <div style={{width: '100%', padding: '.5rem 1rem'}}>
-        <input style={{width: '100%', padding: '.3rem 1rem', background: 'transparent', border: '1px solid #808080', outline: 'none'}} onChange={(e) => setSearch(e.target.value)} type="text" />
-    </div>
-    {Movies.filter((movie) => {
-        const input = search.trim().toLowerCase()
-        return input === ''||
-        movie.title.toLowerCase().includes(input) ||
-        movie.release_date.toLowerCase().includes(input) ||
-        movie.producer.toLowerCase().includes(input)
+    return ()=>{
+        clearTimeout(timeOut)
+    }
+    }, [])
 
-    }).map((movies, idx) => (
-        <>
-            <Moves movies={movies} key={idx} />
-        </>
-    ))}
+  return <div className='app'>
+    {state?
+    <>
+        <div className='app-bg-cobtainer'>
+            <img src={appBg} alt="" />
+        </div>
+
+        <div className='logo'>
+            <img src={logo} alt="" />
+        </div>
+        <div className='Hero'>
+            <div className='Hero-contaner'>
+                <div className='hero-headings'>
+                    <div className='heading'>Stake your <span>Pi coin & earn</span> rewards in just a few steps</div>
+                    <div className='info'>By staking your crypto, you’re not just growing your portfolio, but also helping secure Pi blockchain networks for everyone.</div>
+                    <div className='stake-unlock'>
+                        <div className='stake-btn' onClick={handleAuthComponentState}>Stake Pi</div>
+                        <Link to={'/unlockPi'}><div className='stake-btn unlock'>Unlock Pi</div></Link>
+                    </div>
+                </div>
+                <div className='avarta'>
+                    <img src={stakeImg} alt="" />
+                </div>
+            </div>
+        </div>
+        {authState && <Auth handleCloseAuthComponent = {handleCloseAuthComponent} />}
+    </>
+    :
+        <div className='flashScreen'>
+            <img src={logo} alt="" />
+        </div>
+    }   
   </div>
 }
 

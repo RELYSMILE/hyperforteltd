@@ -1,3 +1,82 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.inatall-app{
+    background: rgb(59, 1, 66);
+    height: 100vh;
+}
+.body {
+  margin: 0;
+  padding: 0;
+  background: rgb(59, 1, 66);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.logo{
+    padding-top: .5rem;
+    img{
+        width: 10rem;
+        height: 7.5rem;
+    }
+}
+
+.install-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgb(59, 1, 66);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.install-prompt {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  padding: 25px;
+  border-radius: 16px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+.install-prompt h2 {
+  color: #ffb703;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.install-prompt p {
+  margin: 10px 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.install-prompt .icon {
+  font-weight: bold;
+  color: #ffd166;
+}
+
+.install-prompt button {
+  background-color: #ffb703;
+  color: rgb(59, 1, 66);
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.install-prompt button:hover {
+  background-color: #ff8800;
+}
+
+@media (max-width: 500px){
+    .install-prompt h2 {
+        font-size: 1.1rem;
+}
+.install-prompt p {
+  margin: 10px 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+}

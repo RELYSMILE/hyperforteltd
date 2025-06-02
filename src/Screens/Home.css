@@ -1,0 +1,270 @@
+*{
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+@font-face {
+    font-family: 'satoshi';
+    src: url('../assets/fonts/UberMoveMedium.otf');
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Book.otf');
+}
+body{
+    padding: 1rem 2rem;
+}
+.app{
+    .app-bg-cobtainer{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -1;
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+    }
+
+    .logo{
+        img{
+            width: 6.5rem;
+            height: 5rem;
+        }
+    }
+
+    .Hero{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 4rem;
+
+            .Hero-contaner{
+            display: flex;
+
+            .hero-headings{
+                .heading{
+                    color: #fff;
+                    font-size: 2.3rem;
+                    font-weight: 700;
+                    font-family: 'satoshi';
+
+                    span{
+                        color: orange;
+                    }
+                }
+                .info{
+                    margin-top: 2rem;
+                    color: #fff;
+                    font-family: 'Gotham';
+                }
+
+            .stake-unlock{
+                display: flex;
+                gap: 1rem;
+                margin-top: 3rem;
+
+                .stake-btn{
+                    background: orange;
+                    width: 5rem;
+                    padding: .4rem 1.5rem;
+                    font-family: 'satoshi';
+                    border-radius: .2rem;
+                    cursor: pointer;
+                    color: #000;
+                }
+                .unlock{
+                    background: #fff;
+                    color: #000;
+                }
+              }
+            }
+        }
+    }
+    .auth{
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        .auth-container{
+            background: #fff;
+            width: 40%;
+            border-radius: .2rem;
+
+            .logo-container{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: row-reverse;
+                img{
+                    width: 6.5rem;
+                    height: 5rem;
+                    cursor: pointer;
+                }
+                .close{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: orange;
+                    margin-left: 1rem;
+                    padding: .5rem;
+                    border-radius: .2rem;
+                    cursor: pointer;
+
+                    img{
+                        width: 1.2rem;
+                        height: 1.2rem;
+                    }
+                    
+                }
+            }
+
+            .info-container{
+                padding: 2rem;
+
+                .heading{
+                    font-size: 1.5rem;
+                    font-family: 'satoshi';
+                }
+                .info{
+                    font-size: 12px;
+                    font-family: 'Gotham';
+                }
+                .info-x{
+                    font-size: 12px;
+                    margin-top: 1rem;
+                    font-family: 'Gotham';
+                }
+                 .stake-unlock{
+                display: flex;
+                gap: 1rem;
+                margin-top: 3rem;
+
+                .stake-btn{
+                    background: orange;
+                    width: fit-content;
+                    padding: .4rem 3rem;
+                    font-family: 'satoshi';
+                    border-radius: .2rem;
+                    cursor: pointer;
+                    color: #000;
+                }
+              }
+            }
+        }
+    }
+
+    .auth::before{
+        content: '';
+        position: absolute;
+         top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: #000;
+        opacity: .7;
+        z-index: -1;
+    }
+
+    .flashScreen{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: #fff;
+
+        img{
+            width: 20rem;
+            height: 15rem;
+        }
+    }
+}
+@media (max-width: 1000px){
+    .app{
+        .auth{
+
+        .auth-container{
+            width: 70%;
+        }
+    }
+    }
+}
+
+@media (max-width: 768px){
+    .app{
+         .logo{
+            margin-top: 1rem;
+    }
+         .Hero{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 4rem;
+
+            .Hero-contaner{
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+
+            .hero-headings{
+                .heading{
+                    font-size: 2rem;
+                }
+                .info{
+                    font-size: 14px;
+                }
+
+            .stake-unlock{
+                gap: 1rem;
+                flex-direction: column;
+
+                .stake-btn{
+                    width: 100%;
+                    padding: .4rem 0;
+                    text-align: center;
+                }
+              }
+            }
+
+            .avarta{
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    }
+}
+
+@media (max-width: 500px){
+    .app{
+        .auth{
+
+        .auth-container{
+            width: 90%;
+
+             .heading{
+                    margin-bottom: 1rem;
+                }
+        }
+    }
+    }
+}

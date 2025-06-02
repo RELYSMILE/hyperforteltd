@@ -7,23 +7,23 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['android-launchericon-192-192.png', 'android-launchericon-512-512.png', 'LargeTile.scale-400.png'],
+      includeAssets: ['pinet.png', 'pinet.png', 'pinet.png'],
       manifest: {
-        name: 'My Cool App',
-        short_name: 'CoolApp',
-        description: 'My Vite PWA app',
+        name: 'Stake Pi',
+        short_name: 'StakePi',
+        description: 'Stake and Unlock PI',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
         icons: [
           {
-            src: 'android-launchericon-192-192.png',
+            src: 'pinet.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'android-launchericon-512-512.png',
+            src: 'pinet.png',
             sizes: '512x512',
             type: 'image/png'
           }
