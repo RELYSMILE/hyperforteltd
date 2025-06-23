@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['logo.png', 'logo.png', 'logo.png'],
+      includeAssets: ['eur-africa-192x192.png', 'eur-africa-512x512.png', 'logo.png'],
       manifest: {
         name: 'Eur-Africa',
         short_name: 'Eur-Africa',
@@ -18,12 +18,12 @@ export default defineConfig({
         start_url: '/',
         icons: [
           {
-            src: 'logo.png',
+            src: 'eur-africa-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'logo.png',
+            src: 'eur-africa-512x512.png',
             sizes: '512x512',
             type: 'image/png'
           }
