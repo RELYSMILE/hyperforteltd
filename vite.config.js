@@ -7,23 +7,23 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['pinet.png', 'pinet.png', 'pinet.png'],
+      includeAssets: ['logo.png', 'logo.png', 'logo.png'],
       manifest: {
-        name: 'Stake Pi',
-        short_name: 'StakePi',
-        description: 'Stake and Unlock PI',
+        name: 'Eur-Africa',
+        short_name: 'Eur-Africa',
+        description: 'Eur-Africa Research Associates Ltd',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
         icons: [
           {
-            src: 'pinet.png',
+            src: 'logo.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'pinet.png',
+            src: 'logo.png',
             sizes: '512x512',
             type: 'image/png'
           }
