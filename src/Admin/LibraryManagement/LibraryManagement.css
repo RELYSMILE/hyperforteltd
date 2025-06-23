@@ -1,0 +1,235 @@
+*{
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+@font-face {
+    font-family: 'satoshi-black';
+    src: url('../assets/fonts/Satoshi-Black.otf');
+}
+@font-face {
+    font-family: 'satoshi-r';
+    src: url('../assets/fonts/Satoshi-Regular.otf');
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Book.otf');
+}
+@font-face {
+    font-family: 'SpaceGrotesk';
+    src: url('../assets/fonts/SpaceGrotesk-Regular.otf');
+}
+@font-face {
+    font-family: 'UberMoveMedium';
+    src: url('../assets/fonts/UberMoveMedium.otf');
+}
+
+.librarymanagement-container{
+    display: flex;
+    gap: 2rem;
+    height: 100vh;
+    background-color: #f9f9f9;
+
+    .librarymanagement{
+        position: relative;
+        width: 100%;
+        overflow-y: scroll;
+        .title-add-book{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: 2rem;
+            border-bottom: 1px solid #e8ebeb;
+        }
+
+        .search-filter{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 97%;
+            margin-top: 1rem;
+            .search{
+                border: 1px solid #e8ebeb;
+                flex: 1;
+                display: flex;
+                align-items: center;
+                padding-left: .6rem;
+
+                img{
+                    width: 1.4rem;
+                    height: 1.4rem;
+                }
+                input{
+                    padding: .6rem .4rem ;
+                    background: transparent;
+                    width: 100%;
+                    outline: none;
+                    border: none;
+                    color: teal;
+
+
+                    &::placeholder{
+                        font-size: 12px;
+                        font-family: 'Gotham';
+                    }
+                }
+            }
+
+            .filter{
+                display: flex;
+                align-items: center;
+                border: 1px solid #e8ebeb;
+                gap: .4rem;
+                img{
+                    width: 1.4rem;
+                    height: 1.4rem;
+                }
+
+                .filter-select{
+                    display: flex;
+                    align-items: center;
+                    gap: .4rem;
+
+                    select{
+                        background: transparent;
+                        color: teal;
+                        cursor: pointer;
+                        outline: none;
+                        border: none;
+                    }
+                }
+            }
+        }
+
+        .books-cont{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 2rem;
+            font-family: 'Gotham';
+            table{
+                width: 94%;
+                border: 1px solid teal;
+                padding: .2rem;
+                text-align: left;
+                text-transform: uppercase;
+                .tr{
+                    background-color: teal;
+                    color: #fff;
+                }
+                tr{
+                    text-align: left;
+                    th{
+                        border: 1px solid #e8ebeb; 
+                        padding: .2rem;
+
+                        .display{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .more-panel{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+            position: absolute;
+            top: 15rem;
+            right: 8rem;
+            box-shadow: -1px 5px 10px #c7c7c7;
+            border: 1px solid #d9e6d6c4;
+            background: #fff;
+            padding: 1.5rem;
+
+            .item{
+                display: flex;
+                align-items: center;
+                gap: .2rem;
+                cursor: pointer;
+                font-family: 'Gotham';
+                box-shadow: -1px 5px 10px #c7c7c7;
+                padding: .3rem .8rem;
+                border-radius: .3rem;
+                color: #000;
+
+                img{
+                    width: 1rem;
+                    height: 1rem;
+                }
+                .label{
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .librarymanagement-container{
+
+    .librarymanagement{
+        .title-add-book{
+            align-items: start;
+            justify-content: left;
+            flex-direction: column;
+
+            .add{
+                margin-left: 4%;
+            }
+        }
+
+        .search-filter{
+            align-items: start;
+            flex-direction: column;
+            margin-left: 3%;
+            .search{
+                width: 96%;
+            }
+        }
+
+        .books-cont{
+            width: 50rem;
+            overflow-x: scroll;
+        }
+
+        .more-panel{
+            right: 0rem;
+        }
+    }
+}
+}
+@media (max-width: 500px){
+    .librarymanagement-container{
+    .librarymanagement{
+
+        .more-panel{
+            right: -13rem;
+        }
+    }
+}
+}
+@media (max-width: 390px){
+    .librarymanagement-container{
+    .librarymanagement{
+
+        .more-panel{
+            right: -21rem;
+        }
+    }
+}
+}
+@media (max-width: 329px){
+    .librarymanagement-container{
+    .librarymanagement{
+
+        .more-panel{
+            right: -25rem;
+        }
+    }
+}
+}

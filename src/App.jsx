@@ -74,7 +74,7 @@ function App() {
       <div className='logo'><img src={logo} alt="" /></div>
     <div class="install-wrapper">
       <div class="install-prompt">
-        <h2>To Unlock or Stake your Pi coin Install The App for Faster Access</h2>
+        <h2>Get started by installing the app—just follow the instructions below!</h2>
         <p><strong>Mobile Users:</strong> Tap the <span class="icon">⋮</span> (top right) or <span class="icon">⬆</span> (bottom of screen), then tap <strong>"Add to Home Screen"</strong>.</p>
         <p><strong>Computer Users:</strong> Click the <strong>install icon</strong> <span class="icon">🖥️➕</span> in the address bar or from your browser menu.</p>
         <button onClick={handleAlert}>Need Help?</button>

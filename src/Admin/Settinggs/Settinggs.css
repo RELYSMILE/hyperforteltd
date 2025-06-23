@@ -1,0 +1,312 @@
+*{
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+@font-face {
+    font-family: 'satoshi-black';
+    src: url('../assets/fonts/Satoshi-Black.otf');
+}
+@font-face {
+    font-family: 'satoshi-r';
+    src: url('../assets/fonts/Satoshi-Regular.otf');
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Book.otf');
+}
+@font-face {
+    font-family: 'SpaceGrotesk';
+    src: url('../assets/fonts/SpaceGrotesk-Regular.otf');
+}
+@font-face {
+    font-family: 'UberMoveMedium';
+    src: url('../assets/fonts/UberMoveMedium.otf');
+}
+
+.settings-container{
+    display: flex;
+    gap: 2rem;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: #f9f9f9;
+
+    .settings{
+        width: 100%;
+
+
+        .settings-items{
+            .save-settings{
+                display: flex;
+                align-items: center;
+                justify-content: right;
+                margin-top: 1rem;
+                .save-btn{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: .3rem;
+                    width: fit-content;
+                    background: green;
+                    padding: .5rem 1rem;
+                    margin-right: 2rem;
+                    color: #fff;
+                    font-family: 'Gotham';
+                    cursor: pointer;
+                    border-radius: .3rem;
+                }
+            }
+
+            .navigate-container{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                border-bottom: 1px solid #d9e6d6c4;
+                padding-bottom: 1rem;
+                .nav-item{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: .2rem;
+                    font-family: 'Gotham';
+                    width: fit-content;
+                    cursor: pointer;
+                    padding: .5rem 1rem;
+
+                    img{
+                        width: 1.3rem;
+                        height: 1.3rem;
+                    }
+                }
+                .nav-item-active{
+                    box-shadow: -1px 5px 10px #c7c7c7;
+                }
+            }
+
+            .general-settings{
+                margin-top: 2rem;
+                font-family: 'Gotham';
+
+                .title{
+                    font-size: 20px;
+                    margin-bottom: .5rem;
+                }
+                .ft{
+                    font-size: 15px;
+                    color: teal;
+                    margin-top: 1rem;
+                }
+                .info{
+                    font-size: 14px;
+                    color: #808080;
+                }
+
+                .app-name-container{
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: .3rem;
+                    margin-top: 2rem;
+                    font-family: 'Gotham';
+                    margin-left: 2rem;
+
+                    label{
+                        font-size: 14px;
+                    }
+
+                    input{
+                        background: transparent;
+                        border: 1px solid #d9e6d6c4;
+                        outline: none;
+                        width: 90%;
+                        padding: .8rem;
+                        color: teal;
+                    }
+                }
+                .access{
+                    color: orange;
+                    margin-top: 1rem;
+                }
+
+                .app-info{
+                    margin-top: .5rem;
+                    margin-left: 2rem;
+                    font-size: 12px;
+                    color: #808080;
+                }
+
+                .color-scheme{
+                    margin-top: 2rem;
+                    margin-bottom: 1rem;
+                }
+                .color-container{
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    .logo-color{
+                    width: fit-content;
+                    label{
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        cursor: pointer;
+                        .Logo{
+                            width: 3rem;
+                            height: 3rem;
+                        }
+
+                        .color{
+                            padding: .3rem;
+
+                            .preview{
+                                padding: .5rem;
+                            }
+                        }
+                    }
+                }
+
+                }
+
+                .feature-container{
+                    box-shadow: -1px 5px 10px #c7c7c7;
+                    padding: 1.5rem;
+                    margin-top: 1rem;
+
+                    .settings-container-state{
+                        display: flex;
+                        justify-content: space-between;
+
+                        .toggle{
+                            svg{
+                                width: 2.5rem;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .settings-container{
+    display: flex;
+    gap: 2rem;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: #f9f9f9;
+
+    .settings{
+        width: 100%;
+
+
+        .settings-items{
+            .save-settings{
+                display: flex;
+                align-items: center;
+                justify-content: right;
+                margin-top: 1rem;
+                .save-btn{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: .3rem;
+                    width: fit-content;
+                    background: green;
+                    padding: .5rem 1rem;
+                    margin-right: 2rem;
+                    color: #fff;
+                    font-family: 'Gotham';
+                    cursor: pointer;
+                    border-radius: .3rem;
+                }
+            }
+
+            .navigate-container{
+                flex-wrap: wrap;
+                gap: .5rem;
+                margin-top: 2rem;
+            }
+
+            .general-settings{
+                .title{
+                    margin-left: 4%;
+                }
+
+                .info{
+                    margin-left: 4%;
+                }
+
+                .app-name-container{
+                    margin-left: 4rem;
+                }
+                .access{
+                    color: orange;
+                    margin-top: 1rem;
+                    margin-left: 4rem;
+                }
+
+                .app-info{
+                    margin-left: 4rem;
+                }
+
+                .color-scheme{
+                    margin-top: 2rem;
+                    margin-bottom: 1rem;
+                    margin-left: 4%;
+                }
+                .color-container{
+                    display: flex;
+                    align-items: start;
+                    flex-wrap: wrap;
+                    gap: 3rem;
+                    margin-left: 4%;
+                    .logo-color{
+                    width: fit-content;
+                    label{
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        cursor: pointer;
+                        .Logo{
+                            width: 3rem;
+                            height: 3rem;
+                        }
+
+                        .color{
+                            padding: .3rem;
+
+                            .preview{
+                                padding: .5rem;
+                            }
+                        }
+                    }
+                }
+
+                }
+
+                .feature-container{
+                    box-shadow: -1px 5px 10px #c7c7c7;
+                    padding: 1.5rem;
+                    margin-top: 1rem;
+
+                    .settings-container-state{
+                        display: flex;
+                        justify-content: space-between;
+
+                        .toggle{
+                            svg{
+                                width: 2.5rem;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+}
+

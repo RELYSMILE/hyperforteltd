@@ -1,0 +1,297 @@
+*{
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+@font-face {
+    font-family: 'satoshi-black';
+    src: url('../assets/fonts/Satoshi-Black.otf');
+}
+@font-face {
+    font-family: 'satoshi-r';
+    src: url('../assets/fonts/Satoshi-Regular.otf');
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Book.otf');
+}
+@font-face {
+    font-family: 'SpaceGrotesk';
+    src: url('../assets/fonts/SpaceGrotesk-Regular.otf');
+}
+@font-face {
+    font-family: 'UberMoveMedium';
+    src: url('../assets/fonts/UberMoveMedium.otf');
+}
+
+.nav-container{
+    border-right: 1px solid #e8ebeb;
+    width: 15rem;
+    height: 100vh;
+    .logo-admin-name-container{
+
+        .logo-container{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: .5rem;
+            border-bottom: 1px solid #e8ebeb;
+            img{
+                width: 3rem;
+                height: 2.5rem;
+            }
+
+            .logo-name{
+                font-family: 'satoshi-black';
+                text-transform: capitalize;
+            }
+        }
+
+        .currentUser-role-container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: .5rem;
+            border-bottom: 1px solid #e8ebeb;
+
+            .currentUser-container{
+                display: flex;
+                align-items: center;
+                gap: .4rem;
+
+                img{
+                    width: 1.1rem;
+                    height: 1.1rem;
+                }
+                .currentUser{
+                    font-size: 14px;
+                    color: teal;
+                    font-family: 'satoshi-black';
+                    text-transform: capitalize;
+                }
+            }
+            
+            .role-container{
+                display: flex;
+                align-items: center;
+                gap: .2rem;
+
+                img{
+                    width: 1rem;
+                    height: 1rem;
+                }
+                .role{
+                    color: tomato;
+                    font-size: 12px;
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+    .nave-items{
+        padding: .5rem;
+        margin-top: 2rem;
+        font-size: 14px;
+        font-family: 'Gotham';
+        .nav-item{
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            cursor: pointer;
+            width: fit-content;
+            margin-bottom: 1.4rem;
+            color: teal;
+
+            img{
+                width: 1.1rem;
+                height: 1.1rem;
+            }
+        }
+
+        .logout-button {
+            background-color: teal;
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            width: fit-content;
+            margin-top: 2rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+
+            .logout-button:hover {
+            background-color: #d62828;
+            transform: scale(1.05);
+            }
+
+            .logout-button:active {
+            transform: scale(0.98);
+            }
+
+    }
+}
+.small-screen-nav{
+    display: none;
+}
+.bugger-button{
+    display: none;
+}
+
+@media (max-width: 848px){
+    .nav-container{
+        width: 20rem;
+    }
+}
+@media (max-width: 768px){
+    .nav-container{
+        display: none;
+    }
+
+    .small-screen-nav-active{
+        animation: navSlideActive 2s ease-in-out forwards;
+        transition: all 1s;
+    }
+    .small-screen-nav-none-active{
+        transform: translateX(-16rem);
+        transition: all 1s;
+        animation: navSlideNonActive 2s ease-in-out forwards;
+    }
+
+    .small-screen-nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 16rem;
+        background: #fff;
+        display: block;
+        z-index: 1;
+        animation: navSlide 2s ease-in-out forwards;
+
+    .logo-admin-name-container{
+
+        .logo-container{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: .5rem;
+            border-bottom: 1px solid #e8ebeb;
+            img{
+                width: 3rem;
+                height: 2.5rem;
+            }
+
+            .logo-name{
+                font-family: 'satoshi-black';
+                text-transform: capitalize;
+            }
+        }
+
+        .currentUser-role-container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: .5rem;
+            border-bottom: 1px solid #e8ebeb;
+
+            .currentUser-container{
+                display: flex;
+                align-items: center;
+                gap: .4rem;
+
+                img{
+                    width: 1.1rem;
+                    height: 1.1rem;
+                }
+                .currentUser{
+                    font-size: 14px;
+                    color: teal;
+                    font-family: 'satoshi-black';
+                    text-transform: capitalize;
+                }
+            }
+            
+            .role-container{
+                display: flex;
+                align-items: center;
+                gap: .2rem;
+
+                img{
+                    width: 1rem;
+                    height: 1rem;
+                }
+                .role{
+                    color: tomato;
+                    font-size: 12px;
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+    .nave-items{
+        padding: .5rem;
+        margin-top: 2rem;
+        font-size: 14px;
+        font-family: 'Gotham';
+        .nav-item{
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            cursor: pointer;
+            width: fit-content;
+            margin-bottom: 1.4rem;
+            color: teal;
+
+            img{
+                width: 1.1rem;
+                height: 1.1rem;
+            }
+        }
+
+        .logout-button {
+            background-color: teal;
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            width: fit-content;
+            margin-top: 2rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+
+            .logout-button:hover {
+            background-color: #d62828;
+            transform: scale(1.05);
+            }
+
+            .logout-button:active {
+            transform: scale(0.98);
+            }
+
+    }
+}
+    .bugger-button{
+        display: block;
+        position: fixed;
+        right: 1rem;
+        top: 1.5rem;
+        padding: .3rem .5rem;
+        padding-bottom: .05rem;
+        background: teal;
+        z-index: 1;
+    }
+}
+
+@keyframes navSlideActive {
+    0%{
+        transform: translateX(0);
+        transition: all 2s;
+    }
+}

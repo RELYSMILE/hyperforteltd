@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+@font-face {
+    font-family: 'satoshi-black';
+    src: url('../assets/fonts/Satoshi-Black.otf');
+}
+@font-face {
+    font-family: 'satoshi-r';
+    src: url('../assets/fonts/Satoshi-Regular.otf');
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Book.otf');
+}
+@font-face {
+    font-family: 'SpaceGrotesk';
+    src: url('../assets/fonts/SpaceGrotesk-Regular.otf');
+}
+@font-face {
+    font-family: 'UberMoveMedium';
+    src: url('../assets/fonts/UberMoveMedium.otf');
+}
+
+.new-book-container{
+    display: flex;
+    gap: 2rem;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: #f9f9f9;
+
+    .new-book{
+        width: 100%;
+
+        .form-container{
+            border: 1px solid #d9e6d6c4;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            box-shadow: -1px 5px 10px #c7c7c7;
+            font-family: 'Gotham';
+
+            .form-field, .select-field{
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                gap: .1rem;
+                margin-bottom: 1rem;
+                label{
+                    font-size: 14px;
+                }
+
+                input, select{
+                    background: transparent;
+                    border: 1px solid #d9e6d6c4;
+                    outline: none;
+                    padding: .8rem;
+                    color: teal;
+                    text-transform: uppercase;
+                }
+                select{
+                    cursor: pointer;
+                }
+            }
+            .save-container{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .5rem;
+                background: teal;
+                width: 8rem;
+                color: #fff;
+                padding: .5rem;
+                margin-top: 1rem;
+                cursor: pointer;
+                outline: none;
+                border: 1px solid teal;
+            }
+        }
+    }
+}

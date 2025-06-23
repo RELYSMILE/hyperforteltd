@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Book.otf');
+}
+
+.btn{
+    border: 1px solid teal;
+    color: #ffff;
+    padding: .4rem 1rem;
+    cursor: pointer;
+    transition: all .2s;
+    background: teal;
+    font-family: 'Gotham';
+    font-size: 14px;
+
+    &:hover{
+    border: 1px solid teal;
+    transition: all .2s;
+    background: transparent;
+    color: teal;
+}
+}

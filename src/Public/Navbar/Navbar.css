@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+    scrollbar-width: none;
+}
+
+
+@font-face {
+    font-family: 'satoshi-black';
+    src: url('../assets/fonts/Satoshi-Black.otf');
+}
+@font-face {
+    font-family: 'satoshi-r';
+    src: url('../assets/fonts/Satoshi-Regular.otf');
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Book.otf');
+}
+@font-face {
+    font-family: 'SpaceGrotesk';
+    src: url('../assets/fonts/SpaceGrotesk-Regular.otf');
+}
+@font-face {
+    font-family: 'UberMoveMedium';
+    src: url('../assets/fonts/UberMoveMedium.otf');
+}
+
+.navigation-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 2rem;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Gotham';
+
+    .logo-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        width: 5rem;
+        height: 3.5rem;
+        border-radius: 100%;
+        img{
+            width: 5rem;
+            height: 3.5rem;
+        }
+    }
+
+    .navigation-item{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        gap: 2rem;
+
+        .item{
+            cursor: pointer;
+            color: #fff;
+            &:hover{
+                color: aqua;
+            }
+        }
+
+    }
+}
+.sm-bugger-button{
+    display: none;
+}
+.sm-screen-nav{
+    display: none;
+}
+@media (max-width: 768px){
+    .navigation-container{
+    .logo-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        width: 3rem;
+        height: 2rem;
+        border-radius: 100%;
+        opacity: .7;
+        img{
+            width: 3rem;
+            height: 2.2rem;
+        }
+    }
+}
+}
+@media (max-width: 500px){
+    .navigation-container{
+        .navigation-item{
+            display: none;
+        }
+    }
+    .sm-bugger-button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: .2rem .5rem;
+        background: #1c014e;
+    }
+    .sm-screen-nav-active{
+        transition: all 1s;
+    }
+    .sm-screen-nav-none-active{
+        transform: translateX(-16rem);
+        transition: all 1s;
+    }
+    .sm-screen-nav{
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background: #1c012c;
+        width: 10rem;
+        z-index: 1;
+        display: block;
+        border-right: 1px solid #fff;
+        padding: 1rem;
+
+        .navigation-items{
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            .item{
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                gap: 1rem;
+                color: #fff;
+            }
+        }
+    }
+}

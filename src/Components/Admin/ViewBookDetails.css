@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Book.otf');
+}
+@font-face {
+    font-family: 'satoshi-black';
+    src: url('../assets/fonts/Satoshi-Black.otf');
+}
+
+
+.book-detail-container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    overflow: scroll;
+    scrollbar-width: none;
+
+    &::before{
+        content: '';
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: #000;
+        opacity: .5;
+        z-index: -1;
+
+    }
+
+    .book-container{
+        width: 30rem;
+        background: #fff;
+        box-shadow: -1px 5px 10px rgb(1, 77, 77);
+        border: 1px solid #d9e6d6c4;
+        margin: 2rem auto;
+        padding: 1rem;
+
+        img{
+            width: 1.5rem;
+            cursor: pointer;
+        }
+
+        .book-title-author{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 2rem;
+            background: teal;
+            margin-top: 2rem;
+            padding: 1rem;
+            box-shadow: -1px 5px 10px #c7c7c7;
+            font-family: 'Gotham';
+            text-transform: uppercase;
+            color: #fff;
+
+            .by{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+
+                .by-x{
+                    border: 2px solid #00a7a7;
+                    border-radius: 100%;
+                    padding: .5rem;
+                }
+                .line{
+                    height: .3rem;
+                    background-color: #00a7a7;
+                    width: 100%;
+                }
+            }
+        }
+
+        .details{
+            margin-top: 3rem;
+            box-shadow: -1px 5px 10px #c7c7c7;
+            padding: 1rem;
+            text-transform: uppercase;
+
+            .book-details{
+                display: flex;
+                flex-direction: column;
+                gap: .3rem;
+                font-size: 14px;
+                margin-bottom: 1rem;
+                border: 1px solid #c7c7c7;
+                border-top: none;
+                padding: .3rem;
+
+                label{
+                    color: teal;
+                    font-weight: 600;
+                    font-size: 13px;
+                }
+                .tag{
+                    padding: .3rem .5rem;
+                    font-weight: 600;
+                    box-shadow: -1px 5px 10px #c7c7c7;
+                    width: fit-content;
+                    margin-left: .5rem;
+                }
+            }
+        }
+    }
+}
