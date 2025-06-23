@@ -78,9 +78,9 @@ const Login = () => {
             <div className='heading'>Eur-Africa Research Associates Ltd</div>
 
             <label htmlFor="">Email Address</label>
-            <input onChange={(e) => handleUserCredentials(e)} type="text" name="email" id="" placeholder='Enter your email address'/>
+            <input style={{fontSize: '16px'}} onChange={(e) => handleUserCredentials(e)} type="text" name="email" id="" placeholder='Enter your email address'/>
             <label htmlFor="">Password</label>
-            <input onChange={(e) => handleUserCredentials(e)} type="password" name="password" id="" placeholder='Enter your password' />
+            <input style={{fontSize: '16px'}} onChange={(e) => handleUserCredentials(e)} type="password" name="password" id="" placeholder='Enter your password' />
             <div onClick={HandleSinin}>{isLoading? 'Processing...' : 'Login'}</div>
         </form>
     </div>

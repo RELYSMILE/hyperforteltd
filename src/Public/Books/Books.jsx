@@ -45,7 +45,7 @@ const Books = () => {
 
         <div className='search'>
             <img src={searchGreen} alt="icon" />
-            <input style={{fontSize: '16px'}} onChange={(e) => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search by book Title, Author, Volume, journal or Book' />
+            <input style={{fontSize: '16px', textTransform: 'lowercase'}} onChange={(e) => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search by book Title, Author, Volume, journal or Book' />
         </div>
       <div className='books-container'>
         {books.filter((data) => {
