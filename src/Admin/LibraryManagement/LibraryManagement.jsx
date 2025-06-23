@@ -176,12 +176,12 @@ const LibraryManagement = () => {
                 {books.filter((data) => {
                     const input = search?.trim()?.toLowerCase()
                     return input === '' ||
-                    data?.title?.toLowerCase()?.includes(search) ||
-                    data?.author?.toLowerCase()?.includes(search) ||
-                    data?.volume?.toLowerCase()?.includes(search) ||
-                    data?.journalBook?.toLowerCase()?.includes(search) ||
-                    data?.location?.toLowerCase()?.includes(search) ||
-                    data?.tag?.toLowerCase()?.includes(search)
+                    data?.title?.toLowerCase()?.includes(input) ||
+                    data?.author?.toLowerCase()?.includes(input) ||
+                    data?.volume?.toLowerCase()?.includes(input) ||
+                    data?.journalBook?.toLowerCase()?.includes(input) ||
+                    data?.location?.toLowerCase()?.includes(input) ||
+                    data?.tag?.toLowerCase()?.includes(input)
                 }).map((book, idx) => (
                 <table key={idx} style={{border: '1px solid #e8ebeb', fontSize: '14px', color: appearancesettingData.primaryColor}}>
                     <tr className={book?.documentID === getBookID? 'tr': ''}>

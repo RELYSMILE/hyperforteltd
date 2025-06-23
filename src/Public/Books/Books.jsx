@@ -45,16 +45,16 @@ const Books = () => {
 
         <div className='search'>
             <img src={searchGreen} alt="icon" />
-            <input style={{fontSize: '16px', textTransform: 'lowercase'}} onChange={(e) => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search by book Title, Author, Volume, journal or Book' />
+            <input style={{fontSize: '16px'}} onChange={(e) => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search by Book Title, Author, Volume, journal or Book' />
         </div>
       <div className='books-container'>
         {books.filter((data) => {
             const input = search?.trim()?.toLowerCase()
                     return input === '' ||
-                    data?.title?.toLowerCase()?.includes(search) ||
-                    data?.author?.toLowerCase()?.includes(search) ||
-                    data?.volume?.toLowerCase()?.includes(search) ||
-                    data?.journalBook?.toLowerCase()?.includes(search)
+                    data?.title?.toLowerCase()?.includes(input) ||
+                    data?.author?.toLowerCase()?.includes(input) ||
+                    data?.volume?.toLowerCase()?.includes(input) ||
+                    data?.journalBook?.toLowerCase()?.includes(input)
         }).map((book, idx) => (
           <div className='book-card' key={idx}>
             <div className='book-cover'>
