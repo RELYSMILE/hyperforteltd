@@ -7,12 +7,16 @@
     font-family: 'Gotham';
     src: url('../assets/fonts/Gotham-Book.otf');
 }
+@font-face {
+    font-family: 'UberMoveMedium';
+    src: url('../assets/fonts/UberMoveMedium.otf');
+}
 
 .pageTitle{
     border-bottom: 1px solid #e8ebeb;
-    font-family: 'Gotham';
+    font-family: 'UberMoveMedium';
     padding: 1.7rem 0;
-    font-size: 20px;
+    font-size: 24px;
     color: teal;
 }
 
