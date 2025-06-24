@@ -246,10 +246,11 @@
             margin-bottom: 1.4rem;
             color: teal;
             font-family: 'UberMoveMedium';
+            font-size: 17px;
 
             img{
-                width: 1.1rem;
-                height: 1.1rem;
+                width: 1.5rem;
+                height: 1.5rem;
             }
         }
 
