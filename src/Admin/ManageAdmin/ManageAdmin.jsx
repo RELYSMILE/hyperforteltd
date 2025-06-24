@@ -30,6 +30,7 @@ const ManageAdmin = () => {
     const [appearancesettingData, setAppearancesettingsData] = useState([])
     const [settingsTogglefetch, setSettingsToggleFetch] = useState([])
     const [currentUser, setCurrentUser] = useState(null)
+    const [isPageDimmed, setIsPageDimmed] = useState(false)
 
     const handleCloseForm = () => {
         setFormPanel(false)
@@ -256,8 +257,8 @@ const ManageAdmin = () => {
               fetchSettings()
           })
   return <>
-  {currentUser? <div className='admin-management-container'>
-        <NavBar setPageTitle = {setPageTitle} />
+  {currentUser? <div className={isPageDimmed? 'admin-management-container page-dimmed' : 'admin-management-container'}>
+        <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
         <div className='admin-management'>
             <PageTitle pageTitle = {pageTitle} />

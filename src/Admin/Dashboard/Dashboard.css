@@ -34,7 +34,7 @@
     bottom: 0;
     right: 0;
     top: 0;
-    background: #000;
+    background: teal;
     opacity: .3;
     transition: 1s;
   }

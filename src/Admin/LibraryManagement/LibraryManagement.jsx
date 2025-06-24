@@ -29,6 +29,7 @@ const LibraryManagement = () => {
     const [appearancesettingData, setAppearancesettingsData] = useState([])
     const [settingsTogglefetch, setSettingsToggleFetch] = useState([])
     const [currentUser, setCurrentUser] = useState(null)
+    const [isPageDimmed, setIsPageDimmed] = useState(false)
     const navigate = useNavigate()
 
     const handleMorePanel = (bookID) => {
@@ -128,8 +129,8 @@ const LibraryManagement = () => {
         return () => unsubscribe();
       }, []);
   return <>
-  {currentUser? <div className='librarymanagement-container'>
-        <NavBar setPageTitle = {setPageTitle} />
+  {currentUser? <div className={isPageDimmed? 'librarymanagement-container page-dimmed' : 'librarymanagement-container'}>
+        <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
         <div className='librarymanagement'>
             <div className='title-add-book'>

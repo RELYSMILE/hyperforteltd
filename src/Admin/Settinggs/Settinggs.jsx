@@ -31,6 +31,7 @@ const Settinggs = () => {
     const [toggleUpdateAdminSettings, setToggleUpdateAdminSettings] = useState(true)
     const [toggleDeleteAdminSettings, setToggleDeleteAdminSettings] = useState(true)
     const [toggleAddAdminSettings, setToggleAddAdminSettings] = useState(true)
+    const [isPageDimmed, setIsPageDimmed] = useState(false)
 
     const handleGeneralActiveStyle = () => {
         setGeneralActiveStyle(true)
@@ -207,8 +208,8 @@ const Settinggs = () => {
     }, []);
 
   return <>
-  {currentUser? <div className='settings-container'>
-    <NavBar setPageTitle = {setPageTitle} />
+  {currentUser? <div className={isPageDimmed? 'settings-container page-dimmed' : 'settings-container'}>
+    <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
     <div className='settings'>
         <PageTitle pageTitle = {pageTitle} />
         <div className='settings-items'>

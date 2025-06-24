@@ -10,6 +10,7 @@ import { doc, getDoc } from 'firebase/firestore'
 const AdminRole = () => {
     const [pageTitle, setPageTitle] = useState('🔐 User Roles & Permissions')
     const [currentUser, setCurrentUser] = useState(null)
+    const [isPageDimmed, setIsPageDimmed] = useState(false)
 
 useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth,async (user) => {
@@ -29,8 +30,8 @@ useEffect(() => {
   }, []);
 
     return <>
-  {currentUser? <div className='admin-role-container'>
-    <NavBar setPageTitle = {setPageTitle} />
+  {currentUser? <div className={isPageDimmed? 'admin-role-container page-dimmed' : 'admin-role-container'}>
+    <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
     <div className='admin-role'>
         <PageTitle pageTitle = {pageTitle} />
         <div className='admin'>

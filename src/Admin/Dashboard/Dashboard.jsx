@@ -20,7 +20,6 @@ const Dashboard = () => {
     ]
     const [pageTitle, setPageTitle] = useState('Dashboard')
 
-    console.log(isPageDimmed)
 
     useEffect(() =>{
         const fetchBooks = async() => {

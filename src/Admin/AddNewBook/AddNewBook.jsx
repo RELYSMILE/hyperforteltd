@@ -16,6 +16,7 @@ const AddNewBook = () => {
     const [journalBook, setJournalBook] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [currentUser, setCurrentUser] = useState(null)
+    const [isPageDimmed, setIsPageDimmed] = useState(false)
 
     const bucketNum = Array.from({ length: 71 }, (_, i) => ({
         value: i + 1,
@@ -73,8 +74,8 @@ const AddNewBook = () => {
         return () => unsubscribe();
     }, []);
   return <>
-  {currentUser? <div className='new-book-container'>
-     <NavBar setPageTitle = {setPageTitle} />
+  {currentUser? <div className={isPageDimmed? 'new-book-container page-dimmed' : 'new-book-container'}>
+     <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
      <div className='new-book'>
         <PageTitle pageTitle = {pageTitle} />
