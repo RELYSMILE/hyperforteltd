@@ -182,7 +182,8 @@ const LibraryManagement = () => {
                     data?.volume?.toLowerCase()?.includes(input) ||
                     data?.journalBook?.toLowerCase()?.includes(input) ||
                     data?.location?.toLowerCase()?.includes(input) ||
-                    data?.tag?.toLowerCase()?.includes(input)
+                    data?.tag?.toLowerCase()?.includes(input) ||
+                    data?.bucketNumber?.toLowerCase()?.includes(input)
                 }).map((book, idx) => (
                 <table key={idx} style={{border: '1px solid #e8ebeb', fontSize: '14px', color: appearancesettingData.primaryColor}}>
                     <tr className={book?.documentID === getBookID? 'tr': ''}>

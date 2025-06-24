@@ -197,6 +197,7 @@
         .books-cont{
             width: 50rem;
             overflow-x: scroll;
+            font-family: 'UberMoveMedium';
         }
 
         .more-panel{
