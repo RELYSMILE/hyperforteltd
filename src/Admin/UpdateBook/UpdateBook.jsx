@@ -24,6 +24,10 @@ const UpdateBook = () => {
     const HandleBookCredentials = (e) => {
         setBookCredentials({...bookCredentials, [e.target.name]: e.target.value})
     }
+    const bucketNum = Array.from({ length: 100 }, (_, i) => ({
+        value: i + 1,
+        item: i + 1,
+    }));
 
     const HandleUpdateBook = async() => {
         setIsLoading(true)
@@ -36,7 +40,7 @@ const UpdateBook = () => {
                 volume: bookCredentials.volume || bookData?.volume,
                 journalBook: journalBook || bookData?.journalBook,
                 location: location || bookData?.location,
-                bucketNumber: bucket || bookData?.bucketNumber,
+                bucketNumber: 'b'+bucket || bookData?.bucketNumber,
                 updatedAt: serverTimestamp()
             })
             toast.success('Book updated successfully', {
@@ -129,17 +133,10 @@ const UpdateBook = () => {
             <div className='select-field'>
                 <label htmlFor="">Bucket</label>
                 <select  onChange={(e) => setBucket(e.target.value)} name="bucket" id="">
-                    <option disabled selected>{bookData?.bucket}</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
+                    <option disabled selected>{bookData?.bucketNumber}</option>
+                    {bucketNum.map((bucket, idx) => (
+                        <option key={idx} value={bucket.value}>{bucket.item}</option>
+                    ))}
                 </select>
             </div>
             <button disabled={isLoading} onClick={HandleUpdateBook} className='save-container'>

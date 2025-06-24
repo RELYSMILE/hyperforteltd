@@ -18,7 +18,7 @@ const AddNewBook = () => {
     const [currentUser, setCurrentUser] = useState(null)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
 
-    const bucketNum = Array.from({ length: 71 }, (_, i) => ({
+    const bucketNum = Array.from({ length: 100 }, (_, i) => ({
         value: i + 1,
         item: i + 1,
     }));
@@ -42,7 +42,7 @@ const AddNewBook = () => {
                 volume: bookCredentials.volume || '',
                 journalBook: journalBook,
                 location: location,
-                bucketNumber: bucket,
+                bucketNumber: 'b'+bucket,
                 cretedAt: serverTimestamp()
             })
             toast.success('Book added successfully', {
@@ -125,7 +125,7 @@ const AddNewBook = () => {
                 <select  onChange={(e) => setBucket(e.target.value)} name="bucket" id="">
                     <option disabled selected>Choose bucket number</option>
                     {bucketNum.map((bucket, idx) => (
-                        <option value={bucket.value}>{bucket.item}</option>
+                        <option key={idx} value={bucket.value}>{bucket.item}</option>
                     ))}
                 </select>
             </div>
