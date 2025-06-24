@@ -240,11 +240,12 @@
         .nav-item{
             display: flex;
             align-items: center;
-            gap: .5rem;
+            gap: 2rem;
             cursor: pointer;
             width: fit-content;
             margin-bottom: 1.4rem;
             color: teal;
+            font-family: 'UberMoveMedium';
 
             img{
                 width: 1.1rem;

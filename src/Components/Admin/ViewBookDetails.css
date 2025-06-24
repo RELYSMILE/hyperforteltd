@@ -109,3 +109,12 @@
         }
     }
 }
+
+@media (max-width: 600px){
+    .book-detail-container{
+
+    .book-container{
+        width: 80%;
+    }
+}
+}
