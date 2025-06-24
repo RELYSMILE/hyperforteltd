@@ -142,7 +142,7 @@ const LibraryManagement = () => {
             <div className='search-filter'>
                 <div className='search'>
                     <img src={searchGreen} alt="icon" />
-                    <input onChange={(e) => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search by book Title or Author' />
+                    <input onChange={(e) => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search by Book Title, Author, bucket number, location, category, volume, edition, journal, book, tag' />
                 </div>
 
                 <div className='filter'>
