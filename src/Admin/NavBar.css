@@ -168,6 +168,7 @@
         bottom: 0;
         width: 16rem;
         background: #fff;
+        border: 1px solid rgb(216, 216, 216);
         display: block;
         z-index: 1;
         animation: navSlide 2s ease-in-out forwards;
@@ -255,7 +256,7 @@
         }
 
         .logout-button {
-            background-color: teal;
+            background-color: tomato;
             color: #fff;
             padding: 0.6rem 1.2rem;
             border-radius: 8px;

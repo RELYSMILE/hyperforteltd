@@ -16,7 +16,7 @@ import { auth, db } from '../firebase/config'
 import { useNavigate } from 'react-router-dom'
 import { onAuthStateChanged } from 'firebase/auth'
 
-const NavBar = ({setPageTitle}) => {
+const NavBar = ({setPageTitle, setIsPageDimmed}) => {
     const [gsettingsData, setGsettingsData] = useState([])
     const [appearancesettingData, setAppearancesettingsData] = useState([])
     const [settingsToggle, setSettingsToggle] = useState([])
@@ -33,9 +33,11 @@ const NavBar = ({setPageTitle}) => {
 
     const displayNavBar = () => {
         setActiveNavBar(true)
+        setIsPageDimmed(true)
     }
     const closeNavBar = () => {
         setActiveNavBar(false)
+        setIsPageDimmed(false)
     }
 
        useEffect(() => {

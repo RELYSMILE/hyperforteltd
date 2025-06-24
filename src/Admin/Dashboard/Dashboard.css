@@ -25,6 +25,21 @@
     src: url('../assets/fonts/UberMoveMedium.otf');
 }
 
+.page-dimmed{
+  transition: 1s;
+  &::before{
+    content: '';
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background: #000;
+    opacity: .3;
+    transition: 1s;
+  }
+}
+
 .dashboard-container{
     display: flex;
     gap: 2rem;

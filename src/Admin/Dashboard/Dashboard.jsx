@@ -13,11 +13,14 @@ const Dashboard = () => {
     const [totalBooksNum, setTotalBooksNum] = useState(0)
     const [totalAdmin, setTotalAdmin] = useState(0)
     const [currentUser, setCurrentUser] = useState(null)
+    const [isPageDimmed, setIsPageDimmed] = useState(false)
     const dashboard = [
         {title: 'Total Books', num: totalBooksNum, icon: totalbooks},
         {title: 'Total Admin', num: totalAdmin, icon: security},
     ]
     const [pageTitle, setPageTitle] = useState('Dashboard')
+
+    console.log(isPageDimmed)
 
     useEffect(() =>{
         const fetchBooks = async() => {
@@ -62,8 +65,8 @@ const Dashboard = () => {
   }, []);
   return <>
   {currentUser?
-  <div className='dashboard-container'>
-    <NavBar setPageTitle = {setPageTitle} />
+  <div className={isPageDimmed? 'dashboard-container page-dimmed' : 'dashboard-container'}>
+    <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
     <div className='dashboard'>
         <PageTitle pageTitle = {pageTitle} />
         <div className='dashboard-items'>
