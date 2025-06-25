@@ -236,6 +236,33 @@
     .librarymanagement-container{
     .librarymanagement{
 
+        .books-cont{
+            table{
+                width: 98%;
+                text-align: left;
+                text-transform: uppercase;
+                tr{
+                    text-align: left;
+                    margin: 0;
+                    box-shadow: -1px 5px 10px #f1f1f1;
+                
+                    th{ 
+                        padding: .2rem;
+                        background: teal;
+                        color: #fff;
+                        .display{
+                            display: none;
+                        }
+                    }
+                    td{
+                        padding: .5rem;
+                        box-shadow: -1px 5px 10px #f1f1f1;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
         .more-panel{
             right: -13rem;
         }
