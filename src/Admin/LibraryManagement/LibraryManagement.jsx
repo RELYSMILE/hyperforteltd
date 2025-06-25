@@ -169,6 +169,7 @@ const LibraryManagement = () => {
             <div className='books-cont'>
                 <table>
                     <tr>
+                        <th style={{width: '1rem'}}>ID</th>
                         <th>Books Title</th>
                         <th>Author</th>
                         <th style={{width: '2rem'}}>Action</th>
@@ -186,7 +187,8 @@ const LibraryManagement = () => {
                     data?.bucketNumber?.toLowerCase()?.includes(input)
                 }).map((book, idx) => (
                 <table key={idx} style={{fontSize: '14px', color: appearancesettingData.primaryColor}}>
-                    <tr className={book?.documentID === getBookID? 'tr': ''}>
+                    <tr className={book?.documentID === getBookID? 'tr': idx % 2 === 0? 'even': 'odd'}>
+                        <td style={{width: '1rem'}}>{idx}</td>
                         <td style={{width: '57%',}}>{book?.title}</td>
                         <td>{book?.author}</td>
                         <td style={{width: '2rem', cursor: 'pointer'}} >

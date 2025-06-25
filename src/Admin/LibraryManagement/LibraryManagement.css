@@ -117,17 +117,17 @@
                     background-color: teal;
                     color: #fff;
                 }
+                .even{
+                    background: #fafffe;
+                }
+                .odd{
+                    background: #f0f0f0;
+                }
                 tr{
                     text-align: left;
-                    background: #fff;
                     margin: 0;
-                    
-                    &:hover{
-                        background: #e7e7e7;
-                    }
-                    tr:focus{
-                        border-color: red;
-                    }
+                    box-shadow: -1px 5px 10px #f1f1f1;
+                
                     th{ 
                         padding: .2rem;
                         background: teal;
@@ -138,7 +138,7 @@
                     }
                     td{
                         padding: .5rem;
-                        box-shadow: -1px 1px 10px #f1f1f1;
+                        box-shadow: -1px 5px 10px #f1f1f1;
                     }
                 }
             }
