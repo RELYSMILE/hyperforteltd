@@ -106,14 +106,11 @@
 
         .books-cont{
             display: flex;
-            align-items: center;
             flex-direction: column;
             margin-top: 2rem;
             font-family: 'Gotham';
             table{
-                width: 94%;
-                border: 1px solid teal;
-                padding: .2rem;
+                width: 98%;
                 text-align: left;
                 text-transform: uppercase;
                 .tr{
@@ -122,13 +119,26 @@
                 }
                 tr{
                     text-align: left;
-                    th{
-                        border: 1px solid #e8ebeb; 
+                    background: #fff;
+                    margin: 0;
+                    
+                    &:hover{
+                        background: #e7e7e7;
+                    }
+                    tr:focus{
+                        border-color: red;
+                    }
+                    th{ 
                         padding: .2rem;
-
+                        background: teal;
+                        color: #fff;
                         .display{
                             display: none;
                         }
+                    }
+                    td{
+                        padding: .5rem;
+                        box-shadow: -1px 1px 10px #f1f1f1;
                     }
                 }
             }
@@ -146,18 +156,21 @@
             box-shadow: -1px 5px 10px #c7c7c7;
             border: 1px solid #d9e6d6c4;
             background: #fff;
-            padding: 1.5rem;
+            padding: .5rem;
 
             .item{
                 display: flex;
                 align-items: center;
-                gap: .2rem;
+                gap: .6rem;
                 cursor: pointer;
                 font-family: 'Gotham';
-                box-shadow: -1px 5px 10px #c7c7c7;
                 padding: .3rem .8rem;
                 border-radius: .3rem;
                 color: #000;
+
+                &:hover{
+                    background: rgb(235, 235, 235);
+                }
 
                 img{
                     width: 1rem;
@@ -182,6 +195,7 @@
 
             .add{
                 margin-left: 4%;
+                font-family: 'UberMoveMedium';
             }
         }
 
@@ -191,12 +205,24 @@
             margin-left: 3%;
             .search{
                 width: 96%;
+                border: 1px solid #000;
+                input{
+                    &::placeholder{
+                        font-size: 14px;
+                        color: #000;
+                    }
+                }
+            }
+
+             .filter{
+                border: 1px solid #000;
             }
         }
 
         .books-cont{
             width: 50rem;
             overflow-x: scroll;
+            margin-left: 2%;
             font-family: 'UberMoveMedium';
         }
 

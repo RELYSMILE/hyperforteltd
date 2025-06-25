@@ -78,7 +78,7 @@
 
 @media (max-width: 600px){
   .app-login-container form {
-    width: 80%;
+    width: 94%;
     font-size: 14px;
 }
 
@@ -94,8 +94,8 @@
   font-size: 14px;
 }
 }
-@media (max-width: 432px){
+@media (max-width: 330px){
   .app-login-container form {
-    width: 70%;
+
 }
 }

@@ -9,22 +9,6 @@ Currently, two official plugins are available:
 
 
 
-import React from 'react'
-
-const File = () => {
-  return (
-    <div style={{ padding: '2rem' }}>
-      <a
-        href="/documents/report.xlsx"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="excel-link"
-      >
-        📄 Open Excel Report
-      </a>
-    </div>
-  )
-}
 
 export default File
 

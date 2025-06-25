@@ -185,11 +185,11 @@ const LibraryManagement = () => {
                     data?.tag?.toLowerCase()?.includes(input) ||
                     data?.bucketNumber?.toLowerCase()?.includes(input)
                 }).map((book, idx) => (
-                <table key={idx} style={{border: '1px solid #e8ebeb', fontSize: '14px', color: appearancesettingData.primaryColor}}>
+                <table key={idx} style={{fontSize: '14px', color: appearancesettingData.primaryColor}}>
                     <tr className={book?.documentID === getBookID? 'tr': ''}>
-                        <th style={{width: '57%'}}>{book?.title}</th>
-                        <th>{book?.author}</th>
-                        <th style={{width: '2rem', cursor: 'pointer'}} >
+                        <td style={{width: '57%',}}>{book?.title}</td>
+                        <td>{book?.author}</td>
+                        <td style={{width: '2rem', cursor: 'pointer'}} >
                             {book?.documentID === getBookID?
 
                             <div className={morePanelClassName}>
@@ -214,7 +214,7 @@ const LibraryManagement = () => {
                                 :
                                 <img onClick={(e) => handleMorePanel(book?.documentID)} src={more} alt="More" />
                             }
-                        </th>
+                        </td>
                     </tr>
                 </table>
                 ))}
