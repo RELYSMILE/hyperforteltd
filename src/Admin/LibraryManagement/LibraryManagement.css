@@ -24,6 +24,13 @@
     font-family: 'UberMoveMedium';
     src: url('../assets/fonts/UberMoveMedium.otf');
 }
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    scroll-behavior: smooth;
+}
 
 .librarymanagement-container{
     display: flex;
@@ -35,6 +42,24 @@
         position: relative;
         width: 100%;
         overflow-y: scroll;
+
+        .scroll{
+            position: fixed;
+            bottom: 2rem;
+            right: 1rem;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            background: teal;
+            box-shadow: -1px 5px 10px #f1f1f1;
+            img{
+                width: 2.5rem;
+                height: 2.5rem;
+                animation: scroll .5s ease-in-out infinite;
+            }
+        }
         .title-add-book{
             display: flex;
             align-items: center;
@@ -186,8 +211,15 @@
 
 @media (max-width: 768px){
     .librarymanagement-container{
-
+        
     .librarymanagement{
+        .fixed{
+            position: fixed;
+            background: #f9f9f9;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
         .title-add-book{
             align-items: start;
             justify-content: left;
@@ -221,9 +253,10 @@
 
         .books-cont{
             width: 50rem;
-            overflow-x: scroll;
             margin-left: 2%;
             font-family: 'UberMoveMedium';
+            margin-top: 16rem;
+            margin-bottom: 2rem;
         }
 
         .more-panel{
@@ -288,4 +321,10 @@
         }
     }
 }
+}
+
+@keyframes scroll {
+    0%{
+        transform: translateY(.2rem);
+    }
 }

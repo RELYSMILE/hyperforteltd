@@ -13,6 +13,7 @@ import Login from '../../Public/Login/Login'
 import visibilityIcon from '../../assets/icons/visibility1.png'
 import deleteIcon from '../../assets/icons/delete.png'
 import updateIcon from '../../assets/icons/update.png'
+import statminus from '../../assets/icons/statminus.png'
 import cancel from '../../assets/icons/cancel.png'
 import { collection, deleteDoc, doc, getDoc, getDocs } from 'firebase/firestore'
 import ViewBookDetails from '../../Components/Admin/ViewBookDetails'
@@ -112,6 +113,11 @@ const LibraryManagement = () => {
             fetchSettings()
         })
 
+        const handleScroll = () => {
+            console.log(window.scrollY)
+        }
+        window.addEventListener('scroll', handleScroll)
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth,async (user) => {
           if (user) {
@@ -125,7 +131,6 @@ const LibraryManagement = () => {
             setCurrentUser(null); // user signed out
           }
         });
-    
         return () => unsubscribe();
       }, []);
   return <>
@@ -133,6 +138,7 @@ const LibraryManagement = () => {
         <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
         <div className='librarymanagement'>
+            <div className='fixed'>
             <div className='title-add-book'>
                 <PageTitle pageTitle = {pageTitle} />
                 {settingsTogglefetch.toggleAddBookSettings &&
@@ -164,8 +170,8 @@ const LibraryManagement = () => {
                     </div>
                 </div>
             </div>
-
-
+            </div>
+            <div id='scroll'></div>
             <div className='books-cont'>
                 <table>
                     <tr>
@@ -221,6 +227,7 @@ const LibraryManagement = () => {
                 </table>
                 ))}
             </div>
+            <a className='scroll'  href='#scroll'><img src={statminus} alt="up" /></a>
             {moreComponent &&
             <ViewBookDetails getBookID = {getBookID} handleCloseViewBookDetails = {handleCloseViewBookDetails} />}
         </div>

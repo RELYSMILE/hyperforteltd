@@ -40,7 +40,11 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
             </div>
             <div className='book-details'>
                 <label>Volume/Edition</label>
-                <div className='tag'>{bookData?.volume}</div>
+                <div className='tag'>{bookData?.volume? bookData?.volume : 'NAN'}</div>
+            </div>
+            <div className='book-details'>
+                <label>Book Tag</label>
+                <div style={{textTransform: 'uppercase'}} className='tag'>{bookData?.tag}</div>
             </div>
             <div className='book-details'>
                 <label>Book Category</label>
