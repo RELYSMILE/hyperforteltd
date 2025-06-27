@@ -250,8 +250,9 @@ body{
                 border: 1px solid #000;
             }
         }
-
         .books-cont{
+            position: absolute;
+            scroll-behavior: smooth;
             width: 50rem;
             margin-left: 2%;
             font-family: 'UberMoveMedium';
