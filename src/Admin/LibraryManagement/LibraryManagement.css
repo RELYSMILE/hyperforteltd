@@ -251,7 +251,6 @@ body{
             }
         }
         .books-cont{
-            position: absolute;
             scroll-behavior: smooth;
             width: 50rem;
             margin-left: 2%;
