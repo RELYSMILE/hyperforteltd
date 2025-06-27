@@ -137,9 +137,9 @@ const LibraryManagement = () => {
   {currentUser? <div className={isPageDimmed? 'librarymanagement-container page-dimmed' : 'librarymanagement-container'}>
         <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
-        <div className='librarymanagement'>
+        <div  className='librarymanagement'>
             <div className='fixed'>
-            <div className='title-add-book'>
+            <div id='scroll-bg-screen' className='title-add-book'>
                 <PageTitle pageTitle = {pageTitle} />
                 {settingsTogglefetch.toggleAddBookSettings &&
                 <div className='add'><Link to='/add-new-book'><ButtonAdd  pageTitle = {pageTitle}  /></Link></div>}
@@ -227,6 +227,7 @@ const LibraryManagement = () => {
                 </table>
                 ))}
             </div>
+            <a className='bg-screen'  href='#scroll-bg-screen'><img src={statminus} alt="up" /></a>
             <a className='scroll'  href='#scroll'><img src={statminus} alt="up" /></a>
             {moreComponent &&
             <ViewBookDetails getBookID = {getBookID} handleCloseViewBookDetails = {handleCloseViewBookDetails} />}

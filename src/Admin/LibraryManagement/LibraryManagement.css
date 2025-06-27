@@ -37,13 +37,15 @@ body{
     gap: 2rem;
     height: 100vh;
     background-color: #f9f9f9;
+    scroll-behavior: smooth;
 
     .librarymanagement{
         position: relative;
         width: 100%;
         overflow-y: scroll;
+        scroll-behavior: smooth;
 
-        .scroll{
+        .bg-screen{
             position: fixed;
             bottom: 2rem;
             right: 1rem;
@@ -59,6 +61,9 @@ body{
                 height: 2.5rem;
                 animation: scroll .5s ease-in-out infinite;
             }
+        }
+        .scroll{
+            display: none;
         }
         .title-add-book{
             display: flex;
@@ -213,6 +218,26 @@ body{
     .librarymanagement-container{
         
     .librarymanagement{
+        .bg-screen{
+            display: none;
+        }
+        .scroll{
+            position: fixed;
+            bottom: 2rem;
+            right: 1rem;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            background: teal;
+            box-shadow: -1px 5px 10px #f1f1f1;
+            img{
+                width: 2.5rem;
+                height: 2.5rem;
+                animation: scroll .5s ease-in-out infinite;
+            }
+        }
         .fixed{
             position: fixed;
             background: #f9f9f9;
