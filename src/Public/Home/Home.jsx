@@ -167,7 +167,7 @@ useEffect(() => {
       <div className='bg-container'>
         <img src={bg} alt='background' />
       </div>
-      <Navbar />
+      <div className='nav'><Navbar /></div><br /><br />
 
       <div className='home-container'>
         <div className='title'>Welcome to the <span style={{color: 'orange'}}>Eur-Africa Research</span> Associates Library</div>

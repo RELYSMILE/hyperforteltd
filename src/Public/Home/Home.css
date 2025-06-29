@@ -53,6 +53,15 @@
 .app-home-container{
     position: relative;
 
+    .nav{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    background: #150238;
+  }
+
     .bg-container{
         position: fixed;
         top: 0;
