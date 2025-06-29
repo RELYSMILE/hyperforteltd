@@ -93,6 +93,8 @@
 }
 @media (max-width: 500px){
     .navigation-container{
+        background: #fff;
+        padding-bottom: 1rem;
         .navigation-item{
             display: none;
         }
