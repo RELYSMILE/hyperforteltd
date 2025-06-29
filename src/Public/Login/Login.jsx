@@ -71,7 +71,7 @@ const Login = () => {
   return (<>
   {state?
   <div className='app-login-container'>
-    <Navbar />
+    <div className='nav'><Navbar /></div>
 
     <div className='login-container'>
         <form action="">

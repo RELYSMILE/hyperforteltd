@@ -12,6 +12,14 @@
 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+  .app-login-container .nav{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    background: #150238;
+  }
 
 .login-container{
     display: flex;
@@ -94,8 +102,4 @@
   font-size: 14px;
 }
 }
-@media (max-width: 330px){
-  .app-login-container form {
 
-}
-}

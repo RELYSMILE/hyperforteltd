@@ -41,7 +41,7 @@ const Books = () => {
   return (<>
   {state?
     <div className='app-books-container'>
-        <Navbar />
+        <div className='nav-Bar'><Navbar /></div><br /><br /><br /><br />
 
         <div className='search'>
             <img src={searchGreen} alt="icon" />
