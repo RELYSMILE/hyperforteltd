@@ -70,7 +70,7 @@ const Dashboard = () => {
         <PageTitle pageTitle = {pageTitle} />
         <div className='dashboard-items'>
             {dashboard.map((item, idx) => (
-            <div className='dashboard-items-main'>
+            <div key={idx} className='dashboard-items-main'>
                 <div className='dashboard-items-flex'>
                     <img src={item?.icon} alt="" />
                     <div>{item.title}</div>

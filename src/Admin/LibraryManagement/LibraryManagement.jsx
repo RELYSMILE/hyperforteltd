@@ -232,7 +232,7 @@ const LibraryManagement = () => {
                 <table key={idx} style={{fontSize: '14px', color: appearancesettingData.primaryColor}}>
                     <tr className={book?.documentID === getBookID? 'tr': idx % 2 === 0? 'even': 'odd'}>
                         <td style={{width: '1rem'}}>{idx}</td>
-                        <td style={{width: '57%',}}>{book?.title}</td>
+                        <td style={{width: '39%'}}>{book?.title}</td>
                         <td style={{textTransform: 'capitalize'}}>{book?.author}</td>
                         <td style={{width: '2rem', cursor: 'pointer'}} >
                             {book?.documentID === getBookID?

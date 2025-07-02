@@ -4,18 +4,19 @@ import { toast } from 'react-toastify';
 import NavBar from '../NavBar'
 import Login from '../../Public/Login/Login';
 import call from '../../assets/icons/call.png'
+import save from '../../assets/icons/save.png'
 import clock from '../../assets/icons/clock.png'
 import piarrowfoward from '../../assets/icons/piarrowfoward.png'
 import user from '../../assets/icons/user.png'
 import PageTitle from '../../Components/Admin/PageTitle'
 import '../ManageAdmin/ManageAdmin.css'
 import './BookStatus.css'
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
-import { collection, deleteDoc, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where } from 'firebase/firestore';
+import {onAuthStateChanged} from 'firebase/auth';
+import { collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 
 const BookStatus = () => {
     const[bookCredentials, setBookCredentials] = useState({})
-    const [pageTitle, setPageTitle] = useState('Book Status')
+    const [pageTitle, setPageTitle] = useState('Loaned Books')
     const [isLoading, setIsLoading] = useState(false)
 
     const [bookDetail, setBookDetail] = useState([])
@@ -176,8 +177,11 @@ const BookStatus = () => {
                         </div>
                     </div>
                 </>}
-                    <div onClick={updateBook} className='btn-add-admin'>
-                        <div div className='btn'>{isLoading? 'Processing...' : 'Update'}</div>
+                    <div onClick={updateBook} className='btn-add-admin btn-save-status'>
+                      <div className='btn-save'>
+                        <img src={save} alt="icon" />
+                        <div div className=''>{isLoading? 'Processing...' : 'Save'}</div>
+                        </div>
                     </div>
     </div>}
     {!adminsUpdateComponent &&
@@ -200,9 +204,9 @@ const BookStatus = () => {
                 <td>{idx}</td>
             <td style={{textTransform: 'capitalize'}}>{loan.title}</td>
             <td style={{textTransform: 'capitalize'}}>{loan.collectorName}</td>
-            <td style={{textTransform: 'lowercase'}}>{loan.collectorPhone}</td>
-            <td style={{textTransform: 'capitalize'}}>{loan.collectedDate}</td>
-            <td style={{textTransform: 'capitalize'}}>{loan.returnDate}</td>
+            <td>{loan.collectorPhone}</td>
+            <td>{loan.collectedDate}</td>
+            <td>{loan.returnDate}</td>
             <td>
                 <button onClick={(e) => handleUpdateAdmin(loan.documentID)} className="action-btn update">Update</button>
             </td>

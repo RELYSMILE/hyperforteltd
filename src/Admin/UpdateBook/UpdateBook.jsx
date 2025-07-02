@@ -22,8 +22,33 @@ const UpdateBook = () => {
     const [bookSubTitleQuery, setBookSubTitleQuery] = useState(false)
     const [bookSubTitle, setBookSubTitle] = useState('')
     const [typeOfPublication, setTypeOfPublication] = useState([])
-    const [isSubTitlePresent, setIsSubTitlePresent] = useState('')
+    const [publicationBySubject, setPublicationBySubject] = useState([])
     const {bookID} = useParams()
+
+    const bookSubject = [
+        {subject: 'Psychology, Economics, Commerce, Finance, Management'},
+        {subject: 'Statistics, Research Methods'},
+        {subject: 'Sociology, Gender Inequality'},
+        {subject: 'Rural and Urban Planning'},
+        {subject: 'Political Theory'},
+        {subject: 'Political Sciences'},
+        {subject: 'Public Institutions, Public Administrations'},
+        {subject: 'International Migration'},
+        {subject: 'International Relations, Peace and Conflict Management'},
+        {subject: 'Religion'},
+        {subject: 'Economy'},
+        {subject: 'Religion, Philosophy'},
+        {subject: 'Journal'},
+        {subject: 'African History'},
+        {subject: 'American History'},
+        {subject: 'Geography, Anthropology, Architecture'},
+        {subject: 'Education'},
+        {subject: 'Medical Sciences'},
+        {subject: 'Engineering Sciences'},
+        {subject: 'Law'},
+        {subject: 'Agricultural Sciences'},
+        {subject: 'Natural Science, Maths, Statistics'},
+    ]
 
     const HandleBookCredentials = (e) => {
         setBookCredentials({...bookCredentials, [e.target.name]: e.target.value})
@@ -50,6 +75,7 @@ const UpdateBook = () => {
                 bookCopy: bookCredentials.bookCopy ||  bookData.bookCopy,
                 publisher: bookCredentials.publisher || bookData?.publisher,
                 yearOfPublication: bookCredentials.yearOfPublication || bookData?.yearOfPublication,
+                publicationBySubject: publicationBySubject || bookData?.publicationBySubject,
                 publisherLocation: bookCredentials.publisherLocation || bookData?.publisherLocation,
                 volume: bookCredentials.volume || bookData?.volume,
                 typeOfPublication: typeOfPublication || bookData?.typeOfPublication,
@@ -141,6 +167,15 @@ const UpdateBook = () => {
             <div className='form-field'>
                 <label htmlFor="">Location of the Publisher</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='publisherLocation' placeholder={bookData.publisherLocation} />
+            </div>
+            <div className='select-field'>
+                <label htmlFor="">Publication by Subject</label>
+                <select onChange={(e) => setPublicationBySubject(e.target.value)} name="" id="">
+                    <option disabled selected>{bookData?.publicationBySubject}</option>
+                    {bookSubject.map((subject, idx) => (
+                        <option key={idx} value={subject.subject}>{subject.subject}</option>
+                    ))} 
+                </select>
             </div>
             <div className='select-field'>
                 <label htmlFor="">Type of Publication</label>
