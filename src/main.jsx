@@ -8,6 +8,7 @@ import AddNewBook from './Admin/AddNewBook/AddNewBook.jsx'
 import LibraryManagement from './Admin/LibraryManagement/LibraryManagement.jsx'
 import ManageAdmin from './Admin/ManageAdmin/ManageAdmin.jsx'
 import Settinggs from './Admin/Settinggs/Settinggs.jsx'
+import BookStatus from './Admin/BookStatus/BookStatus.jsx'
 import Home from './Public/Home/Home.jsx'
 import About from './Public/About/About.jsx'
 import Books from './Public/Books/Books.jsx'
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
   {
     path: '/update-book/:bookID',
     element: <UpdateBook />,
+  },
+  {
+    path: '/book-status',
+    element: <BookStatus />,
   },
   {
     path: '/administrative-management',

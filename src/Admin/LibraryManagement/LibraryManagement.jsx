@@ -33,6 +33,31 @@ const LibraryManagement = () => {
     const [isPageDimmed, setIsPageDimmed] = useState(false)
     const navigate = useNavigate()
 
+    const bookSubject = [
+        {subject: 'Psychology, Economics, Commerce, Finance, Management'},
+        {subject: 'Statistics, Research Methods'},
+        {subject: 'Sociology, Gender Inequality'},
+        {subject: 'Sociology, Gender Inequality'},
+        {subject: 'Rural and Urban Planning'},
+        {subject: 'Political Theory'},
+        {subject: 'Political Sciences'},
+        {subject: 'Public Institutions, Public Administrations'},
+        {subject: 'International Migration'},
+        {subject: 'International Relations, Peace and Conflict Management'},
+        {subject: 'Religion'},
+        {subject: 'Economy'},
+        {subject: 'Religion, Philosophy'},
+        {subject: 'African History'},
+        {subject: 'American History'},
+        {subject: 'Geography, Anthropology, Architecture'},
+        {subject: 'Education'},
+        {subject: 'Medical Sciences'},
+        {subject: 'Engineering Sciences'},
+        {subject: 'Law'},
+        {subject: 'Agricultural Sciences'},
+        {subject: 'Natural Science, Maths, Statistics'},
+    ]
+
     const handleMorePanel = (bookID) => {
         setGetBookID(bookID)
         setMoreComponent(false)
@@ -148,7 +173,7 @@ const LibraryManagement = () => {
             <div className='search-filter'>
                 <div className='search'>
                     <img src={searchGreen} alt="icon" />
-                    <input onChange={(e) => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search by Book Title, Author, bucket number, location, category, volume, edition, journal, book, tag' />
+                    <input onChange={(e) => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search by Book Title,Sub Title, Author/Editor, Type of Publication, Bucket Number, Publication by Subject, Publisher, location, Year of Publication, volume, edition, tag' />
                 </div>
 
                 <div className='filter'>
@@ -158,14 +183,22 @@ const LibraryManagement = () => {
                         <select onChange={(e) => setSearch(e.target.value)} name="" id="">
                             <option value="">All</option>
                             <option value="adetula">Victor Adetula</option>
+                            <option value="library1">Library 1</option>
+                            <option value="library2">Library 2</option>
                             <option value="book">Book</option>
                             <option value="journal">Journal</option>
                             <option value="panflet">Pan-flet</option>
                             <option value="newspaper">Newspaper</option>
-                            <option value="upstairs">Upstairs</option>
-                            <option value="downstairs">Downstairs</option>
+                            <option value="magazine">Magazine</option>
+                            <option value="report">Report</option>
+                            <option value="document">Document</option>
+                            <option value="monograph">Monograph</option>
                             <option value="director">Director's Office</option>
                             <option value="manager">Manager's Office</option>
+                            {bookSubject.map((subject, idx) => (
+                                <option key={idx} value={subject.subject}>{subject.subject}</option>
+                            ))}
+                            
                         </select>
                     </div>
                 </div>
@@ -177,7 +210,7 @@ const LibraryManagement = () => {
                     <tr>
                         <th style={{width: '1rem'}}>ID</th>
                         <th>Books Title</th>
-                        <th>Author</th>
+                        <th>Author/Editor</th>
                         <th style={{width: '2rem'}}>Action</th>
                     </tr>
                 </table><br />
@@ -185,9 +218,13 @@ const LibraryManagement = () => {
                     const input = search?.trim()?.toLowerCase()
                     return input === '' ||
                     data?.title?.toLowerCase()?.includes(input) ||
+                    data?.bookSubTitle?.toLowerCase()?.includes(input) ||
                     data?.author?.toLowerCase()?.includes(input) ||
+                    data?.typeOfPublication?.toLowerCase()?.includes(input) ||
+                    data?.publisher?.toLowerCase()?.includes(input) ||
+                    data?.yearOfPublication?.toLowerCase()?.includes(input) ||
+                    data?.publicationBySubject?.toLowerCase()?.includes(input) ||
                     data?.volume?.toLowerCase()?.includes(input) ||
-                    data?.journalBook?.toLowerCase()?.includes(input) ||
                     data?.location?.toLowerCase()?.includes(input) ||
                     data?.tag?.toLowerCase()?.includes(input) ||
                     data?.bucketNumber?.toLowerCase()?.includes(input)
@@ -196,7 +233,7 @@ const LibraryManagement = () => {
                     <tr className={book?.documentID === getBookID? 'tr': idx % 2 === 0? 'even': 'odd'}>
                         <td style={{width: '1rem'}}>{idx}</td>
                         <td style={{width: '57%',}}>{book?.title}</td>
-                        <td>{book?.author}</td>
+                        <td style={{textTransform: 'capitalize'}}>{book?.author}</td>
                         <td style={{width: '2rem', cursor: 'pointer'}} >
                             {book?.documentID === getBookID?
 

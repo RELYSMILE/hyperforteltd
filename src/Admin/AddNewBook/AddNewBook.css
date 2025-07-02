@@ -44,6 +44,16 @@
             box-shadow: -1px 5px 10px #c7c7c7;
             font-family: 'Gotham';
 
+            small{
+                display: flex;
+                align-items: center;
+                color: #ff0000b0;
+
+                span{
+                    font-size: 1.5rem;
+                }
+            }
+
             .form-field, .select-field{
                 display: flex;
                 justify-content: center;
@@ -56,14 +66,80 @@
 
                 }
 
+                .book-status{
+                    box-shadow: -1px 5px 10px #c7c7c7;
+                    padding: 2rem;
+
+                    .title{
+                        font-size: 20px;
+                        color: teal;
+                        margin-bottom: 1rem;
+                    }
+                    .query{
+                        color: #808080;
+                        margin-bottom: .5rem;
+                    }
+                    .radio-selector{
+                        display: flex;
+                        align-items: center;
+                        gap: 2rem;
+
+                        .radio{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 2rem;
+                            height: 2rem;
+                            border: 1px solid #c7c7c7;
+                            font-size: 14px;
+                            border-radius: 100%;
+                            cursor: pointer;
+                            color: #181818;
+                        }
+
+                        .radio-active{
+                            background: green;
+                            color: #fff;
+                        }
+                    }
+
+                    .form-book-status{
+                        box-shadow: -1px 5px 10px #c7c7c7;
+                        padding: 2rem;
+                        margin-top: 1rem;
+
+                        .label{
+                            margin-bottom: 1rem;
+                        }
+                    }
+                }
+
+                .subtitle-Container{
+                    display: flex;
+                    gap: .5rem;
+                    align-items: center;
+                    
+                    small{
+                        color: rgb(25, 0, 255);
+                    }
+
+                    .checkbox-container{
+                        color: teal;
+                    }
+                }
+
                 input, select{
                     background: transparent;
                     border: 1px solid #d9e6d6c4;
                     outline: none;
                     padding: .8rem;
                     color: teal;
-                    text-transform: uppercase;
                     font-size: 16px;
+                }
+                .sub-title{
+                    padding: .5rem;
+                    margin-left: 1rem;
+                    border: 1px dotted #d9e6d6c4;
                 }
                 select{
                     cursor: pointer;

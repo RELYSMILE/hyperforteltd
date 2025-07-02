@@ -19,7 +19,7 @@ const About = () => {
     <div className='nav'><Navbar /></div>
     
     <div className='about-container'>
-        <div className='title'>📘 Company Profile: Eur-Africa Research Associates Ltd</div>
+        <div className='title'>📘 Profile of the Organisation</div>
         <div>EUR-Research Associates Limited provides quality and insightful research and consultancy service in social-economic development, development practices, governance, oganizational development, and project management (including project design, monitoring & evaluation).As a full-fledged policy and social research company that service the needs of private organization, government agencies, non-profit organizations, international NGOs, and inter-governmental organization to enable them to make informed knowledge-driven decision about their product and services.</div>
         <div>🏢 Basic Information</div>
         <ul>

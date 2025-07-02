@@ -18,7 +18,7 @@ import { collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, setDoc, u
 const ManageAdmin = () => {
     const[userCredential, setUserCredential] = useState({})
     const [passwordVisibility, setPasswordVisibility] = useState(true)
-    const [pageTitle, setPageTitle] = useState('ADMIN MANAGEMENT')
+    const [pageTitle, setPageTitle] = useState('Admin Management')
     const [formPanel, setFormPanel] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [adminRole, setAdminRole] = useState([])

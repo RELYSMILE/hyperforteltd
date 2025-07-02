@@ -16,13 +16,23 @@ const UpdateBook = () => {
     const [location, setLocation] = useState([])
     const [bucket, setBucket] = useState([])
     const [pageTitle, setPageTitle] = useState('Update Book Here')
-    const [journalBook, setJournalBook] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const[bookData, setBookData] = useState([])
+    const [authorWarning, setAuthorWarning] = useState(false)
+    const [bookSubTitleQuery, setBookSubTitleQuery] = useState(false)
+    const [bookSubTitle, setBookSubTitle] = useState('')
+    const [typeOfPublication, setTypeOfPublication] = useState([])
+    const [isSubTitlePresent, setIsSubTitlePresent] = useState('')
     const {bookID} = useParams()
 
     const HandleBookCredentials = (e) => {
         setBookCredentials({...bookCredentials, [e.target.name]: e.target.value})
+    }
+    const handleAuthorWarning = () => {
+        setAuthorWarning(true)
+    }
+    const handleBookSubTitleQuery = () => {
+        setBookSubTitleQuery(true)
     }
     const bucketNum = Array.from({ length: 100 }, (_, i) => ({
         value: i + 1,
@@ -34,13 +44,17 @@ const UpdateBook = () => {
        try {
             await updateDoc(doc(db, 'books', bookID), {
                 title: bookCredentials.title || bookData?.title,
+                bookSubTitle: bookCredentials.bookSubTitle || bookData.bookSubTitle,
                 author: bookCredentials.author || bookData?.author,
                 tag: bookCredentials.tag || bookData?.tag,
+                bookCopy: bookCredentials.bookCopy ||  bookData.bookCopy,
                 publisher: bookCredentials.publisher || bookData?.publisher,
+                yearOfPublication: bookCredentials.yearOfPublication || bookData?.yearOfPublication,
+                publisherLocation: bookCredentials.publisherLocation || bookData?.publisherLocation,
                 volume: bookCredentials.volume || bookData?.volume,
-                journalBook: journalBook || bookData?.journalBook,
+                typeOfPublication: typeOfPublication || bookData?.typeOfPublication,
                 location: location || bookData?.location,
-                bucketNumber: 'b'+bucket || bookData?.bucketNumber,
+                bucketNumber: 'bucket'+bucket || bookData?.bucketNumber,
                 updatedAt: serverTimestamp()
             })
             toast.success('Book updated successfully', {
@@ -93,17 +107,24 @@ const UpdateBook = () => {
         <PageTitle pageTitle = {pageTitle} />
 
         <div className='form-container'>
-            <div className='form-field'>
+            <div onClick={handleBookSubTitleQuery} className='form-field'>
                 <label htmlFor="">Book title</label>
-                <input onChange={(e) => HandleBookCredentials(e)} type="text" name='title' placeholder={bookData.title} />
+                <input style={{textTransform: 'capitalize'}} onChange={(e) => HandleBookCredentials(e)} type="text" name='title' placeholder={bookData.title} />
+                {bookData.bookSubTitle && <input className='sub-title' onChange={(e) => setBookSubTitle(e.target.value)} type="text"  placeholder={bookData.bookSubTitle} />}
             </div>
-            <div className='form-field'>
-                <label htmlFor="">Author</label>
+            <div onClick={handleAuthorWarning} className='form-field'>
+                <label htmlFor="">Author/Editor</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='author' placeholder={bookData.author} />
+                {authorWarning &&
+                <small><span>*</span> Authors'/Editors' names should begin with the surname, followed by the other names — for example: Bell, Judith.</small>}
             </div>
             <div className='form-field'>
                 <label htmlFor="">Book tag</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='tag' placeholder={bookData.tag} />
+            </div>
+            <div className='form-field'>
+                <label htmlFor="">Number of copies</label>
+                <input onChange={(e) => HandleBookCredentials(e)} type="text" name='bookCopy' placeholder={bookData.bookCopy} />
             </div>
             <div className='form-field'>
                 <label htmlFor="">Volume/Edition</label>
@@ -113,22 +134,36 @@ const UpdateBook = () => {
                 <label htmlFor="">Publisher</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='publisher' placeholder={bookData.publisher} />
             </div>
+            <div className='form-field'>
+                <label htmlFor="">Year of Publication</label>
+                <input onChange={(e) => HandleBookCredentials(e)} type="text" name='yearOfPublication' placeholder={bookData.yearOfPublication} />
+            </div>
+            <div className='form-field'>
+                <label htmlFor="">Location of the Publisher</label>
+                <input onChange={(e) => HandleBookCredentials(e)} type="text" name='publisherLocation' placeholder={bookData.publisherLocation} />
+            </div>
             <div className='select-field'>
-                <label htmlFor="">Journal/Book/panflet/newpaper</label>
-                <select onChange={(e) => setJournalBook(e.target.value)} name="JournalBook" id="">
-                    <option disabled selected>{bookData?.journalBook}</option>
+                <label htmlFor="">Type of Publication</label>
+                <select onChange={(e) => setTypeOfPublication(e.target.value)}>
+                    <option disabled selected>{bookData?.typeOfPublication}</option>
                     <option value="book">Book</option>
                     <option value="journal">Journal</option>
                     <option value="panflet">Pan-flet</option>
-                    <option value="newspaper">newspaper</option>
+                    <option value="newspaper">Newspaper</option>
+                    <option value="magazine">Magazine</option>
+                    <option value="report">Report</option>
+                    <option value="document">Document</option>
+                    <option value="monograph">Monograph</option>
                 </select>
             </div>
             <div className='select-field'>
                 <label htmlFor="">Location</label>
                 <select onChange={(e) => setLocation(e.target.value)} name="location" id="">
                     <option disabled selected>{bookData?.location}</option>
-                    <option value="upstairs">Upstairs</option>
-                    <option value="downstairs">DownStairs</option>
+                    <option value="library1">Library 1</option>
+                    <option value="library2">Library 2</option>
+                    <option value="director">Director's Office</option>
+                    <option value="manager">Manager's Office</option>
                 </select>
             <div className='select-field'>
                 <label htmlFor="">Bucket</label>

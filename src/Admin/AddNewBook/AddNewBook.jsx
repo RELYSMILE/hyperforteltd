@@ -13,19 +13,68 @@ const AddNewBook = () => {
     const [location, setLocation] = useState([])
     const [bucket, setBucket] = useState([])
     const [pageTitle, setPageTitle] = useState('Add New Book')
-    const [journalBook, setJournalBook] = useState([])
+    const [typeOfPublication, setTypeOfPublication] = useState([])
+    const [publicationBySubject, setPublicationBySubject] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [currentUser, setCurrentUser] = useState(null)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
+    const [authorWarning, setAuthorWarning] = useState(false)
+    const [bookSubTitleQuery, setBookSubTitleQuery] = useState(false)
+    const [bookSubTitle, setBookSubTitle] = useState('')
+    const [isSubTitlePresent, setIsSubTitlePresent] = useState('')
+    const [isBookPresent, setIsBookPresent] = useState(false)
+    const [isBookLoan, setIsBookLoan] = useState(false)
+
+    console.log(isSubTitlePresent)
 
     const bucketNum = Array.from({ length: 100 }, (_, i) => ({
         value: i + 1,
         item: i + 1,
     }));
 
+    const handlePresent = () => {
+        setIsBookPresent(true)
+        setIsBookLoan(false)
+    }
+    const handleLoan = () => {
+        setIsBookLoan(true)
+        setIsBookPresent(false)
+    }
+
     const HandleBookCredentials = (e) => {
         setBookCredentials({...bookCredentials, [e.target.name]: e.target.value})
     }
+    const handleAuthorWarning = () => {
+        setAuthorWarning(true)
+    }
+    const handleBookSubTitleQuery = () => {
+        setBookSubTitleQuery(true)
+    }
+
+    const bookSubject = [
+        {subject: 'Psychology, Economics, Commerce, Finance, Management'},
+        {subject: 'Statistics, Research Methods'},
+        {subject: 'Sociology, Gender Inequality'},
+        {subject: 'Sociology, Gender Inequality'},
+        {subject: 'Rural and Urban Planning'},
+        {subject: 'Political Theory'},
+        {subject: 'Political Sciences'},
+        {subject: 'Public Institutions, Public Administrations'},
+        {subject: 'International Migration'},
+        {subject: 'International Relations, Peace and Conflict Management'},
+        {subject: 'Religion'},
+        {subject: 'Economy'},
+        {subject: 'Religion, Philosophy'},
+        {subject: 'African History'},
+        {subject: 'American History'},
+        {subject: 'Geography, Anthropology, Architecture'},
+        {subject: 'Education'},
+        {subject: 'Medical Sciences'},
+        {subject: 'Engineering Sciences'},
+        {subject: 'Law'},
+        {subject: 'Agricultural Sciences'},
+        {subject: 'Natural Science, Maths, Statistics'},
+    ]
 
     const HandleAddNewBook = async() => {
         setIsLoading(true)
@@ -36,13 +85,23 @@ const AddNewBook = () => {
             await setDoc(newDocRef, {
                 documentID: newDocRef.id,
                 title: bookCredentials.title,
+                bookSubTitle: bookSubTitle,
                 author: bookCredentials.author,
                 tag: bookCredentials.tag,
+                bookCopy: bookCredentials.bookCopy,
                 publisher: bookCredentials.publisher,
+                yearOfPublication: bookCredentials.yearOfPublication,
+                publisherLocation: bookCredentials.publisherLocation,
                 volume: bookCredentials.volume || '',
-                journalBook: journalBook,
+                typeOfPublication: typeOfPublication,
+                publicationBySubject: publicationBySubject,
                 location: location,
-                bucketNumber: 'b'+bucket,
+                bucketNumber: 'bucket'+bucket,
+                isBookLoan: isBookLoan? true : false,
+                collectorName: bookCredentials.collectorName || '',
+                collectorPhone: bookCredentials.collectorPhone || '',
+                collectedDate: bookCredentials.collectedDate || '',
+                returnDate: bookCredentials.returnDate || '',
                 cretedAt: serverTimestamp()
             })
             toast.success('Book added successfully', {
@@ -81,17 +140,31 @@ const AddNewBook = () => {
         <PageTitle pageTitle = {pageTitle} />
 
         <div className='form-container'>
-            <div className='form-field'>
+            <div onClick={handleBookSubTitleQuery} className='form-field'>
                 <label htmlFor="">Book title</label>
-                <input onChange={(e) => HandleBookCredentials(e)} type="text" name='title' placeholder='Enter book title' />
+                <input style={{textTransform: 'capitalize'}} onChange={(e) => HandleBookCredentials(e)} type="text" name='title' placeholder='Enter book title' />
+                {isSubTitlePresent && <input className='sub-title' onChange={(e) => setBookSubTitle(e.target.value)} type="text"  placeholder='Subtitle' />}
+                <div className='subtitle-Container'>
+                    {bookSubTitleQuery && 
+                    <>
+                        <small className='query'>Does this book have subtitle?</small>
+                        <div className='checkbox-container'>{isSubTitlePresent? 'Yes' : 'No'} <input onChange={(e) => setIsSubTitlePresent(e.target.checked)} type="checkbox"  /></div>
+                    </>}
+                </div>
             </div>
-            <div className='form-field'>
-                <label htmlFor="">Author</label>
-                <input onChange={(e) => HandleBookCredentials(e)} type="text" name='author' placeholder='Name of the Author' />
+            <div onClick={handleAuthorWarning} className='form-field'>
+                <label htmlFor="">Author/Editor</label>
+                <input onChange={(e) => HandleBookCredentials(e)} type="text" name='author' placeholder='Name of the Author or Editor' />
+                {authorWarning &&
+                <small><span>*</span> Authors'/Editors' names should begin with the lastname in capital letter, followed by the other names — for example: BELL, Judith.</small>}
             </div>
             <div className='form-field'>
                 <label htmlFor="">Book tag</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='tag' placeholder='e.g HC, HB, JC, DT' />
+            </div>
+            <div className='form-field'>
+                <label htmlFor="">Number of copies</label>
+                <input onChange={(e) => HandleBookCredentials(e)} type="text" name='bookCopy' placeholder='How many copy of this book is avaliable?' />
             </div>
             <div className='form-field'>
                 <label htmlFor="">Volume/Edition</label>
@@ -101,22 +174,43 @@ const AddNewBook = () => {
                 <label htmlFor="">Publisher</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='publisher' placeholder='Book publisher' />
             </div>
+            <div className='form-field'>
+                <label htmlFor="">Year of Publication</label>
+                <input onChange={(e) => HandleBookCredentials(e)} type="text" name='yearOfPublication' placeholder='Enter the year of publication' />
+            </div>
+            <div className='form-field'>
+                <label htmlFor="">Location of the Publisher</label>
+                <input onChange={(e) => HandleBookCredentials(e)} type="text" name='publisherLocation' placeholder='Enter the publisher location' />
+            </div>
             <div className='select-field'>
-                <label htmlFor="">Journal/Book/panflet/newpaper</label>
-                <select onChange={(e) => setJournalBook(e.target.value)} name="JournalBook" id="">
+                <label htmlFor="">Publication by Subject</label>
+                <select onChange={(e) => setPublicationBySubject(e.target.value)} name="" id="">
+                    <option disabled selected>Select one</option>
+                    {bookSubject.map((subject, idx) => (
+                        <option key={idx} value={subject.subject}>{subject.subject}</option>
+                    ))} 
+                </select>
+            </div>
+            <div className='select-field'>
+                <label htmlFor="">Type of Publication</label>
+                <select onChange={(e) => setTypeOfPublication(e.target.value)} name="JournalBook" id="">
                     <option disabled selected>Select one</option>
                     <option value="book">Book</option>
                     <option value="journal">Journal</option>
                     <option value="panflet">Pan-flet</option>
-                    <option value="newspaper">newspaper</option>
+                    <option value="newspaper">Newspaper</option>
+                    <option value="magazine">Magazine</option>
+                    <option value="report">Report</option>
+                    <option value="document">Document</option>
+                    <option value="monograph">Monograph</option>
                 </select>
             </div>
             <div className='select-field'>
                 <label htmlFor="">Location</label>
                 <select onChange={(e) => setLocation(e.target.value)} name="location" id="">
                     <option disabled selected>Select book location</option>
-                    <option value="upstairs">Upstairs</option>
-                    <option value="downstairs">DownStairs</option>
+                    <option value="library1">Library 1</option>
+                    <option value="library2">Library 2</option>
                     <option value="director">Director's Office</option>
                     <option value="manager">Manager's Office</option>
                 </select>
@@ -128,6 +222,29 @@ const AddNewBook = () => {
                         <option key={idx} value={bucket.value}>{bucket.item}</option>
                     ))}
                 </select>
+            </div>
+            <div className='book-status'>
+                <div className='title'>Book Status</div>
+                <div className='query'>Is this book present in the organisation?</div>
+                <div className='radio-selector'>
+                    <div onClick={handlePresent} className={isBookPresent? 'radio radio-active': 'radio'}>Yes</div>
+                    <div onClick={handleLoan} className={isBookLoan? 'radio radio-active': 'radio'}>No</div>
+                </div>
+                {isBookLoan &&
+                    
+                    <div className='form-field form-book-status'>
+                        <div className='label'>Enter the details of the person who collected or borrowed the book</div>
+                        <label htmlFor="">Full Name</label>
+                        <input onChange={(e) => HandleBookCredentials(e)} type="text" name='collectorName' placeholder='Enter full name here' /> <br />
+                        <label htmlFor="">Phone Number</label>
+                        <input onChange={(e) => HandleBookCredentials(e)} type="number" name='collectorPhone' placeholder='07012345678' /> <br />
+                        <label htmlFor="">Date of collection</label>
+                        <input onChange={(e) => HandleBookCredentials(e)} type="date" name='collectedDate' /> <br />
+                        <label htmlFor="">Date of return</label>
+                        <input onChange={(e) => HandleBookCredentials(e)} type="date" name='returnDate' /> <br />
+                    </div>
+                }
+                
             </div>
             <button disabled={isLoading} onClick={HandleAddNewBook} className='save-container'>
                 <img src={save} alt="" />

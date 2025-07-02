@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/icons/logo.png'
+import logo1 from '../../assets/icons/logo1.png'
 import menu from '../../assets/icons/menu.png'
 import close from '../../assets/icons/close.png'
 import home from '../../assets/icons/home.png'

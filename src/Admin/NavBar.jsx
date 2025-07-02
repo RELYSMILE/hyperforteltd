@@ -8,6 +8,7 @@ import dashboard from '../assets/icons/dashboard.png'
 import books from '../assets/icons/books.png'
 import verifiedx from '../assets/icons/verifiedx.png'
 import admin from '../assets/icons/admin.png'
+import totalbooks from '../assets/icons/totalbooks.png'
 import menu from '../assets/icons/menu.png'
 import close from '../assets/icons/close.png'
 import settings from '../assets/icons/settings.png'
@@ -26,6 +27,7 @@ const NavBar = ({setPageTitle, setIsPageDimmed}) => {
     const NavItems = [
         {icon: dashboard, item: 'Dashboard', link: '/dashboard'},
         {icon: books, item: 'Books Management', link: '/books-management'},
+        {icon: totalbooks, item: 'Book Status',  link: '/book-status'},
         {icon: shield, item: 'Manage Admin',  link: '/administrative-management'},
         {icon: admin, item: 'Admin Role',  link: '/admin-role'},
         {icon: settings, item: 'Settings',  link: '/settings'},

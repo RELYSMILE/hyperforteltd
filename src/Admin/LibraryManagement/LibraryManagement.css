@@ -112,6 +112,8 @@ body{
                 align-items: center;
                 border: 1px solid #e8ebeb;
                 gap: .4rem;
+                width: 10rem;
+                overflow: hidden;
                 img{
                     width: 1.4rem;
                     height: 1.4rem;
