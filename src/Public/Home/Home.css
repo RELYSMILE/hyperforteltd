@@ -200,7 +200,11 @@
 @media (max-width: 500px){
   .home-container {
     .title{
-      font-size: 20px;
+      font-size: 23px;
+      font-family: 'SpaceGrotesk';
+  }
+  .info{
+    font-size: 14px;
   }
 
 }
