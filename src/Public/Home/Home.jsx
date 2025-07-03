@@ -171,7 +171,7 @@ useEffect(() => {
 
       <div className='home-container'>
         <div className='title'>Welcome to the <span style={{color: 'orange'}}>EcoGov Research International in collaboration with Eur-Africa Research</span> Associates Limited Library</div>
-        <div className='info'>A place where research meets opportunity — empowering minds with knowledge <br /> and advancing excellence in discovery and innovation.</div>
+        <div className='info'>A place where research meets opportunity — empowering minds with knowledge and advancing excellence in discovery and innovation.</div>
         <Link to='/books'><div className='explore'>Explore books</div></Link>
         <AnimatePresence mode='wait'>
           <motion.div
