@@ -87,7 +87,7 @@
     width: 35rem;
     font-family: 'Gotham';
     padding-left: 2%;
-    margin-top: 2rem;
+    margin-top: 4rem;
   }
   .info{
     color: #fff;
@@ -95,6 +95,7 @@
     font-size: 14px;
     color: #b8b8b8;
     font-family: 'Gotham';
+    width: 35rem;
   }
   .explore{
     font-family: 'Gotham';
@@ -161,13 +162,14 @@
     margin-top: 5rem;
     .title{
       font-size: 26px;
-      width: 94%;
+      width: 97%;
   }
 
   .info{
     margin-top: 2rem;
     font-size: 12px;
     color: #fff;
+    width: 97%;
   }
   .explore{
     width: 93%;
