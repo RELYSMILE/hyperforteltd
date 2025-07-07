@@ -69,7 +69,7 @@ const UpdateBook = () => {
        try {
             await updateDoc(doc(db, 'books', bookID), {
                 title: bookCredentials.title || bookData?.title,
-                bookSubTitle: bookCredentials.bookSubTitle || bookData.bookSubTitle,
+                // bookSubTitle: bookCredentials.bookSubTitle || bookData.bookSubTitle,
                 author: bookCredentials.author || bookData?.author,
                 tag: bookCredentials.tag || bookData?.tag,
                 bookCopy: bookCredentials.bookCopy ||  bookData.bookCopy,
@@ -136,7 +136,7 @@ const UpdateBook = () => {
             <div onClick={handleBookSubTitleQuery} className='form-field'>
                 <label htmlFor="">Book title</label>
                 <input style={{textTransform: 'capitalize'}} onChange={(e) => HandleBookCredentials(e)} type="text" name='title' placeholder={bookData.title} />
-                {bookData.bookSubTitle && <input className='sub-title' onChange={(e) => setBookSubTitle(e.target.value)} type="text"  placeholder={bookData.bookSubTitle} />}
+                {/* {bookData.bookSubTitle && <input className='sub-title' onChange={(e) => setBookSubTitle(e.target.value)} type="text"  placeholder={bookData.bookSubTitle} />} */}
             </div>
             <div onClick={handleAuthorWarning} className='form-field'>
                 <label htmlFor="">Author/Editor</label>

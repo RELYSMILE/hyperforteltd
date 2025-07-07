@@ -21,7 +21,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
-    path: '/home',
+    path: '/',
     element: <App />,
     errorElement: <div className='not-found'>
         <div className='title'>Eur-Africa says</div>
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       </div>
   },
   {
-    path: '/',
+    path: '/home',
     element: <Home />,
     errorElement: <div className='not-found'>
         <div className='title'>Eur-Africa says</div>
