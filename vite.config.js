@@ -9,7 +9,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['eur-africa-192x192.png', 'eur-africa-512x512.png', 'logo.png'],
       manifest: {
-        name: 'Eur-Africa',
+        name: 'Ecogov/Eur-Africa',
         short_name: 'Eur-Africa',
         description: 'Eur-Africa Research Associates Ltd',
         theme_color: '#ffffff',
