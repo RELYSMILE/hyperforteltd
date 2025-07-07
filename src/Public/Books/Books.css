@@ -57,6 +57,7 @@
   padding: 2rem;
   background: #150238;
   margin-top: 2rem;
+  text-transform: capitalize;
 }
 
 .book-card {
@@ -80,6 +81,7 @@
   height: 320px;
   position: relative;
   
+  
 
   .sub-title{
     font-size: 11px;
@@ -96,7 +98,8 @@
 .book-title {
   font-size: 1.1rem;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: capitalize;
+  margin-bottom: 1.5rem;
 }
 
 .book-author {
@@ -106,7 +109,6 @@
 
   span{
     color: orange;
-    text-transform: uppercase;
   }
 }
 
@@ -121,25 +123,23 @@
   gap: 0.3rem;
   color: #ccc;
   font-family: 'Gotham';
+  text-transform: capitalize;
 
   .book-journal{
     span{
     color: rgb(4, 255, 255);
-    text-transform: uppercase;
     font-size: 0.63rem;
   }
   }
   .book-publisher{
     span{
     color: rgb(4, 255, 255);
-    text-transform: uppercase;
     font-size: 0.63rem;
   }
   }
   .book-volume{
     span{
     color: rgb(4, 255, 255);
-    text-transform: uppercase;
     font-size: 0.63rem;
   }
   }

@@ -66,7 +66,7 @@ const Books = () => {
           <div className='book-card' key={idx}>
             <div className='book-cover'>
               <h3 className='book-title'>{book.title}</h3>
-              <div className='sub-title'>{book.bookSubTitle}</div>
+              {/* <div className='sub-title'>{book.bookSubTitle}</div> */}
               <p className='book-author'>By <span>{book.author}</span></p>
               <div className='book-footer'>
                 {book.typeOfPublication &&
