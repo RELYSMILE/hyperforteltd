@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './NavBar.css'
 import { Link } from 'react-router-dom'
 import logo from '../assets/icons/logo.png'
+import logo1 from '../assets/icons/logo1.png'
 import user from '../assets/icons/user.png'
 import shield from '../assets/icons/shield.png'
 import dashboard from '../assets/icons/dashboard.png'
@@ -26,8 +27,8 @@ const NavBar = ({setPageTitle, setIsPageDimmed}) => {
     const navigate = useNavigate()
     const NavItems = [
         {icon: dashboard, item: 'Dashboard', link: '/dashboard'},
-        {icon: books, item: 'Books Management', link: '/books-management'},
-        {icon: totalbooks, item: 'Book Status',  link: '/book-status'},
+        {icon: books, item: 'Publication Management', link: '/books-management'},
+        {icon: totalbooks, item: 'Publication Status',  link: '/book-status'},
         {icon: shield, item: 'Manage Admin',  link: '/administrative-management'},
         {icon: admin, item: 'Admin Role',  link: '/admin-role'},
         {icon: settings, item: 'Settings',  link: '/settings'},
@@ -86,7 +87,10 @@ const NavBar = ({setPageTitle, setIsPageDimmed}) => {
   return<> <div className='nav-container'>
     <div className='logo-admin-name-container'>
         <div className='logo-container'>
-            <img src={logo} alt='Logo' />
+            <div className='logo-container-x'>
+                <img src={logo1} alt='Logo' />
+                <img src={logo} alt='Logo' />
+            </div>
             <div style={{color: appearancesettingData.logoColor}} className='logo-name'>{gsettingsData.appName}</div>
         </div>
 
@@ -120,7 +124,10 @@ const NavBar = ({setPageTitle, setIsPageDimmed}) => {
   <div className={activeNavBar? 'small-screen-nav small-screen-nav-active' : 'small-screen-nav small-screen-nav-none-active'}> 
     <div className='logo-admin-name-container'>
         <div className='logo-container'>
-            <img src={logo} alt='Logo' />
+            <div className='logo-container-x'>
+                <img src={logo1} alt='Logo' />
+                <img src={logo} alt='Logo' />
+            </div>
             <div style={{color: appearancesettingData.logoColor}} className='logo-name'>{gsettingsData.appName}</div>
         </div>
 

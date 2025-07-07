@@ -170,7 +170,7 @@ useEffect(() => {
       <div className='nav'><Navbar /></div><br /><br />
 
       <div className='home-container'>
-        <div className='title'>Welcome to the <span style={{color: 'orange'}}>EcoGov Research International in collaboration with Eur-Africa Research</span> Associates Limited Library</div>
+        <div className='title'>Welcome to the <span style={{color: 'orange'}}>Ecogov Research International Limited in collaboration with Eur-Africa Research</span> Associates Limited Library</div>
         <div className='info'>A place where research meets opportunity — empowering minds with knowledge and advancing excellence in discovery and innovation.</div>
         <Link to='/books'><div className='explore'>Explore books</div></Link>
         <AnimatePresence mode='wait'>
@@ -195,7 +195,7 @@ useEffect(() => {
     :
     <div className='spinner'>
       <img src={spinner} />
-      <div className='name'>EUR-AFRICA</div>
+      <div className='name'>ECOGOV/EUR-AFRICA</div>
     </div>}
   </>)
 }

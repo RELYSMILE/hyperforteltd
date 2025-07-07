@@ -19,8 +19,8 @@ const AddNewBook = () => {
     const [currentUser, setCurrentUser] = useState(null)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
     const [authorWarning, setAuthorWarning] = useState(false)
-    const [bookSubTitleQuery, setBookSubTitleQuery] = useState(false)
-    const [bookSubTitle, setBookSubTitle] = useState('')
+    // const [bookSubTitleQuery, setBookSubTitleQuery] = useState(false)
+    // const [bookSubTitle, setBookSubTitle] = useState('')
     const [isSubTitlePresent, setIsSubTitlePresent] = useState('')
     const [isBookPresent, setIsBookPresent] = useState(false)
     const [isBookLoan, setIsBookLoan] = useState(false)
@@ -47,9 +47,9 @@ const AddNewBook = () => {
     const handleAuthorWarning = () => {
         setAuthorWarning(true)
     }
-    const handleBookSubTitleQuery = () => {
-        setBookSubTitleQuery(true)
-    }
+    // const handleBookSubTitleQuery = () => {
+    //     setBookSubTitleQuery(true)
+    // }
 
     const bookSubject = [
         {subject: 'Psychology, Economics, Commerce, Finance, Management'},
@@ -85,7 +85,7 @@ const AddNewBook = () => {
             await setDoc(newDocRef, {
                 documentID: newDocRef.id,
                 title: bookCredentials.title,
-                bookSubTitle: bookSubTitle,
+                // bookSubTitle: bookSubTitle,
                 author: bookCredentials.author,
                 tag: bookCredentials.tag,
                 bookCopy: bookCredentials.bookCopy,
@@ -140,17 +140,17 @@ const AddNewBook = () => {
         <PageTitle pageTitle = {pageTitle} />
 
         <div className='form-container'>
-            <div onClick={handleBookSubTitleQuery} className='form-field'>
-                <label htmlFor="">Book title</label>
+            <div className='form-field'>
+                <label htmlFor="">Publication title</label>
                 <input style={{textTransform: 'capitalize'}} onChange={(e) => HandleBookCredentials(e)} type="text" name='title' placeholder='Enter book title' />
-                {isSubTitlePresent && <input className='sub-title' onChange={(e) => setBookSubTitle(e.target.value)} type="text"  placeholder='Subtitle' />}
+                {/* {isSubTitlePresent && <input className='sub-title' onChange={(e) => setBookSubTitle(e.target.value)} type="text"  placeholder='Subtitle' />}
                 <div className='subtitle-Container'>
                     {bookSubTitleQuery && 
                     <>
                         <small className='query'>Does this book have subtitle?</small>
                         <div className='checkbox-container'>{isSubTitlePresent? 'Yes' : 'No'} <input onChange={(e) => setIsSubTitlePresent(e.target.checked)} type="checkbox"  /></div>
                     </>}
-                </div>
+                </div> */}
             </div>
             <div onClick={handleAuthorWarning} className='form-field'>
                 <label htmlFor="">Author/Editor</label>
@@ -159,7 +159,7 @@ const AddNewBook = () => {
                 <small><span>*</span> Authors'/Editors' names should begin with the lastname in capital letter, followed by the other names — for example: BELL, Judith.</small>}
             </div>
             <div className='form-field'>
-                <label htmlFor="">Book tag</label>
+                <label htmlFor="">Publication tag/Call mark/Call tag</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='tag' placeholder='e.g HC, HB, JC, DT' />
             </div>
             <div className='form-field'>
@@ -224,8 +224,8 @@ const AddNewBook = () => {
                 </select>
             </div>
             <div className='book-status'>
-                <div className='title'>Book Status</div>
-                <div className='query'>Is this book present in the organisation?</div>
+                <div className='title'>Status of Publication (In or Out of Library)</div>
+                <div className='query'>Is the publication avaliable in the library?</div>
                 <div className='radio-selector'>
                     <div onClick={handlePresent} className={isBookPresent? 'radio radio-active': 'radio'}>Yes</div>
                     <div onClick={handleLoan} className={isBookLoan? 'radio radio-active': 'radio'}>No</div>
@@ -233,7 +233,7 @@ const AddNewBook = () => {
                 {isBookLoan &&
                     
                     <div className='form-field form-book-status'>
-                        <div className='label'>Enter the details of the person who collected or borrowed the book</div>
+                        <div className='label'>Enter the details of the person who collected or borrowed the Publication</div>
                         <label htmlFor="">Full Name</label>
                         <input onChange={(e) => HandleBookCredentials(e)} type="text" name='collectorName' placeholder='Enter full name here' /> <br />
                         <label htmlFor="">Phone Number</label>

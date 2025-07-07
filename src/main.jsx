@@ -20,7 +20,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/home',
     element: <App />,
     errorElement: <div className='not-found'>
         <div className='title'>Eur-Africa says</div>
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       </div>
   },
   {
-    path: '/home',
+    path: '/',
     element: <Home />,
     errorElement: <div className='not-found'>
         <div className='title'>Eur-Africa says</div>

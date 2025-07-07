@@ -144,7 +144,6 @@ body{
             table{
                 width: 98%;
                 text-align: left;
-                text-transform: uppercase;
                 .tr{
                     background-color: teal;
                     color: #fff;

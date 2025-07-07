@@ -6,8 +6,14 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase/config'
 
 const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
+    const [bookCredentials, setBookCredentials] = useState([])
     const[bookData, setBookData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [isUpdateBookButtonClicked, setIsUpdateBookButtonClicked] = useState(false)
+
+    const HandleBookCredentials = (e) => {
+        setBookCredentials({...bookCredentials, [e.target.name]: e.target.value})
+    }
     useEffect(() => {
         const fetchBookData = async() => {
             try{
@@ -20,17 +26,30 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
             }
         }
         fetchBookData()
-    }, [getBookID])
+    })
+
+    const HandleUpdateBookButton = () => {
+        setIsUpdateBookButtonClicked(true)
+    }
+    const HandleCloseBookButton = () => {
+        setIsUpdateBookButtonClicked(false)
+    }
 
         const HandleUpdateBook = async() => {
             setIsLoading(true)
            try {
                 await updateDoc(doc(db, 'books', getBookID), {
+                    collectorName: bookCredentials.collectorName,
                     isBookLoan: true,
+                    collectorName: bookCredentials.collectorName,
+                    collectorPhone: bookCredentials.collectorPhone,
+                    collectedDate: bookCredentials.collectedDate,
+                    returnDate: bookCredentials.returnDate,
                 })
                 toast.success('Book has been loaned successfully', {
                     toastId: 'book'
                 })
+                setIsUpdateBookButtonClicked(false)
             }catch(error){
                toast.error('Failed to mark book as loaned. Please try again', {
                     toastId: 'book'
@@ -46,7 +65,7 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
 
         <div className='book-title-author'>
             <div className='title'>{bookData.title}</div>
-            <div className='sub-title'>{bookData?.bookSubTitle}</div>
+            {/* <div className='sub-title'>{bookData?.bookSubTitle}</div> */}
             <div className='by'>
                 <div className='line'></div>
                 <div className='by-x'>BY</div>
@@ -58,7 +77,7 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
         <div className='details'>
             {bookData?.publisher &&
             <div className='book-details'>
-                <label>Book publisher</label>
+                <label>Book Publisher</label>
                 <div className='tag'>{bookData?.publisher}</div>
             </div>}
             {bookData?.publisherLocation &&
@@ -87,7 +106,7 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
             </div>}
             {bookData?.tag &&
             <div className='book-details'>
-                <label>Book Tag</label>
+                <label>Book Tag/Call mark/Call tag</label>
                 <div style={{textTransform: 'uppercase'}} className='tag'>{bookData?.tag}</div>
             </div>}
             {bookData?.bookCopy &&
@@ -117,7 +136,28 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
             </div>
         </div>
         {!bookData?.isBookLoan &&
-        <div onClick={HandleUpdateBook} className='btn btn-x'>{isLoading? 'Marking book...' : 'Mark book as loaned'}</div>}
+        <>
+        {isUpdateBookButtonClicked?
+        <div onClick={HandleUpdateBook} className='btn btn-x'>{isLoading? 'Save...' : 'Save'}</div>
+        :
+        <div onClick={HandleUpdateBookButton} className='btn btn-x'>Mark publication as loaned</div>}
+        </>}
+        {isUpdateBookButtonClicked &&
+        <div className='form-field form-book-status'>
+            <div className='label'>Enter the details of the person who collected or borrowed the Publication</div>
+            <label htmlFor="">Full Name</label>
+            <input onChange={(e) => HandleBookCredentials(e)} type="text" name='collectorName' placeholder='Enter full name here' /> <br />
+            <label htmlFor="">Phone Number</label>
+            <input onChange={(e) => HandleBookCredentials(e)} type="number" name='collectorPhone' placeholder='07012345678' /> <br />
+            <label htmlFor="">Date of collection</label>
+            <input onChange={(e) => HandleBookCredentials(e)} type="date" name='collectedDate' /> <br />
+            <label htmlFor="">Date of return</label>
+            <input onChange={(e) => HandleBookCredentials(e)} type="date" name='returnDate' /> <br />
+            <div className='button-close'>
+                <button  onClick={HandleCloseBookButton} >Close</button>
+            </div>
+        </div>}
+
     </div>
     
   </div>

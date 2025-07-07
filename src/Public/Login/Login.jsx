@@ -88,7 +88,7 @@ const Login = () => {
   :
       <div className='spinner'>
           <img src={spinner} />
-          <div className='name'>EUR-AFRICA</div>
+          <div className='name'>ECOGOV/EUR-AFRICA</div>
       </div>}
   </>)
 }
