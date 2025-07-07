@@ -164,7 +164,7 @@
         transition: all 1s;
     }
     .small-screen-nav-none-active{
-        transform: translateX(-16rem);
+        transform: translateX(-20rem);
         transition: all 1s;
         animation: navSlideNonActive 2s ease-in-out forwards;
     }
@@ -174,7 +174,7 @@
         top: 0;
         left: 0;
         bottom: 0;
-        width: 16rem;
+        width: 17rem;
         background: #fff;
         border: 1px solid rgb(216, 216, 216);
         display: block;
@@ -299,7 +299,7 @@
         display: block;
         position: fixed;
         right: 1rem;
-        top: 1.5rem;
+        top: .5rem;
         padding: .3rem .5rem;
         padding-bottom: .05rem;
         background: teal;

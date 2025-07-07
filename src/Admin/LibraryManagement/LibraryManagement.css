@@ -70,7 +70,11 @@ body{
             align-items: center;
             justify-content: space-between;
             padding-right: 2rem;
-            border-bottom: 1px solid #e8ebeb;
+
+            .PageTitle{
+                flex: 1;
+            }
+            
         }
 
         .search-filter{
@@ -250,6 +254,11 @@ body{
             align-items: start;
             justify-content: left;
             flex-direction: column;
+
+
+            .PageTitle{
+                width: 98%;
+            }
 
             .add{
                 margin-left: 4%;

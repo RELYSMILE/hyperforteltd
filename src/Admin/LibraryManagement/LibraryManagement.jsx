@@ -165,7 +165,7 @@ const LibraryManagement = () => {
         <div  className='librarymanagement'>
             <div className='fixed'>
             <div id='scroll-bg-screen' className='title-add-book'>
-                <PageTitle pageTitle = {pageTitle} />
+                <div className='PageTitle'><PageTitle pageTitle = {pageTitle} /></div>
                 {settingsTogglefetch.toggleAddBookSettings &&
                 <div className='add'><Link to='/add-new-book'><ButtonAdd  pageTitle = {pageTitle}  /></Link></div>}
             </div>

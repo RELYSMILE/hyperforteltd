@@ -71,3 +71,14 @@
         }
     }
 }
+
+.admin{
+    table{
+        tbody{
+            .overdue-book {
+                background-color: rgba(255, 0, 0, 0.1); /* Light red */
+                transition: background-color 0.3s ease;
+            }
+        }
+    }
+}

@@ -69,11 +69,11 @@ const BookStatus = () => {
 
       try{
         await updateDoc(doc(db, 'books', bookDetail.documentID), {
-            isBookLoan: isBookLoan? true : false,
+            isBookLoan: isBookPresent? false : true,
             collectorName: bookCredentials.collectorName || bookDetail.collectorName,
             collectorPhone: bookCredentials.collectorPhone || bookDetail.collectorPhone,
             collectedDate: bookCredentials.collectedDate || bookDetail.collectedDate,
-            returnDate: bookCredentials.returnDate || bookDetail.returnDate,
+            returnDate: isBookPresent? '' : bookCredentials.returnDate || bookDetail.returnDate,
         })
         toast.success('Book has been updated successfully.', {
           toastId: 1,
@@ -108,7 +108,7 @@ const BookStatus = () => {
           }
         };
         fetchAllLoanedBooks()
-    }, [])
+    })
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth,async (user) => {
@@ -200,7 +200,7 @@ const BookStatus = () => {
         </thead>
         <tbody style={{color: appearancesettingData.primaryColor}}>
         {loanedBooks.map((loan, idx) => (
-            <tr key={idx}>
+            <tr key={idx} className={new Date(loan.returnDate) <= new Date() ? 'overdue-book' : ''}>
                 <td>{idx}</td>
             <td style={{textTransform: 'capitalize'}}>{loan.title}</td>
             <td style={{textTransform: 'capitalize'}}>{loan.collectorName}</td>

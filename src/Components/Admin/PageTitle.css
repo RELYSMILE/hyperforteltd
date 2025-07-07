@@ -11,17 +11,47 @@
     font-family: 'UberMoveMedium';
     src: url('../assets/fonts/UberMoveMedium.otf');
 }
-
-.pageTitle{
+@font-face {
+    font-family: 'satoshi-black';
+    src: url('../assets/fonts/Satoshi-Black.otf');
+}
+.pageTitle-notification{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid #e8ebeb;
+    padding: 1.5rem 0;
+    padding-right: 2rem;
+
+    .pageTitle{
     font-family: 'UberMoveMedium';
-    padding: 1.7rem 0;
     font-size: 24px;
     color: teal;
 }
 
+
+    .notification{
+        display: flex;
+        align-items: center;
+        gap: .1rem;
+        font-family: 'satoshi-black';
+    }
+
+}
 @media (max-width: 768px){
-    .pageTitle{
-        padding: 1.7rem 4%;
+    .pageTitle-notification{
+        padding-left: .5rem;
+        width: 103%;
+        margin-top: 1.5rem;
+
+
+    .notification{
+        img{
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+
+    }
+
 }
 }

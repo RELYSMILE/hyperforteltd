@@ -14,6 +14,7 @@ import About from './Public/About/About.jsx'
 import Books from './Public/Books/Books.jsx'
 import Login from './Public/Login/Login.jsx'
 import AdminRole from './Admin/AdminRole/AdminRole.jsx'
+import { AppContextProvider } from './Admin/Context/Context.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -90,6 +91,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ToastContainer />
-    <RouterProvider router={ router} />
+    <AppContextProvider>
+      <RouterProvider router={ router} />
+    </AppContextProvider>
   </React.StrictMode>,
 )
