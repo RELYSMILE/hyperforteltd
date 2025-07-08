@@ -3,13 +3,17 @@
     font-family: 'Gotham';
     src: url('../assets/fonts/Gotham-Book.otf');
 }
+@font-face {
+    font-family: 'SpaceGrotesk';
+    src: url('../assets/fonts/SpaceGrotesk-Regular.otf');
+}
 .app-login-container {
   background: #150238;
   height: 100vh;
   color: #ffffff;
+
   display: flex;
   flex-direction: column;
-
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
   .app-login-container .nav{
@@ -41,11 +45,11 @@
 }
 
 .app-login-container form div:first-child {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: bold;
   text-align: center;
-  color: #fff;
-  font-family: 'Gotham';
+  color: #cfccf3;
+  font-family: 'SpaceGrotesk';
   margin-bottom: 1rem;
 }
 
@@ -100,6 +104,16 @@
 
 .app-login-container input {
   font-size: 14px;
+}
+.app-login-container form {
+  color: #333;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 }
 
