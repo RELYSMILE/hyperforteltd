@@ -32,6 +32,7 @@
     align-items: center;
     justify-content: space-between;
     padding: .5rem 2rem;
+    padding-top: 1rem;
     color: #fff;
     font-size: 14px;
     font-family: 'Gotham';
@@ -40,13 +41,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #fff;
-        width: 5rem;
-        height: 3.5rem;
-        border-radius: 100%;
         img{
-            width: 5rem;
-            height: 3.5rem;
+            width: 4rem;
+            height: 3rem;
         }
     }
 
@@ -75,6 +72,7 @@
 }
 @media (max-width: 768px){
     .navigation-container{
+        padding-top: .5rem;
     .logo-container{
         display: flex;
         align-items: center;

@@ -1,7 +1,8 @@
 import React, {useContext} from 'react'
+import { Link } from 'react-router-dom'
 import { AppContext } from '../../Admin/Context/Context'
 import notificationGray from '../../assets/icons/notificationGray.png'
-import notificationRed from '../../assets/icons/notificationRed.png'
+import notificationRed from '../../assets/gif/bell2.gif'
 import './PageTitle.css'
 
 
@@ -12,15 +13,15 @@ const PageTitle = ({pageTitle}) => {
       <div className='pageTitle'>{pageTitle}</div>
       <div className='notification'>
         {overDueBooksLen > 0?
-        <>
-          <span style={{color: '#808080'}}>Notification:</span> <img src={notificationRed} alt="" />
+        <Link className='Link' to={'/book-status'}>
+          <div className='img-container'><span style={{color: '#808080'}}>Notification:</span> <img src={notificationRed} alt="" /></div>
           <div style={{color: 'red'}}>{overDueBooksLen}</div>
-        </>
+        </Link>
         :
-        <>
-          <span style={{color: '#808080'}}>Notification:</span><img src={notificationGray} alt="" />
+        <Link to={'/book-status'}>
+          <div><span style={{color: '#808080'}}>Notification:</span><img src={notificationGray} alt="" /></div>
           <div>0</div>
-        </>}
+        </Link>}
       </div>
     </div>
   )
