@@ -75,7 +75,7 @@ const Login = () => {
 
     <div className='login-container'>
         <form action="">
-            <div className='heading'>Ecogov Research International Limited/Eur-Africa Research Associates Limited</div>
+            <div className='heading'>Ecogov Research International Limited /Eur-Africa Research Associates Limited</div>
 
             <label htmlFor="">Email Address</label>
             <input style={{fontSize: '16px'}} onChange={(e) => handleUserCredentials(e)} type="text" name="email" id="" placeholder='Enter your email address'/>

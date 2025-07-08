@@ -90,12 +90,14 @@
 
 @media (max-width: 600px){
   .app-login-container form {
-    width: 94%;
     font-size: 14px;
+    padding: 2rem 1rem;
+    width: fit-content;
 }
 
 .app-login-container form div:first-child {
   font-size: 1.2rem;
+  text-align: center;
 }
 
 .app-login-container label {
@@ -105,15 +107,6 @@
 .app-login-container input {
   font-size: 14px;
 }
-.app-login-container form {
-  color: #333;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  width: fit-content;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+
 }
 
