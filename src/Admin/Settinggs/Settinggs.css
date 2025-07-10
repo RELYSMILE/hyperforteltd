@@ -176,10 +176,12 @@
 
                     .settings-state{
                         .ft{
-                           font-family: 'SpaceGrotesk'; 
+                           font-family: 'SpaceGrotesk';
+                           font-size: 18px; 
                         }
                         .info{
                            font-family: 'SpaceGrotesk';  
+                           font-size: 15px;
                         }
                     }
 
