@@ -46,6 +46,11 @@
                 align-items: center;
                 justify-content: center;
 
+                .not-gray{
+                    width: 1.2rem;
+                    height: 1.2rem;
+                }
+
                 img{
                     width: 2rem;
                     height: 2rem;

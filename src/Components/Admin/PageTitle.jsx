@@ -18,8 +18,8 @@ const PageTitle = ({pageTitle}) => {
           <div style={{color: 'red'}}>{overDueBooksLen}</div>
         </Link>
         :
-        <Link to={'/book-status'}>
-          <div><span style={{color: '#808080'}}>Notification:</span><img src={notificationGray} alt="" /></div>
+        <Link className='Link' to={'/book-status'}>
+          <div className='img-container'><span style={{color: '#808080'}}>Notification:</span><img className='not-gray' src={notificationGray} alt="" /></div>
           <div>0</div>
         </Link>}
       </div>
