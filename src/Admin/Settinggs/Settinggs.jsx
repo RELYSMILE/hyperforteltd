@@ -259,8 +259,8 @@ const Settinggs = () => {
                     {currentUser?.adminRole === 'super admin' &&
                     <div className='settings-container-state'>
                         <div className='settings-state'>
-                            <div className='title ft'>Update Book</div>
-                            <div className='info'>Turn on and off update book feature</div>
+                            <div className='title ft'>Update Publication</div>
+                            <div className='info'>Turn on and off update Publication feature</div>
                         </div>
                         <div className='toggle'>
                             {!settingsTogglefetch.toggleSettings?
@@ -273,8 +273,8 @@ const Settinggs = () => {
                     {currentUser?.adminRole === 'super admin' &&
                     <div className='settings-container-state'>
                         <div className='settings-state'>
-                            <div className='title ft'>Delete Book</div>
-                            <div className='info'>Turn on and off Delete book feature</div>
+                            <div className='title ft'>Delete Publication</div>
+                            <div className='info'>Turn on and off Delete Publication feature</div>
                         </div>
                         <div className='toggle'>
                             {settingsTogglefetch.toggleDeleteSettings?
@@ -286,8 +286,8 @@ const Settinggs = () => {
                     </div>}
                     <div className='settings-container-state'>
                         <div className='settings-state'>
-                            <div className='title ft'>Add new book</div>
-                            <div className='info'>Turn on and off book adding feature</div>
+                            <div className='title ft'>Add new Publication</div>
+                            <div className='info'>Turn on and off Publication adding feature</div>
                         </div>
                         <div className='toggle'>
                             {settingsTogglefetch.toggleAddBookSettings?

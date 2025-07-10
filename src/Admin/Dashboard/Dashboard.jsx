@@ -15,7 +15,7 @@ const Dashboard = () => {
     const [currentUser, setCurrentUser] = useState(null)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
     const dashboard = [
-        {title: 'Total Books', num: totalBooksNum, icon: totalbooks},
+        {title: 'Total Publication', num: totalBooksNum, icon: totalbooks},
         {title: 'Total Admin', num: totalAdmin, icon: security},
     ]
     const [pageTitle, setPageTitle] = useState('Dashboard')

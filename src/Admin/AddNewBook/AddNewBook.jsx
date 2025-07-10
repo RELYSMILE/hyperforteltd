@@ -12,7 +12,7 @@ const AddNewBook = () => {
     const [bookCredentials, setBookCredentials] = useState([])
     const [location, setLocation] = useState([])
     const [bucket, setBucket] = useState([])
-    const [pageTitle, setPageTitle] = useState('Add New Book')
+    const [pageTitle, setPageTitle] = useState('Add New Publication')
     const [typeOfPublication, setTypeOfPublication] = useState([])
     const [publicationBySubject, setPublicationBySubject] = useState([])
     const [isLoading, setIsLoading] = useState(false)

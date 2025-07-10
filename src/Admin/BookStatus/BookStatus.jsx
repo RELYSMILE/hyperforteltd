@@ -16,7 +16,7 @@ import { collection, doc, getDoc, getDocs, query, updateDoc, where } from 'fireb
 
 const BookStatus = () => {
     const[bookCredentials, setBookCredentials] = useState({})
-    const [pageTitle, setPageTitle] = useState('Loaned Books')
+    const [pageTitle, setPageTitle] = useState('Loaned Publication')
     const [isLoading, setIsLoading] = useState(false)
 
     const [bookDetail, setBookDetail] = useState([])
@@ -190,7 +190,7 @@ const BookStatus = () => {
         <thead>
         <tr>
             <th>ID</th>
-            <th>Book</th>
+            <th>Publication</th>
             <th>Full Name</th>
             <th>Phone</th>
             <th>Date of collection</th>

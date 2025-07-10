@@ -21,7 +21,7 @@ import { toast } from 'react-toastify'
 import { onAuthStateChanged } from 'firebase/auth'
 
 const LibraryManagement = () => {
-    const [pageTitle, setPageTitle] = useState('Books Management')
+    const [pageTitle, setPageTitle] = useState('Publication Management')
     const [books, setBooks] = useState([])
     const [getBookID, setGetBookID] = useState('')
     const [search, setSearch] = useState('')
@@ -167,13 +167,13 @@ const LibraryManagement = () => {
             <div id='scroll-bg-screen' className='title-add-book'>
                 <div className='PageTitle'><PageTitle pageTitle = {pageTitle} /></div>
                 {settingsTogglefetch.toggleAddBookSettings &&
-                <div className='add'><Link to='/add-new-book'><ButtonAdd  pageTitle = {pageTitle}  /></Link></div>}
+                <div className='add'><Link className='add-link' to='/add-new-book'><span>+</span>Publication</Link></div>}
             </div>
 
             <div className='search-filter'>
                 <div className='search'>
                     <img src={searchGreen} alt="icon" />
-                    <input onChange={(e) => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search by Book Title,Sub Title, Author/Editor, Type of Publication, Bucket Number, Publication by Subject, Publisher, location, Year of Publication, volume, edition, tag' />
+                    <input onChange={(e) => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search by Publication Title,Sub Title, Author/Editor, Type of Publication, Bucket Number, Publication by Subject, Publisher, location, Year of Publication, volume, edition, tag' />
                 </div>
 
                 <div className='filter'>
@@ -209,7 +209,7 @@ const LibraryManagement = () => {
                 <table>
                     <tr>
                         <th style={{width: '1rem'}}>ID</th>
-                        <th>Books Title</th>
+                        <th>Publication Title</th>
                         <th>Author/Editor</th>
                         <th style={{width: '2rem'}}>Action</th>
                     </tr>
