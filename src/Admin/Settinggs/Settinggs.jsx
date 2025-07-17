@@ -9,7 +9,7 @@ import settings from '../../assets/icons/settings.png'
 import palette from '../../assets/icons/palette.png'
 import extension from '../../assets/icons/extension.png'
 import './Settinggs.css'
-import { doc, getDoc, serverTimestamp, updateDoc } from 'firebase/firestore'
+import { arrayUnion, doc, getDoc, serverTimestamp, updateDoc } from 'firebase/firestore'
 import { onAuthStateChanged } from 'firebase/auth'
 
 const Settinggs = () => {
@@ -32,6 +32,7 @@ const Settinggs = () => {
     const [toggleDeleteAdminSettings, setToggleDeleteAdminSettings] = useState(true)
     const [toggleAddAdminSettings, setToggleAddAdminSettings] = useState(true)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
+    const [newLocation, setNewLocation] = useState('')
 
     const handleGeneralActiveStyle = () => {
         setGeneralActiveStyle(true)
@@ -60,6 +61,11 @@ const Settinggs = () => {
             await updateDoc(doc(db, 'settings', '4hmGZ3GjgfK7bDbyC14g'), {
                 logoColor: logoColorPicker || appearancesettingData.logoColor,
                 primaryColor: primaryColorPicker || appearancesettingData.primaryColorPicker,
+            })
+            await updateDoc(doc(db, 'settings', 'locations-array'), {
+                locations: arrayUnion({
+                    location: newLocation && newLocation ,
+                })
             })
             toast.success('Settings saved successfully', {
                 toastId: 1,
@@ -242,12 +248,18 @@ const Settinggs = () => {
                 <div className='title'>General Settings</div>
                 <div className='info'>Manage app basic information and configuration</div>
                 {currentUser?.adminRole === 'super admin'?
-                <div className='app-name-container'>
-                    <label>App name</label>
-                    <input onChange={(e) => setAppName(e.target.value)} type="text" value={appName} />
-                </div>:
+                <>
+                    <div className='app-name-container'>
+                        <label>App name</label>
+                        <input onChange={(e) => setAppName(e.target.value)} type="text" value={appName} />
+                        <div className='app-info'>App Original name: <span style={{color: 'teal'}}>Eur-Africa</span></div>
+                    </div>
+                    <div className='app-name-container'>
+                        <label>Add new Location</label>
+                        <input onChange={(e) => setNewLocation(e.target.value)} type="text" placeholder='Add extra Location here' />
+                    </div>
+                </>:
                 <div className='access'>Access denied, {currentUser?.username} You are not authorized to perform this operation.</div>}
-                <div className='app-info'>App Original name: <span style={{color: 'teal'}}>Eur-Africa</span></div>
             </div>}
             {featuresActiveStyle &&
 

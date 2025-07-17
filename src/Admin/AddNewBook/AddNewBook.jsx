@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import Login from '../../Public/Login/Login';
 import {auth, db}  from '../../firebase/config'
@@ -8,7 +8,9 @@ import save from '../../assets/icons/save.png'
 import './AddNewBook.css'
 import { collection, doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
+import { AppContext } from '../Context/Context';
 const AddNewBook = () => {
+    const {currentAdmin, publicationLocation} = useContext(AppContext)
     const [bookCredentials, setBookCredentials] = useState([])
     const [location, setLocation] = useState([])
     const [bucket, setBucket] = useState([])
@@ -24,8 +26,6 @@ const AddNewBook = () => {
     const [isSubTitlePresent, setIsSubTitlePresent] = useState('')
     const [isBookPresent, setIsBookPresent] = useState(false)
     const [isBookLoan, setIsBookLoan] = useState(false)
-
-    console.log(isSubTitlePresent)
 
     const bucketNum = Array.from({ length: 100 }, (_, i) => ({
         value: i + 1,
@@ -102,6 +102,7 @@ const AddNewBook = () => {
                 collectorPhone: bookCredentials.collectorPhone || '',
                 collectedDate: bookCredentials.collectedDate || '',
                 returnDate: bookCredentials.returnDate || '',
+                addedBy: currentAdmin?.username,
                 cretedAt: serverTimestamp()
             })
             toast.success('Book added successfully', {
@@ -209,10 +210,9 @@ const AddNewBook = () => {
                 <label htmlFor="">Location</label>
                 <select onChange={(e) => setLocation(e.target.value)} name="location" id="">
                     <option disabled selected>Select book location</option>
-                    <option value="library1">Library 1</option>
-                    <option value="library2">Library 2</option>
-                    <option value="director">Director's Office</option>
-                    <option value="manager">Manager's Office</option>
+                    {publicationLocation?.locations?.map((location, idx) => (
+                        <>{location.location && <option key={idx} value={location.location}>{location.location}</option>}</>
+                    ))}
                 </select>
             <div className='select-field'>
                 <label htmlFor="">Bucket</label>

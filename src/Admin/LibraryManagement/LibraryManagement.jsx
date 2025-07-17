@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './LibraryManagement.css'
 import { Link } from 'react-router-dom'
 import NavBar from '../NavBar'
@@ -19,8 +19,10 @@ import { collection, deleteDoc, doc, getDoc, getDocs } from 'firebase/firestore'
 import ViewBookDetails from '../../Components/Admin/ViewBookDetails'
 import { toast } from 'react-toastify'
 import { onAuthStateChanged } from 'firebase/auth'
+import { AppContext } from '../Context/Context'
 
 const LibraryManagement = () => {
+    const {publicationLocation} = useContext(AppContext)
     const [pageTitle, setPageTitle] = useState('Publication Management')
     const [books, setBooks] = useState([])
     const [getBookID, setGetBookID] = useState('')
@@ -183,8 +185,9 @@ const LibraryManagement = () => {
                         <select onChange={(e) => setSearch(e.target.value)} name="" id="">
                             <option value="">All</option>
                             <option value="adetula">Victor Adetula</option>
-                            <option value="library1">Library 1</option>
-                            <option value="library2">Library 2</option>
+                            {publicationLocation.locations.map((location, idx) => (
+                                <>{location.location && <option key={idx} value={location.location}>{location.location}</option>}</>
+                            ))}
                             <option value="book">Book</option>
                             <option value="journal">Journal</option>
                             <option value="panflet">Pan-flet</option>
@@ -193,8 +196,6 @@ const LibraryManagement = () => {
                             <option value="report">Report</option>
                             <option value="document">Document</option>
                             <option value="monograph">Monograph</option>
-                            <option value="director">Director's Office</option>
-                            <option value="manager">Manager's Office</option>
                             {bookSubject.map((subject, idx) => (
                                 <option key={idx} value={subject.subject}>{subject.subject}</option>
                             ))}
@@ -209,7 +210,7 @@ const LibraryManagement = () => {
                 <table>
                     <tr>
                         <th style={{width: '1rem'}}>ID</th>
-                        <th>Publication Title</th>
+                        <th style={{width: '51%'}}>Publication Title</th>
                         <th>Author/Editor</th>
                         <th style={{width: '2rem'}}>Action</th>
                     </tr>
@@ -232,7 +233,7 @@ const LibraryManagement = () => {
                 <table key={idx} style={{fontSize: '14px', color: appearancesettingData.primaryColor}}>
                     <tr className={book?.documentID === getBookID? 'tr': idx % 2 === 0? 'even': 'odd'}>
                         <td style={{width: '1rem'}}>{idx}</td>
-                        <td style={{width: '40.5%', textTransform: 'capitalize'}}>{book?.title}</td>
+                        <td style={{width: '50%', textTransform: 'capitalize'}}>{book?.title}</td>
                         <td>{book?.author}</td>
                         <td style={{width: '2rem', cursor: 'pointer'}} >
                             {book?.documentID === getBookID?

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import {auth, db}  from '../../firebase/config'
 import PageTitle from '../../Components/Admin/PageTitle'
@@ -9,8 +9,10 @@ import '../AddNewBook/AddNewBook.css'
 import { useParams } from 'react-router-dom';
 import { collection, doc, getDoc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
+import { AppContext } from '../Context/Context';
 
 const UpdateBook = () => {
+    const {publicationLocation} = useContext(AppContext)
     const [currentUser, setCurrentUser] = useState(null)
     const [bookCredentials, setBookCredentials] = useState([])
     const [location, setLocation] = useState([])
@@ -195,10 +197,9 @@ const UpdateBook = () => {
                 <label htmlFor="">Location</label>
                 <select onChange={(e) => setLocation(e.target.value)} name="location" id="">
                     <option disabled selected>{bookData?.location}</option>
-                    <option value="library1">Library 1</option>
-                    <option value="library2">Library 2</option>
-                    <option value="director">Director's Office</option>
-                    <option value="manager">Manager's Office</option>
+                    {publicationLocation.locations.map((location, idx) => (
+                        <>{location.location && <option value={location.location}>{location.location}</option>}</>
+                    ))}
                 </select>
             <div className='select-field'>
                 <label htmlFor="">Bucket</label>
