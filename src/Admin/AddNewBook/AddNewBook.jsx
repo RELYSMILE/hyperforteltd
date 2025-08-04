@@ -113,7 +113,7 @@ const AddNewBook = () => {
                 toastId: 'book'
             })
             }else{
-                toast.warning('This book is already present in the database, please search and update number of copies and reshelf accordingly', {
+                toast.warning('This publication is already in the database. Kindly update its copies and re-shelve accordingly.', {
                     toastId: 'bookerror',
                 })
             }
