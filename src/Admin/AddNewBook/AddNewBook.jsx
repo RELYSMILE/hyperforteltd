@@ -6,7 +6,7 @@ import PageTitle from '../../Components/Admin/PageTitle'
 import NavBar from '../NavBar'
 import save from '../../assets/icons/save.png'
 import './AddNewBook.css'
-import { collection, doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, where } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { AppContext } from '../Context/Context';
 const AddNewBook = () => {
@@ -82,7 +82,11 @@ const AddNewBook = () => {
             const dataBaseRef = collection(db, 'books')
             const newDocRef = doc(dataBaseRef)
 
-            await setDoc(newDocRef, {
+            const Query = query(dataBaseRef, where('title', '==', bookCredentials.title));
+            const BookSnap = await getDocs(Query)
+
+            if(BookSnap.empty){
+                await setDoc(newDocRef, {
                 documentID: newDocRef.id,
                 title: bookCredentials.title,
                 // bookSubTitle: bookSubTitle,
@@ -108,6 +112,11 @@ const AddNewBook = () => {
             toast.success('Book added successfully', {
                 toastId: 'book'
             })
+            }else{
+                toast.warning('This book is already present in the database, please search and update number of copies and reshelf accordingly', {
+                    toastId: 'bookerror',
+                })
+            }
         }catch(error){
            toast.error('Failed to add book. Please try again', {
                 toastId: 'book'
