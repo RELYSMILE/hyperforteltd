@@ -218,17 +218,16 @@ const LibraryManagement = () => {
                 {books.filter((data) => {
                     const input = search?.trim()?.toLowerCase()
                     return input === '' ||
-                    data?.title?.toLowerCase()?.includes(input) ||
-                    data?.bookSubTitle?.toLowerCase()?.includes(input) ||
-                    data?.author?.toLowerCase()?.includes(input) ||
-                    data?.typeOfPublication?.toLowerCase()?.includes(input) ||
-                    data?.publisher?.toLowerCase()?.includes(input) ||
-                    data?.yearOfPublication?.toLowerCase()?.includes(input) ||
-                    data?.publicationBySubject?.toLowerCase()?.includes(input) ||
-                    data?.volume?.toLowerCase()?.includes(input) ||
-                    data?.location?.toLowerCase()?.includes(input) ||
-                    data?.tag?.toLowerCase()?.includes(input) ||
-                    data?.bucketNumber?.toLowerCase()?.includes(input)
+                    (data?.title + '')?.toLowerCase()?.includes(input) ||
+                    (data?.author + '')?.toLowerCase()?.includes(input) ||
+                    (data?.typeOfPublication + '')?.toLowerCase()?.includes(input) ||
+                    (data?.publisher + '')?.toLowerCase()?.includes(input) ||
+                    (data?.yearOfPublication + '')?.toLowerCase()?.includes(input) ||
+                    (data?.publicationBySubject + '')?.toLowerCase()?.includes(input) ||
+                    (data?.volume + '')?.toLowerCase()?.includes(input) ||
+                    (data?.location + '')?.toLowerCase()?.includes(input) ||
+                    (data?.tag + '')?.toLowerCase()?.includes(input) ||
+                    (data?.bucketNumber + '')?.toLowerCase()?.includes(input)
                 }).map((book, idx) => (
                 <table className='publication-table' key={idx} style={{color: appearancesettingData.primaryColor}}>
                     <tr className={book?.documentID === getBookID? 'tr': idx % 2 === 0? 'even': 'odd'}>
