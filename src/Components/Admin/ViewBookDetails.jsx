@@ -123,10 +123,6 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
                 <div className='tag'>{bookData?.bucketNumber}</div>
             </div>
             <div className='book-details'>
-                <label>Bucket</label>
-                <div className='tag'>{bookData?.addedBy}</div>
-            </div>
-            <div className='book-details'>
                 <label>Book Status</label>
                 <div className='tag'>{bookData?.isBookLoan? 'On Loan' : 'Present'}</div>
             </div>
@@ -136,7 +132,7 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
-            })} <span style={{color: 'tomato'}}>{bookData?.addedBy? `by ${bookData?.addedBy}` : 'by Null'}</span></div>
+            })} <span style={{color: 'tomato'}}>{bookData?.addedBy && `by ${bookData?.addedBy}`}</span></div>
             </div>
         </div>
         {!bookData?.isBookLoan &&
