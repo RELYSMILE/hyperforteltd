@@ -259,19 +259,6 @@ body{
     }
 }
 
-@keyframes slide {
-    from{
-        transform: translateY(-2rem);
-        opacity: .1;
-        background: #808080;
-    }
-    to{
-        transform: translateY(0rem);
-        opacity: 1;
-        background: #fff;
-    }
-}
-
 @media (max-width: 768px){
     .librarymanagement-container{
         
@@ -355,10 +342,6 @@ body{
                 }
             }
         }
-
-        .more-panel{
-            right: 0rem;
-        }
     }
 }
 }
@@ -396,7 +379,18 @@ body{
 }
 }
 
-
+@keyframes slide {
+    from{
+        transform: translateY(-2rem);
+        opacity: .1;
+        background: #808080;
+    }
+    to{
+        transform: translateY(0rem);
+        opacity: 1;
+        background: #fff;
+    }
+}
 @keyframes scroll {
     0%{
         transform: translateY(.2rem);
