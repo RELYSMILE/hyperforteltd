@@ -237,12 +237,12 @@ const LibraryManagement = () => {
                         <td style={{width: '2rem', cursor: 'pointer'}} >
                             {book?.documentID === getBookID?
 
-                            <div className={morePanelClassName}>
+                            <div className={`${morePanelClassName} morePanelClassName-main-container`}>
                                 <img onClick={handleCloseMorePanel} style={{width: '1.2rem', height: '1.2rem'}} src={cancel} alt="Close" />
                                 <div className='more-panel'>
                                     <div onClick={handleViewBookDetails} className='item'>
                                         <img src={visibilityIcon} alt="icon" />
-                                        <div className='label'>View Details</div>
+                                        <div className='label'>View More</div>
                                     </div>
                                     {!settingsTogglefetch.toggleSettings &&
                                     <div onClick={(e)=>handleBookUpdate(book?.documentID)} className='item'>

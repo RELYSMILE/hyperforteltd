@@ -51,17 +51,17 @@ const Books = () => {
         {books.filter((data) => {
             const input = search?.trim()?.toLowerCase()
                     return input === '' ||
-                    data?.title?.toLowerCase()?.includes(input) ||
-                    data?.author?.toLowerCase()?.includes(input) ||
-                    data?.volume?.toLowerCase()?.includes(input) ||
-                    data?.bookSubTitle?.toLowerCase()?.includes(input) ||
-                    data?.publisher?.toLowerCase()?.includes(input) ||
-                    data?.yearOfPublication?.toLowerCase()?.includes(input) ||
-                    data?.publisherLocation?.toLowerCase()?.includes(input) ||
-                    data?.typeOfPublication?.toLowerCase()?.includes(input) ||
-                    data?.yearOfPublication?.toLowerCase()?.includes(input) ||
-                    data?.yearOfPublication?.toLowerCase()?.includes(input) ||
-                    data?.volume?.toLowerCase()?.includes(input)
+                    (data?.title + '')?.toLowerCase()?.includes(input) ||
+                    (data?.author + '')?.toLowerCase()?.includes(input) ||
+                    (data?.volume + '')?.toLowerCase()?.includes(input) ||
+                    (data?.bookSubTitle + '')?.toLowerCase()?.includes(input) ||
+                    (data?.publisher + '')?.toLowerCase()?.includes(input) ||
+                    (data?.yearOfPublication + '')?.toLowerCase()?.includes(input) ||
+                    (data?.publisherLocation + '')?.toLowerCase()?.includes(input) ||
+                    (data?.typeOfPublication + '')?.toLowerCase()?.includes(input) ||
+                    (data?.yearOfPublication + '')?.toLowerCase()?.includes(input) ||
+                    (data?.yearOfPublication + '')?.toLowerCase()?.includes(input) ||
+                    (data?.volume + '')?.toLowerCase()?.includes(input)
         }).map((book, idx) => (
           <div className='book-card' key={idx}>
             <div className='book-cover'>
