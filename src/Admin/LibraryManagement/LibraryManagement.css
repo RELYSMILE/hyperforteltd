@@ -392,33 +392,10 @@ body{
                 }
             }
         }
-
-        .more-panel{
-            right: -13rem;
-        }
     }
 }
 }
-@media (max-width: 390px){
-    .librarymanagement-container{
-    .librarymanagement{
 
-        .more-panel{
-            right: -21rem;
-        }
-    }
-}
-}
-@media (max-width: 329px){
-    .librarymanagement-container{
-    .librarymanagement{
-
-        .more-panel{
-            right: -25rem;
-        }
-    }
-}
-}
 
 @keyframes scroll {
     0%{
