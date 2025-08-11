@@ -214,6 +214,7 @@ const AddNewBook = () => {
                     <option value="document">Document</option>
                     <option value="monograph">Monograph</option>
                     <option value="autobiography">Autobiography</option>
+                    <option value="biography">Biography</option>
                 </select>
             </div>
             <div className='select-field'>

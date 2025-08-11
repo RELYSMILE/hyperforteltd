@@ -196,6 +196,8 @@ const LibraryManagement = () => {
                             <option value="report">Report</option>
                             <option value="document">Document</option>
                             <option value="monograph">Monograph</option>
+                            <option value="autobiography">Autobiography</option>
+                            <option value="biography">Biography</option>
                             {bookSubject.map((subject, idx) => (
                                 <option key={idx} value={subject.subject}>{subject.subject}</option>
                             ))}
