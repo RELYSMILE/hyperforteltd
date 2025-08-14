@@ -184,7 +184,10 @@ const LibraryManagement = () => {
                         <div className='label'>Filter</div>
                         <select onChange={(e) => setSearch(e.target.value)} name="" id="">
                             <option value="">All</option>
-                            <option value="adetula">Victor Adetula</option>
+                            <option value="Theprophet">Theprophet</option>
+                            <option value="ometere">Ometere Favour </option>
+                            <option value="Godwin">Godwin Daberechi</option>
+                            <option value="Dotun">Adetula Dotun</option>
                             {publicationLocation.locations.map((location, idx) => (
                                 <>{location.location && <option key={idx} value={location.location}>{location.location}</option>}</>
                             ))}
@@ -229,7 +232,8 @@ const LibraryManagement = () => {
                     (data?.volume + '')?.toLowerCase()?.includes(input) ||
                     (data?.location + '')?.toLowerCase()?.includes(input) ||
                     (data?.tag + '')?.toLowerCase()?.includes(input) ||
-                    (data?.bucketNumber + '')?.toLowerCase()?.includes(input)
+                    (data?.bucketNumber + '')?.toLowerCase()?.includes(input) ||
+                    (data?.addedBy + '')?.toLowerCase()?.includes(input)
                 }).map((book, idx) => (
                 <table className='publication-table' key={idx} style={{color: appearancesettingData.primaryColor}}>
                     <tr className={book?.documentID === getBookID? 'tr': idx % 2 === 0? 'even': 'odd'}>

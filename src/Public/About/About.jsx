@@ -54,7 +54,6 @@ const About = () => {
         <a href="tel:09061465412">+234(0)9061465412</a><br />
         <a href="mailto:eurafricaresearchassociates@gmail.com">eurafricaresearchassociates@gmail.com</a><br />
         <a href="mailto:ecogovresearch@gmail.com">ecogovresearch@gmail.com</a><br /><br />
-        <div>We shall feel highly obliged for granting our requests for the deployment of NYSC members to our organization.</div>
     </div>
   </div>
   :
