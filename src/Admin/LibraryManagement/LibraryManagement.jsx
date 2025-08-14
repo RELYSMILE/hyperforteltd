@@ -184,10 +184,11 @@ const LibraryManagement = () => {
                         <div className='label'>Filter</div>
                         <select onChange={(e) => setSearch(e.target.value)} name="" id="">
                             <option value="">All</option>
-                            <option value="Theprophet">Theprophet</option>
-                            <option value="ometere">Ometere Favour </option>
+                            <option value="vadetula@gmail.com">Victor Adetula</option>
+                            <option value="Theprophet">Promise Oba</option>
+                            <option value="ometere">Ometere Favour Ajayi </option>
                             <option value="Godwin">Godwin Daberechi</option>
-                            <option value="Dotun">Adetula Dotun</option>
+                            <option value="Dotun">Adedotun Adetula</option>
                             {publicationLocation.locations.map((location, idx) => (
                                 <>{location.location && <option key={idx} value={location.location}>{location.location}</option>}</>
                             ))}

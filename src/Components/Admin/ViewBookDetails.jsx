@@ -132,7 +132,7 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
-            })} <span style={{color: 'tomato'}}>{bookData?.addedBy && `by ${bookData?.addedBy}`}</span></div>
+            })} <span style={{color: 'tomato'}}>{bookData?.addedBy && `by ${bookData?.addedBy === 'ometere'? 'Ometere Favour Ajayi' : bookData?.addedBy === 'Godwin'? 'Daberechi Godwin': bookData?.addedBy === 'Dotun'? 'Adedotun Adetula': bookData?.addedBy === 'vadetula@gmail.com'? 'Victor Adetula': bookData?.addedBy === 'Theprophet'? 'Promise Oba' :  bookData?.addedBy }`}</span></div>
             </div>
         </div>
         {!bookData?.isBookLoan &&

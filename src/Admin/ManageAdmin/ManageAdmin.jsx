@@ -334,7 +334,7 @@ const ManageAdmin = () => {
     <tbody style={{color: appearancesettingData.primaryColor}}>
       {admins.map((admin, idx) => (
         <tr key={idx}>
-          <td style={{textTransform: 'capitalize'}}>{admin.username}</td>
+          <td style={{textTransform: 'capitalize'}}>{admin.username === 'vadetula@gmail.com'? 'Adetula Victor' : admin.username === 'Theprophet'? 'Promise Oba': admin.username ==='ometere'? 'Ometere Favour Ajayi' : admin.username ==='Godwin'? 'Godwin Daberechi' : admin.username ==='Dotun'? 'Adedotun Adetula': admin?.username}</td>
           <td style={{textTransform: 'lowercase'}}>{admin.email}</td>
           <td style={{textTransform: 'capitalize'}}>{admin.adminRole}</td>
           <td>{admin?.createdAt?.toDate()?.toLocaleDateString('en-US', {
