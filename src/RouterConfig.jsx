@@ -17,7 +17,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     element: <App />,
     errorElement: <div className='not-found'>
         <div className='title'>Eur-Africa says</div>
@@ -26,7 +26,7 @@ const routes = [
     </div>
   },
   {
-    path: '/',
+    path: '/home',
     element: <Home />,
   },
   {
