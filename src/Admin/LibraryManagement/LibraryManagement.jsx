@@ -194,14 +194,12 @@ const LibraryManagement = () => {
                             ))}
                             <option value="book">Book</option>
                             <option value="journal">Journal</option>
-                            <option value="panflet">Pan-flet</option>
-                            <option value="newspaper">Newspaper</option>
-                            <option value="magazine">Magazine</option>
-                            <option value="report">Report</option>
-                            <option value="document">Document</option>
+                            <option value="working paper/pamflet/news letter">Working Paper/Pamflet/News Letter</option>
+                            <option value="conference/workshop proceedings">Conference/Workshop Proceedings</option>
+                            <option value="newspaper/magazine">Newspaper/Magazine</option>
+                            <option value="project/research/report/thesis">Project/Research/Report/Thesis</option>
                             <option value="monograph">Monograph</option>
-                            <option value="autobiography">Autobiography</option>
-                            <option value="biography">Biography</option>
+                            <option value="autobiography/biography">Autobiography/Biography</option>
                             {bookSubject.map((subject, idx) => (
                                 <option key={idx} value={subject.subject}>{subject.subject}</option>
                             ))}

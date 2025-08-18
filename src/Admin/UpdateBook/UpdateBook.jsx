@@ -17,7 +17,7 @@ const UpdateBook = () => {
     const [bookCredentials, setBookCredentials] = useState([])
     const [location, setLocation] = useState([])
     const [bucket, setBucket] = useState([])
-    const [pageTitle, setPageTitle] = useState('Update Book Here')
+    const [pageTitle, setPageTitle] = useState('Update Publication')
     const [isLoading, setIsLoading] = useState(false)
     const[bookData, setBookData] = useState([])
     const [authorWarning, setAuthorWarning] = useState(false)
@@ -82,7 +82,7 @@ const UpdateBook = () => {
                 volume: bookCredentials.volume || bookData?.volume,
                 typeOfPublication: typeOfPublication || bookData?.typeOfPublication,
                 location: location || bookData?.location,
-                bucketNumber: 'bucket'+bucket || bookData?.bucketNumber,
+                bucketNumber: 'bucket '+bucket || bookData?.bucketNumber,
                 updatedAt: serverTimestamp()
             })
             toast.success('Book updated successfully', {
@@ -147,7 +147,7 @@ const UpdateBook = () => {
                 <small><span>*</span> Authors'/Editors' names should begin with the surname, followed by the other names — for example: Bell, Judith.</small>}
             </div>
             <div className='form-field'>
-                <label htmlFor="">Book tag</label>
+                <label htmlFor="">Publication tag/Call mark/Call tag</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='tag' placeholder={bookData.tag} />
             </div>
             <div className='form-field'>
@@ -185,14 +185,12 @@ const UpdateBook = () => {
                     <option disabled selected>{bookData?.typeOfPublication}</option>
                     <option value="book">Book</option>
                     <option value="journal">Journal</option>
-                    <option value="panflet">Pan-flet</option>
-                    <option value="newspaper">Newspaper</option>
-                    <option value="magazine">Magazine</option>
-                    <option value="report">Report</option>
-                    <option value="document">Document</option>
+                    <option value="working paper/pamflet/news letter">Working Paper/Pamflet/News Letter</option>
+                    <option value="conference/workshop proceedings">Conference/Workshop Proceedings</option>
+                    <option value="newspaper/magazine">Newspaper/Magazine</option>
+                    <option value="project/research/report/thesis">Project/Research/Report/Thesis</option>
                     <option value="monograph">Monograph</option>
-                    <option value="autobiography">Autobiography</option>
-                    <option value="biography">Biography</option>
+                    <option value="autobiography/biography">Autobiography/Biography</option>
                 </select>
             </div>
             <div className='select-field'>

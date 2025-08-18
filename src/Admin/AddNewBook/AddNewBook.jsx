@@ -100,7 +100,7 @@ const AddNewBook = () => {
                 typeOfPublication: typeOfPublication,
                 publicationBySubject: publicationBySubject,
                 location: location,
-                bucketNumber: 'bucket'+bucket,
+                bucketNumber: 'bucket '+bucket,
                 isBookLoan: isBookLoan? true : false,
                 collectorName: bookCredentials.collectorName || '',
                 collectorPhone: bookCredentials.collectorPhone || '',
@@ -207,14 +207,12 @@ const AddNewBook = () => {
                     <option disabled selected>Select one</option>
                     <option value="book">Book</option>
                     <option value="journal">Journal</option>
-                    <option value="panflet">Pan-flet</option>
-                    <option value="newspaper">Newspaper</option>
-                    <option value="magazine">Magazine</option>
-                    <option value="report">Report</option>
-                    <option value="document">Document</option>
+                    <option value="working paper/pamflet/news letter">Working Paper/Pamflet/News Letter</option>
+                    <option value="conference/workshop proceedings">Conference/Workshop Proceedings</option>
+                    <option value="newspaper/magazine">Newspaper/Magazine</option>
+                    <option value="project/research/report/thesis">Project/Research/Report/Thesis</option>
                     <option value="monograph">Monograph</option>
-                    <option value="autobiography">Autobiography</option>
-                    <option value="biography">Biography</option>
+                    <option value="autobiography/biography">Autobiography/Biography</option>
                 </select>
             </div>
             <div className='select-field'>
