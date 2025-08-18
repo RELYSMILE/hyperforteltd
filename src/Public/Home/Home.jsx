@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import spinner from '../../assets/spinner/spinner.gif'
+import SpinnerHome from '../../Components/SpinnerHome'
 import { Link } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
 import bg from '../../assets/bg/bg.png'
@@ -194,7 +194,7 @@ useEffect(() => {
     </div>
     :
     <div className='spinner'>
-      <img src={spinner} />
+      <SpinnerHome /><br /><br />
       <div className='name'>ECOGOV/EUR-AFRICA</div>
     </div>}
   </>)

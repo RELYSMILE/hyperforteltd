@@ -7,7 +7,7 @@ export const  AppContext = createContext()
 export const AppContextProvider = (props) => {
     const [bookDatas, setBookDatas] = useState(null)
     const [overDueBooksLen, setOverDueBooksLen] = useState(0)
-    const [currentAdmin, setCurrentAdmin] = useState([])
+    const [currentAdmin, setCurrentAdmin] = useState(null)
     const [publicationLocation, setPublicationLocation] = useState({})
     useEffect(() => {
         const fetchBooksData = async() => {
@@ -39,8 +39,7 @@ export const AppContextProvider = (props) => {
 
                 const adminData = await getDoc(doc(db, 'admin', uid))
                 if(adminData.exists()){
-                    const adminInfo = adminData.data()
-                    setCurrentAdmin(adminInfo)
+                    setCurrentAdmin(adminData.data())
                 }else{
                     console.log('No data')
                 }
@@ -49,7 +48,6 @@ export const AppContextProvider = (props) => {
                 console.log('No user')
             }
         })
-
         const fetchPublicationLocation = async() => {
             try{
                 const publicationLocationSnap = doc(db, 'settings', 'locations-array')

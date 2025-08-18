@@ -3,6 +3,31 @@
     font-family: 'Gotham';
     src: url('../assets/fonts/Gotham-Book.otf');
 }
+.spinner-x{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1;
+
+  &::after{
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #000000d7;
+  }
+  .loading{
+    z-index: 1;
+  }
+}
 .app-about-container {
   background: #150238;
   min-height: 100vh;

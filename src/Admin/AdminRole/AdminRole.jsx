@@ -2,35 +2,21 @@ import React, { useEffect, useState } from 'react'
 import NavBar from '../NavBar'
 import PageTitle from '../../Components/Admin/PageTitle'
 import './AdminRole.css'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth, db } from '../../firebase/config'
-import Login from '../../Public/Login/Login'
-import { doc, getDoc } from 'firebase/firestore'
+import Spinner from '../../Components/Spinner'
 
 const AdminRole = () => {
     const [pageTitle, setPageTitle] = useState('🔐 User Roles & Permissions')
-    const [currentUser, setCurrentUser] = useState(null)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
+    const [state, setState] = useState(false)
 
 useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth,async (user) => {
-      if (user) {
-        const userDoc = await getDoc(doc(db, 'admin', user.uid));
-        if (userDoc.exists()) {
-          setCurrentUser(userDoc.data());
-        } else {
-          console.log('No such user data!');
-        }
-      } else {
-        setCurrentUser(null); // user signed out
-      }
-});
-
-    return () => unsubscribe();
+    setTimeout(() => {
+      setState(true)
+    }, 2000)
   }, []);
 
     return <>
-  {currentUser? <div className={isPageDimmed? 'admin-role-container page-dimmed' : 'admin-role-container'}>
+  <div className={isPageDimmed? 'admin-role-container page-dimmed' : 'admin-role-container'}>
     <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
     <div className='admin-role'>
         <PageTitle pageTitle = {pageTitle} />
@@ -60,8 +46,11 @@ useEffect(() => {
         </div>
     </div>
   </div>
-  :
-  <Login />}
+
+  {!state &&
+    <div className='spinner-x'>
+        <div className='loading'><Spinner /></div>
+    </div>}
   </>
 }
 

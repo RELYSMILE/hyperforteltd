@@ -7,8 +7,8 @@ import NavBar from '../NavBar'
 import save from '../../assets/icons/save.png'
 import './AddNewBook.css'
 import { collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, where } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
 import { AppContext } from '../Context/Context';
+import Spinner from '../../Components/Spinner';
 const AddNewBook = () => {
     const {currentAdmin, publicationLocation} = useContext(AppContext)
     const [bookCredentials, setBookCredentials] = useState([])
@@ -18,14 +18,11 @@ const AddNewBook = () => {
     const [typeOfPublication, setTypeOfPublication] = useState([])
     const [publicationBySubject, setPublicationBySubject] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    const [currentUser, setCurrentUser] = useState(null)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
     const [authorWarning, setAuthorWarning] = useState(false)
-    // const [bookSubTitleQuery, setBookSubTitleQuery] = useState(false)
-    // const [bookSubTitle, setBookSubTitle] = useState('')
-    const [isSubTitlePresent, setIsSubTitlePresent] = useState('')
     const [isBookPresent, setIsBookPresent] = useState(false)
     const [isBookLoan, setIsBookLoan] = useState(false)
+    const [state, setState] = useState(false)
 
     const bucketNum = Array.from({ length: 100 }, (_, i) => ({
         value: i + 1,
@@ -125,25 +122,13 @@ const AddNewBook = () => {
             setIsLoading(false)
         }
     }
-
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth,async (user) => {
-          if (user) {
-            const userDoc = await getDoc(doc(db, 'admin', user.uid));
-            if (userDoc.exists()) {
-              setCurrentUser(userDoc.data());
-            } else {
-              console.log('No such user data!');
-            }
-          } else {
-            setCurrentUser(null); // user signed out
-          }
-        });
-    
-        return () => unsubscribe();
+        setTimeout(() => {
+            setState(true)
+        }, 2000)
     }, []);
   return <>
-  {currentUser? <div className={isPageDimmed? 'new-book-container page-dimmed' : 'new-book-container'}>
+    <div className={isPageDimmed? 'new-book-container page-dimmed' : 'new-book-container'}>
      <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
      <div className='new-book'>
@@ -263,8 +248,11 @@ const AddNewBook = () => {
         </div>
      </div>
   </div>
-    :
-  <Login />}
+
+  {!state &&
+    <div className='spinner-x'>
+        <div className='loading'><Spinner /></div>
+    </div>}
 </>}
 
 export default AddNewBook

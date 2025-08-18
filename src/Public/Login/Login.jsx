@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { auth, db, provider } from '../../firebase/config'
 import { toast } from 'react-toastify';
-import spinner from '../../assets/spinner/spinner.gif'
+import Spinner from '../../Components/Spinner';
 import Navbar from '../Navbar/Navbar'
 import './Login.css'
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -69,7 +69,6 @@ const Login = () => {
               }
             }, [])
   return (<>
-  {state?
   <div className='app-login-container'>
     <div className='nav'><Navbar /></div>
 
@@ -85,11 +84,10 @@ const Login = () => {
         </form>
     </div>
   </div>
-  :
-      <div className='spinner'>
-          <img src={spinner} />
-          <div className='name'>ECOGOV/EUR-AFRICA</div>
-      </div>}
+  {!state &&
+    <div className='spinner-x'>
+        <div className='loading'><Spinner /></div>
+    </div>}
   </>)
 }
 

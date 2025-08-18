@@ -20,6 +20,7 @@ import ViewBookDetails from '../../Components/Admin/ViewBookDetails'
 import { toast } from 'react-toastify'
 import { onAuthStateChanged } from 'firebase/auth'
 import { AppContext } from '../Context/Context'
+import Spinner from '../../Components/Spinner'
 
 const LibraryManagement = () => {
     const {publicationLocation} = useContext(AppContext)
@@ -31,8 +32,8 @@ const LibraryManagement = () => {
     const [morePanelClassName, setMorePanelClassName] = useState('')
     const [appearancesettingData, setAppearancesettingsData] = useState([])
     const [settingsTogglefetch, setSettingsToggleFetch] = useState([])
-    const [currentUser, setCurrentUser] = useState(null)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
+    const [state, setState] = useState(false)
     const navigate = useNavigate()
 
     const bookSubject = [
@@ -95,7 +96,7 @@ const LibraryManagement = () => {
             })
         }
     }
-     useEffect(() =>{
+    useEffect(() =>{
         const fetchBooks = async () => {
           try {
             const databaseRef = collection(db, 'books');
@@ -109,22 +110,26 @@ const LibraryManagement = () => {
             console.error('Error fetching users:', error);
           }
         };
-        fetchBooks()
-    }, [])
 
-     useEffect(() => {
-            const fetchSettings = async() => {
-                try{
-                    const appearanceSettingsData = await getDoc(doc(db, 'settings', '4hmGZ3GjgfK7bDbyC14g'))
-                    if(appearanceSettingsData.exists()){
-                        setAppearancesettingsData(appearanceSettingsData.data())
-                    }
-                }catch(error){
-                    console.log(error)
+        const fetchSettings = async() => {
+         try{
+            const appearanceSettingsData = await getDoc(doc(db, 'settings', '4hmGZ3GjgfK7bDbyC14g'))
+            if(appearanceSettingsData.exists()){
+                    setAppearancesettingsData(appearanceSettingsData.data())
+            }
+            }catch(error){
+                console.log(error)
                 }
             }
-            fetchSettings()
-        }, [])
+
+        setTimeout(() => {
+            setState(true)
+        }, 2000)
+
+
+        fetchSettings()
+        fetchBooks()
+    }, [])
     
      useEffect(() => {
             const fetchSettings = async() => {
@@ -138,30 +143,14 @@ const LibraryManagement = () => {
                 }
             }
             fetchSettings()
-        })
+    })
 
         const handleScroll = () => {
             console.log(window.scrollY)
         }
         window.addEventListener('scroll', handleScroll)
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth,async (user) => {
-          if (user) {
-            const userDoc = await getDoc(doc(db, 'admin', user.uid));
-            if (userDoc.exists()) {
-              setCurrentUser(userDoc.data());
-            } else {
-              console.log('No such user data!');
-            }
-          } else {
-            setCurrentUser(null); // user signed out
-          }
-        });
-        return () => unsubscribe();
-      }, []);
   return <>
-  {currentUser? <div className={isPageDimmed? 'librarymanagement-container page-dimmed' : 'librarymanagement-container'}>
+  <div className={isPageDimmed? 'librarymanagement-container page-dimmed' : 'librarymanagement-container'}>
         <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
         <div  className='librarymanagement'>
@@ -275,9 +264,10 @@ const LibraryManagement = () => {
             <ViewBookDetails getBookID = {getBookID} handleCloseViewBookDetails = {handleCloseViewBookDetails} />}
         </div>
   </div>
-  :
-  <Login />}
-  
+  {!state &&
+    <div className='spinner-x'>
+        <div className='loading'><Spinner /></div>
+    </div>}
 </>}
 
 export default LibraryManagement

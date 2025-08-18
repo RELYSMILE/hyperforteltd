@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import {auth, db}  from '../../firebase/config'
 import { toast } from 'react-toastify';
 import NavBar from '../NavBar'
-import Login from '../../Public/Login/Login';
 import call from '../../assets/icons/call.png'
 import save from '../../assets/icons/save.png'
 import clock from '../../assets/icons/clock.png'
@@ -11,7 +10,7 @@ import user from '../../assets/icons/user.png'
 import PageTitle from '../../Components/Admin/PageTitle'
 import '../ManageAdmin/ManageAdmin.css'
 import './BookStatus.css'
-import {onAuthStateChanged} from 'firebase/auth';
+import Spinner from '../../Components/Spinner'
 import { collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 
 const BookStatus = () => {
@@ -22,7 +21,6 @@ const BookStatus = () => {
     const [bookDetail, setBookDetail] = useState([])
     const [adminsUpdateComponent, setAdminsUpdateComponent] = useState(false)
     const [appearancesettingData, setAppearancesettingsData] = useState([])
-    const [currentUser, setCurrentUser] = useState(null)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
 
     const [loanedBooks, setLoanedBooks] = useState([])
@@ -30,7 +28,7 @@ const BookStatus = () => {
     const [isBookLoan, setIsBookLoan] = useState(true)
 
     const [loanBookUpdateDropDown, setLoanBookUpdateDropDown] = useState(false)
-
+    const [state, setState] = useState(false)
     const handlePresent = () => {
         setIsBookPresent(true)
         setLoanBookUpdateDropDown(false)
@@ -110,25 +108,16 @@ const BookStatus = () => {
         fetchAllLoanedBooks()
     })
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth,async (user) => {
-          if (user) {
-            const userDoc = await getDoc(doc(db, 'admin', user.uid));
-            if (userDoc.exists()) {
-              setCurrentUser(userDoc.data());
-            } else {
-              console.log('No such user data!');
-            }
-          } else {
-            setCurrentUser(null); // user signed out
-          }
-        });
-    
-        return () => unsubscribe();
-      }, []);
+  useEffect(() => {
+
+    setTimeout(() => {
+      setState(true)
+    }, 2000)
+
+  }, []);
 
   return <>
-  {currentUser? <div className={isPageDimmed? 'admin-management-container page-dimmed' : 'admin-management-container'}>
+  <div className={isPageDimmed? 'admin-management-container page-dimmed' : 'admin-management-container'}>
         <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
         <div className='admin-management'>
@@ -218,10 +207,10 @@ const BookStatus = () => {
 
     </div>
 </div>
-
-:
-  <Login />}
-
+  {!state &&
+    <div className='spinner-x'>
+    <div className='loading'><Spinner /></div>
+  </div>}
 </>
 }
 

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import {auth, db}  from '../../firebase/config'
 import { toast } from 'react-toastify'
-import Login from '../../Public/Login/Login'
 import NavBar from '../NavBar'
 import PageTitle from '../../Components/Admin/PageTitle'
 import save from '../../assets/icons/save.png'
@@ -10,10 +9,12 @@ import palette from '../../assets/icons/palette.png'
 import extension from '../../assets/icons/extension.png'
 import './Settinggs.css'
 import { arrayUnion, doc, getDoc, serverTimestamp, updateDoc } from 'firebase/firestore'
-import { onAuthStateChanged } from 'firebase/auth'
+import Spinner from '../../Components/Spinner'
+import { AppContext } from '../Context/Context'
+
 
 const Settinggs = () => {
-    const [currentUser, setCurrentUser] = useState(null)
+    const {currentAdmin} = useContext(AppContext)
     const [pageTitle, setPageTitle] = useState('Settings')
     const [generalActiveStyle, setGeneralActiveStyle] = useState(true)
     const [apearanceActiveStyle, setApearanceActiveStyle] = useState(false)
@@ -32,6 +33,7 @@ const Settinggs = () => {
     const [toggleDeleteAdminSettings, setToggleDeleteAdminSettings] = useState(true)
     const [toggleAddAdminSettings, setToggleAddAdminSettings] = useState(true)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
+    const [state, setState] = useState(false)
     const [newLocation, setNewLocation] = useState('')
 
     const handleGeneralActiveStyle = () => {
@@ -164,6 +166,7 @@ const Settinggs = () => {
         }
     }
 
+
     useEffect(() => {
         const fetchSettings = async() => {
             try{
@@ -180,6 +183,10 @@ const Settinggs = () => {
                 console.log(error)
             }
         }
+
+    setTimeout(() => {
+      setState(true)
+    }, 2000)
         fetchSettings()
     },[])
     useEffect(() => {
@@ -196,25 +203,8 @@ const Settinggs = () => {
         fetchSettings()
     })
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth,async (user) => {
-          if (user) {
-            const userDoc = await getDoc(doc(db, 'admin', user.uid));
-            if (userDoc.exists()) {
-              setCurrentUser(userDoc.data());
-            } else {
-              console.log('No such user data!');
-            }
-          } else {
-            setCurrentUser(null); // user signed out
-          }
-        });
-    
-        return () => unsubscribe();
-    }, []);
-
   return <>
-  {currentUser? <div className={isPageDimmed? 'settings-container page-dimmed' : 'settings-container'}>
+  <div className={isPageDimmed? 'settings-container page-dimmed' : 'settings-container'}>
     <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
     <div className='settings'>
         <PageTitle pageTitle = {pageTitle} />
@@ -247,7 +237,7 @@ const Settinggs = () => {
             <div className='general-settings'>
                 <div className='title'>General Settings</div>
                 <div className='info'>Manage app basic information and configuration</div>
-                {currentUser?.adminRole === 'super admin'?
+                {currentAdmin?.adminRole === 'super admin'?
                 <>
                     <div className='app-name-container'>
                         <label>App name</label>
@@ -259,7 +249,7 @@ const Settinggs = () => {
                         <input onChange={(e) => setNewLocation(e.target.value)} type="text" placeholder='Add extra Location here' />
                     </div>
                 </>:
-                <div className='access'>Access denied, {currentUser?.username} You are not authorized to perform this operation.</div>}
+                <div className='access'>Access denied, {currentAdmin?.username} You are not authorized to perform this operation.</div>}
             </div>}
             {featuresActiveStyle &&
 
@@ -268,7 +258,7 @@ const Settinggs = () => {
                 <div className='info'>Enable or disable specific features on your app</div>
 
                 <div className='feature-container'>
-                    {currentUser?.adminRole === 'super admin' &&
+                    {currentAdmin?.adminRole === 'super admin' &&
                     <div className='settings-container-state'>
                         <div className='settings-state'>
                             <div className='title ft'>Update Publication</div>
@@ -282,7 +272,7 @@ const Settinggs = () => {
                             }
                         </div>
                     </div>}
-                    {currentUser?.adminRole === 'super admin' &&
+                    {currentAdmin?.adminRole === 'super admin' &&
                     <div className='settings-container-state'>
                         <div className='settings-state'>
                             <div className='title ft'>Delete Publication</div>
@@ -309,7 +299,7 @@ const Settinggs = () => {
                             }
                         </div>
                     </div>
-                    {currentUser?.adminRole === 'super admin' &&
+                    {currentAdmin?.adminRole === 'super admin' &&
                     <div className='settings-container-state'>
                         <div className='settings-state'>
                             <div className='title ft'>Update admin</div>
@@ -323,7 +313,7 @@ const Settinggs = () => {
                             }
                         </div>
                     </div>}
-                    {currentUser?.adminRole === 'super admin' &&
+                    {currentAdmin?.adminRole === 'super admin' &&
                     <div className='settings-container-state'>
                         <div className='settings-state'>
                             <div className='title ft'>Delete admin</div>
@@ -337,7 +327,7 @@ const Settinggs = () => {
                             }
                         </div>
                     </div>}
-                    {currentUser?.adminRole === 'super admin' &&
+                    {currentAdmin?.adminRole === 'super admin' &&
                     <div className='settings-container-state'>
                         <div className='settings-state'>
                             <div className='title ft'>Add admin</div>
@@ -391,9 +381,11 @@ const Settinggs = () => {
         </div>
     </div>
   </div>
-    :
-  <Login />}
 
+  {!state &&
+    <div className='spinner-x'>
+        <div className='loading'><Spinner /></div>
+    </div>}
 </>}
 
 export default Settinggs

@@ -14,6 +14,7 @@ import PageTitle from '../../Components/Admin/PageTitle'
 import './ManageAdmin.css'
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
 import { collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
+import Spinner from '../../Components/Spinner'
 
 const ManageAdmin = () => {
     const[userCredential, setUserCredential] = useState({})
@@ -31,6 +32,7 @@ const ManageAdmin = () => {
     const [settingsTogglefetch, setSettingsToggleFetch] = useState([])
     const [currentUser, setCurrentUser] = useState(null)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
+    const [state, setState] = useState(false)
 
     const handleCloseForm = () => {
         setFormPanel(false)
@@ -209,41 +211,29 @@ const ManageAdmin = () => {
             console.error('Error fetching users:', error);
           }
         };
-        fetchAllAdmin()
+
+
+        const fetchSettings = async() => {
+          try{
+              const appearanceSettingsData = await getDoc(doc(db, 'settings', '4hmGZ3GjgfK7bDbyC14g'))
+              if(appearanceSettingsData.exists()){
+                  setAppearancesettingsData(appearanceSettingsData.data())
+              }
+            }catch(error){
+              console.log(error)
+          }
+      }
+
+      setTimeout(() => {
+        setState(true)
+      }, 2000)
+
+      fetchAllAdmin()
+      fetchSettings()
     }, [])
 
-        useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth,async (user) => {
-          if (user) {
-            const userDoc = await getDoc(doc(db, 'admin', user.uid));
-            if (userDoc.exists()) {
-              setCurrentUser(userDoc.data());
-            } else {
-              console.log('No such user data!');
-            }
-          } else {
-            setCurrentUser(null); // user signed out
-          }
-        });
-    
-        return () => unsubscribe();
-      }, []);
 
     useEffect(() => {
-                const fetchSettings = async() => {
-                    try{
-                        const appearanceSettingsData = await getDoc(doc(db, 'settings', '4hmGZ3GjgfK7bDbyC14g'))
-                        if(appearanceSettingsData.exists()){
-                            setAppearancesettingsData(appearanceSettingsData.data())
-                        }
-                    }catch(error){
-                        console.log(error)
-                    }
-                }
-                fetchSettings()
-            }, [])
-
-       useEffect(() => {
               const fetchSettings = async() => {
                   try{
                       const SettingsData = await getDoc(doc(db, 'settings', 'QnD2IfVSNvBI7kY4xEtI'))
@@ -255,9 +245,9 @@ const ManageAdmin = () => {
                   }
               }
               fetchSettings()
-          })
+    })
   return <>
-  {currentUser? <div className={isPageDimmed? 'admin-management-container page-dimmed' : 'admin-management-container'}>
+  <div className={isPageDimmed? 'admin-management-container page-dimmed' : 'admin-management-container'}>
         <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
         <div className='admin-management'>
@@ -415,9 +405,10 @@ const ManageAdmin = () => {
       </div>
 </div>
 
-:
-  <Login />}
-
+{!state &&
+    <div className='spinner-x'>
+        <div className='loading'><Spinner /></div>
+    </div>}
 </>}
 
 export default ManageAdmin

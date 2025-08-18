@@ -9,6 +9,7 @@ import '../AddNewBook/AddNewBook.css'
 import { useParams } from 'react-router-dom';
 import { collection, doc, getDoc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
+import Spinner from '../../Components/Spinner'
 import { AppContext } from '../Context/Context';
 
 const UpdateBook = () => {
@@ -25,6 +26,7 @@ const UpdateBook = () => {
     const [bookSubTitle, setBookSubTitle] = useState('')
     const [typeOfPublication, setTypeOfPublication] = useState([])
     const [publicationBySubject, setPublicationBySubject] = useState([])
+    const [state, setState] = useState(false)
     const {bookID} = useParams()
 
     const bookSubject = [
@@ -98,37 +100,24 @@ const UpdateBook = () => {
     }
 
     useEffect(() => {
-         const fetchBookData = async() => {
-                    try{
-                        const book =  await getDoc(doc(db, 'books', bookID))
-                        if(book.exists()){
-                        setBookData(book.data())
-                    }
-                    }catch(error){
-                        console.log(error)
-                    }
+        const fetchBookData = async() => {
+            try{
+                const book =  await getDoc(doc(db, 'books', bookID))
+                if(book.exists()){
+                    setBookData(book.data())
                 }
-                fetchBookData()
+            }catch(error){
+            console.log(error)
+        }
+    }
+    setTimeout(() => {
+      setState(true)
+    }, 2000)
+    fetchBookData()
     }, [])
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth,async (user) => {
-          if (user) {
-            const userDoc = await getDoc(doc(db, 'admin', user.uid));
-            if (userDoc.exists()) {
-              setCurrentUser(userDoc.data());
-            } else {
-              console.log('No such user data!');
-            }
-          } else {
-            setCurrentUser(null); // user signed out
-          }
-        });
-    
-        return () => unsubscribe();
-      }, []);
   return <>
-  {currentUser? <div className='new-book-container'>
+    <div className='new-book-container'>
      <NavBar setPageTitle = {setPageTitle} />
 
      <div className='new-book'>
@@ -218,9 +207,10 @@ const UpdateBook = () => {
         </div>
      </div>
   </div>
-  :
-  <Login />}
-  
+  {!state &&
+    <div className='spinner-x'>
+        <div className='loading'><Spinner /></div>
+    </div>}
 </>}
 
 export default UpdateBook

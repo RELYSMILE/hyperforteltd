@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import searchGreen from '../../assets/icons/searchGreen.png'
-import spinner from '../../assets/spinner/spinner.gif'
+import Spinner from '../../Components/Spinner'
 import Navbar from '../Navbar/Navbar'
 import { auth, db } from '../../firebase/config'
 import './Books.css'
@@ -39,7 +39,6 @@ const Books = () => {
     }, [])
 
   return (<>
-  {state?
     <div className='app-books-container'>
         <div className='nav-Bar'><Navbar /></div><br /><br /><br /><br />
 
@@ -85,12 +84,11 @@ const Books = () => {
         ))}
       </div>
     </div>
-    :
-        <div className='spinner'>
-          <img src={spinner} />
-          <div className='name'>ECOGOV/EUR-AFRICA</div>
-        </div>}
-      </>)
+    {!state &&
+      <div className='spinner-x'>
+          <div className='loading'><Spinner /></div>
+      </div>}
+  </>)
 }
 
 export default Books

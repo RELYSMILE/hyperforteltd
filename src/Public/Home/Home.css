@@ -39,8 +39,8 @@
   flex-direction: column;
 
   .name{
-    font-size: 1.6rem;
-    color: teal;
+    font-size: 1.2rem;
+    color: #adadad;
     font-family: 'Gotham';
   }
 

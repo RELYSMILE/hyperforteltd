@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../NavBar'
-import Login from '../../Public/Login/Login'
 import totalbooks from '../../assets/icons/totalbooks.png'
 import security from '../../assets/icons/security.png'
 import PageTitle from '../../Components/Admin/PageTitle'
 import './Dashboard.css'
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
 import { auth, db } from '../../firebase/config'
-import { onAuthStateChanged } from 'firebase/auth'
+import Spinner from '../../Components/Spinner'
 
 const Dashboard = () => {
     const [totalBooksNum, setTotalBooksNum] = useState(0)
     const [totalAdmin, setTotalAdmin] = useState(0)
-    const [currentUser, setCurrentUser] = useState(null)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
+    const [state, setState] = useState(false)
     const dashboard = [
         {title: 'Total Publication', num: totalBooksNum, icon: totalbooks},
         {title: 'Total Admin', num: totalAdmin, icon: security},
@@ -22,7 +21,7 @@ const Dashboard = () => {
 
 
     useEffect(() =>{
-        const fetchBooks = async() => {
+      const fetchBooks = async() => {
             try{
                 const databaseRef = collection(db, 'books')
                  const totalBooks = await getDocs(databaseRef)
@@ -30,40 +29,28 @@ const Dashboard = () => {
             }catch(error){
                 console.log(error)
             }
-        }
-        fetchBooks()
-    }, [])
-    useEffect(() =>{
-        const fetchAdmin = async() => {
-            try{
+      }
+
+      const fetchAdmin = async() => {
+        try{
                 const databaseRef = collection(db, 'admin')
                  const totalAdmin = await getDocs(databaseRef)
                 setTotalAdmin(totalAdmin.size)
             }catch(error){
                 console.log(error)
             }
-        }
-        fetchAdmin()
+      }
+
+      setTimeout(() => {
+        setState(true)
+      }, 2000)
+
+      
+      fetchAdmin()
+      fetchBooks()
     }, [])
 
-    useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth,async (user) => {
-      if (user) {
-        const userDoc = await getDoc(doc(db, 'admin', user.uid));
-        if (userDoc.exists()) {
-          setCurrentUser(userDoc.data());
-        } else {
-          console.log('No such user data!');
-        }
-      } else {
-        setCurrentUser(null); // user signed out
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
   return <>
-  {currentUser?
   <div className={isPageDimmed? 'dashboard-container page-dimmed' : 'dashboard-container'}>
     <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
     <div className='dashboard'>
@@ -81,8 +68,12 @@ const Dashboard = () => {
         </div>
     </div>
   </div>
-  :
-  <Login />}
+
+  {!state &&
+    <div className='spinner-x'>
+        <div className='loading'><Spinner /></div>
+    </div>
+  }
   </>
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
-import spinner from '../../assets/spinner/spinner.gif'
+import Spinner from '../../Components/Spinner'
 import './About.css'
 const About = () => {
     const [state, setState] = useState(false)
@@ -14,7 +14,7 @@ const About = () => {
           }
         }, [])
   return (<>
-  {state?
+
   <div className='app-about-container'>
     <div className='nav'><Navbar /></div>
     
@@ -56,10 +56,9 @@ const About = () => {
         <a href="mailto:ecogovresearch@gmail.com">ecogovresearch@gmail.com</a><br /><br />
     </div>
   </div>
-  :
-    <div className='spinner'>
-        <img src={spinner} />
-        <div className='name'>ECOGOV/EUR-AFRICA</div>
+    {!state &&
+    <div className='spinner-x'>
+        <div className='loading'><Spinner /></div>
     </div>}
 </>)
 }
