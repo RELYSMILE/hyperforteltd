@@ -52,6 +52,7 @@ const UpdateBook = () => {
         {subject: 'Law'},
         {subject: 'Agricultural Sciences'},
         {subject: 'Natural Science, Maths, Statistics'},
+        {subject: 'Autobiography/Biography'},
     ]
 
     const HandleBookCredentials = (e) => {

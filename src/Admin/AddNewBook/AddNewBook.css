@@ -47,10 +47,11 @@
             small{
                 display: flex;
                 align-items: center;
-                color: #ff0000b0;
+                color: teal;
 
                 span{
                     font-size: 1.5rem;
+                    color: #ff0000;
                 }
             }
 

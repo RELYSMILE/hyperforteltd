@@ -71,6 +71,7 @@ const AddNewBook = () => {
         {subject: 'Law'},
         {subject: 'Agricultural Sciences'},
         {subject: 'Natural Science, Maths, Statistics'},
+        {subject: 'Autobiography/Biography'},
     ]
 
     const HandleAddNewBook = async() => {
@@ -138,20 +139,12 @@ const AddNewBook = () => {
             <div className='form-field'>
                 <label htmlFor="">Publication title</label>
                 <input style={{textTransform: 'capitalize'}} onChange={(e) => HandleBookCredentials(e)} type="text" name='title' placeholder='Enter book title' />
-                {/* {isSubTitlePresent && <input className='sub-title' onChange={(e) => setBookSubTitle(e.target.value)} type="text"  placeholder='Subtitle' />}
-                <div className='subtitle-Container'>
-                    {bookSubTitleQuery && 
-                    <>
-                        <small className='query'>Does this book have subtitle?</small>
-                        <div className='checkbox-container'>{isSubTitlePresent? 'Yes' : 'No'} <input onChange={(e) => setIsSubTitlePresent(e.target.checked)} type="checkbox"  /></div>
-                    </>}
-                </div> */}
             </div>
             <div onClick={handleAuthorWarning} className='form-field'>
                 <label htmlFor="">Author/Editor</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='author' placeholder='Name of the Author or Editor' />
                 {authorWarning &&
-                <small><span>*</span> Authors'/Editors' names should begin with the lastname in capital letter, followed by the other names — for example: BELL, Judith.</small>}
+                <marquee><small><span>*</span> Authors'/Editors' names should begin with the lastname in capital letter, followed by the other names — for example: BELL, Judith.</small></marquee>}
             </div>
             <div className='form-field'>
                 <label htmlFor="">Publication tag/Call mark/Call tag</label>
