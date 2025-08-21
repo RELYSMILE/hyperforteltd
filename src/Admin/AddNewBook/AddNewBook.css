@@ -33,9 +33,11 @@
     background-color: #f9f9f9;
 
     .new-book{
+        overflow-y: scroll;
         width: 100%;
 
         .form-container{
+            position: relative;
             border: 1px solid #d9e6d6c4;
             width: 80%;
             margin: 0 auto;
@@ -43,6 +45,7 @@
             padding: 1.5rem;
             box-shadow: -1px 5px 10px #c7c7c7;
             font-family: 'Gotham';
+
 
             small{
                 display: flex;
@@ -115,20 +118,6 @@
                     }
                 }
 
-                .subtitle-Container{
-                    display: flex;
-                    gap: .5rem;
-                    align-items: center;
-                    
-                    small{
-                        color: rgb(25, 0, 255);
-                    }
-
-                    .checkbox-container{
-                        color: teal;
-                    }
-                }
-
                 input, select{
                     background: transparent;
                     border: 1px solid #d9e6d6c4;
@@ -146,7 +135,7 @@
                     cursor: pointer;
                 }
             }
-            .save-container{
+            .save-container, .disabled{
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -159,6 +148,20 @@
                 cursor: pointer;
                 outline: none;
                 border: 1px solid teal;
+            }
+            .disabled{
+                background: #808080;
+                border: none;
+            }
+
+            .sweet-loading-custom{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                width: 60%;
             }
         }
     }

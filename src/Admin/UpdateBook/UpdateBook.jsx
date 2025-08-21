@@ -11,6 +11,7 @@ import { collection, doc, getDoc, serverTimestamp, setDoc, updateDoc } from 'fir
 import { onAuthStateChanged } from 'firebase/auth';
 import Spinner from '../../Components/Spinner'
 import { AppContext } from '../Context/Context';
+import Loading from '../../Components/Admin/Loading';
 
 const UpdateBook = () => {
     const {publicationLocation} = useContext(AppContext)
@@ -134,7 +135,7 @@ const UpdateBook = () => {
                 <label htmlFor="">Author/Editor</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='author' placeholder={bookData.author} />
                 {authorWarning &&
-                <small><span>*</span> Authors'/Editors' names should begin with the surname, followed by the other names — for example: Bell, Judith.</small>}
+                <marquee><small><span>*</span> Authors'/Editors' names should begin with the surname, followed by the other names — for example: Bell, Judith.</small></marquee>}
             </div>
             <div className='form-field'>
                 <label htmlFor="">Publication tag/Call mark/Call tag</label>
@@ -200,11 +201,12 @@ const UpdateBook = () => {
                     ))}
                 </select>
             </div>
-            <button disabled={isLoading} onClick={HandleUpdateBook} className='save-container'>
+            <button disabled={isLoading} onClick={HandleUpdateBook} className={isLoading? 'disabled':'save-container'}>
                 <img src={save} alt="" />
-                <div className='save'>{isLoading? 'Loading...' : 'Update'}</div>
+                <div className='save'>{isLoading? 'Saving...' : 'Save'}</div>
             </button>
             </div>
+            {isLoading && <Loading />}
         </div>
      </div>
   </div>

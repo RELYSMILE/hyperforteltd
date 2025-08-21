@@ -9,6 +9,7 @@ import './AddNewBook.css'
 import { collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, where } from 'firebase/firestore';
 import { AppContext } from '../Context/Context';
 import Spinner from '../../Components/Spinner';
+import Loading from '../../Components/Admin/Loading';
 const AddNewBook = () => {
     const {currentAdmin, publicationLocation} = useContext(AppContext)
     const [bookCredentials, setBookCredentials] = useState([])
@@ -233,11 +234,12 @@ const AddNewBook = () => {
                 }
                 
             </div>
-            <button disabled={isLoading} onClick={HandleAddNewBook} className='save-container'>
+            <button disabled={isLoading} onClick={HandleAddNewBook} className={isLoading? 'disabled':'save-container'}>
                 <img src={save} alt="" />
-                <div className='save'>{isLoading? 'Loading...' : 'Save'}</div>
+                <div className='save'>{isLoading? 'Saving...' : 'Save'}</div>
             </button>
             </div>
+            {isLoading && <Loading />}
         </div>
      </div>
   </div>
