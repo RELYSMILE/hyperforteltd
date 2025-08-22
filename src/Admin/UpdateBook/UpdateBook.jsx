@@ -24,7 +24,6 @@ const UpdateBook = () => {
     const[bookData, setBookData] = useState([])
     const [authorWarning, setAuthorWarning] = useState(false)
     const [bookSubTitleQuery, setBookSubTitleQuery] = useState(false)
-    const [bookSubTitle, setBookSubTitle] = useState('')
     const [typeOfPublication, setTypeOfPublication] = useState([])
     const [publicationBySubject, setPublicationBySubject] = useState([])
     const [state, setState] = useState(false)

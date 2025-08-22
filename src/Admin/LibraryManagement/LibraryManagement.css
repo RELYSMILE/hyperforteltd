@@ -109,11 +109,10 @@ body{
         .search-filter{
             display: flex;
             align-items: center;
-            gap: 1rem;
             width: 97%;
             margin-top: 1rem;
+            border: 1px solid #e8ebeb;
             .search{
-                border: 1px solid #e8ebeb;
                 flex: 1;
                 display: flex;
                 align-items: center;
@@ -124,13 +123,17 @@ body{
                     height: 1.4rem;
                 }
                 input{
-                    padding: .6rem .4rem ;
+                    padding: .75rem .4rem ;
                     background: transparent;
                     width: 100%;
                     outline: none;
                     border: none;
                     color: teal;
                     font-size: 16px;
+
+                    &:focus{
+                    border-bottom: 1px solid teal;
+                    }
 
 
                     &::placeholder{
@@ -143,10 +146,11 @@ body{
             .filter{
                 display: flex;
                 align-items: center;
-                border: 1px solid #e8ebeb;
+                border-left: 1px solid #e8ebeb;
                 gap: .4rem;
                 width: 10rem;
                 overflow: hidden;
+                padding: .6rem 0;
                 img{
                     width: 1.4rem;
                     height: 1.4rem;

@@ -13,6 +13,7 @@ import totalbooks from '../assets/icons/totalbooks.png'
 import menu from '../assets/icons/menu.png'
 import close from '../assets/icons/close.png'
 import settings from '../assets/icons/settings.png'
+import logoutIcon from '../assets/icons/logout.png'
 import { doc, getDoc } from 'firebase/firestore'
 import { auth, db } from '../firebase/config'
 import { useNavigate } from 'react-router-dom'
@@ -115,7 +116,10 @@ const NavBar = ({setPageTitle, setIsPageDimmed}) => {
             </div>
         </Link>
         ))}
-        <div className='logout-button' onClick={handleSignOut}>Logout</div>
+        <div onClick={handleSignOut} className='logout-button'>
+            <img src={logoutIcon} alt="logout" />
+            <div>Logout</div>
+        </div>
     </div>
   </div>
 
