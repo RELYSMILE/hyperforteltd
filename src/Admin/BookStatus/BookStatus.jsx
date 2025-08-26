@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import {auth, db}  from '../../firebase/config'
 import { toast } from 'react-toastify';
 import NavBar from '../NavBar'
@@ -11,16 +11,17 @@ import PageTitle from '../../Components/Admin/PageTitle'
 import '../ManageAdmin/ManageAdmin.css'
 import './BookStatus.css'
 import Spinner from '../../Components/Spinner'
+import { AppContext } from '../Context/Context';
 import { collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 
 const BookStatus = () => {
+    const {currentLightDarkMode, appearancesettingData} =  useContext(AppContext)
     const[bookCredentials, setBookCredentials] = useState({})
     const [pageTitle, setPageTitle] = useState('Loaned Publication')
     const [isLoading, setIsLoading] = useState(false)
 
     const [bookDetail, setBookDetail] = useState([])
     const [adminsUpdateComponent, setAdminsUpdateComponent] = useState(false)
-    const [appearancesettingData, setAppearancesettingsData] = useState([])
     const [isPageDimmed, setIsPageDimmed] = useState(false)
 
     const [loanedBooks, setLoanedBooks] = useState([])
@@ -117,19 +118,19 @@ const BookStatus = () => {
   }, []);
 
   return <>
-  <div className={isPageDimmed? 'admin-management-container page-dimmed' : 'admin-management-container'}>
+  <div className={isPageDimmed? 'admin-management-container page-dimmed' : currentLightDarkMode.lightMode === false? 'admin-management-container book-status-container-dark-mode': 'admin-management-container'}>
         <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
         <div className='admin-management'>
             <PageTitle pageTitle = {pageTitle} />
 
     {adminsUpdateComponent &&
-    <div className='form-container'>
+    <div className={currentLightDarkMode.lightMode === false? 'form-container form-container-dark-mode':'form-container' }>
                     <div className='nav'>
                         <img onClick={handleCloseAdminsUpdateComponent} src={piarrowfoward} alt="" />
                     </div>
-                <div className='book-status'>
-                    <div className='query query-x'>Please confirm if this book has been returned.</div>
+                <div className={currentLightDarkMode.lightMode === false? ' book-status book-status-dark-mode' : 'book-status'}>
+                    <div className='query query-x'>Please confirm if this publication has been returned.</div>
                     <div className='radio-selector'>
                         <div onClick={handlePresent} className={isBookPresent? 'radio radio-active': 'radio'}>Yes</div>
                         <div onClick={handleLoan} className={isBookLoan? 'radio radio-active': 'radio'}>No</div>
@@ -139,34 +140,34 @@ const BookStatus = () => {
                 <>
                     <div className='form-field'>
                         <label htmlFor="">Full Name</label>
-                        <div className='form-input'>
+                        <div className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                             <img src={user} alt="" />
                             <input onChange={handleBookCredentials} type="text" name="collectorName" id="" placeholder={bookDetail.collectorName} />
                         </div>
                     </div>
                     <div className='form-field'>
                         <label htmlFor="">Phone</label>
-                        <div className='form-input'>
+                        <div className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                             <img src={call} alt="" />
                             <input onChange={handleBookCredentials} type="number" name="collectorPhone" id="" placeholder={bookDetail.collectorPhone} />
                         </div>
                     </div>
                     <div className='form-field'>
                         <label htmlFor="">Date of Collection</label>
-                        <div className='form-input'>
+                        <div className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                             <img src={clock} alt="" />
                             <input onChange={handleBookCredentials} type="date" name="collectedDate" id="" placeholder={bookDetail.collectedDate} />
                         </div>
                     </div>
                     <div className='form-field'>
                         <label htmlFor="">Date of return</label>
-                        <div className='form-input'>
+                        <div className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                             <img src={clock} alt="" />
                             <input onChange={handleBookCredentials} type="date" name="returnDate" id="" placeholder={bookDetail.returnDate} />
                         </div>
                     </div>
                 </>}
-                    <div onClick={updateBook} className='btn-add-admin btn-save-status'>
+                    <div onClick={updateBook} className={currentLightDarkMode.lightMode === false? 'btn-add-admin btn-save-status btn-add-admin-dark-mode' : 'btn-add-admin btn-save-status'}>
                       <div className='btn-save'>
                         <img src={save} alt="icon" />
                         <div div className=''>{isLoading? 'Processing...' : 'Save'}</div>
@@ -175,7 +176,7 @@ const BookStatus = () => {
     </div>}
     {!adminsUpdateComponent &&
     <div className='admin'>
-    <table className="admin-table">
+    <table className={currentLightDarkMode.lightMode === false? 'admin-table admin-table-dark-mode' : 'admin-table'}>
         <thead>
         <tr>
             <th>ID</th>

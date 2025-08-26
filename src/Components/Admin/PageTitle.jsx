@@ -7,9 +7,9 @@ import './PageTitle.css'
 
 
 const PageTitle = ({pageTitle}) => {
-  const {overDueBooksLen} = useContext(AppContext)
+  const {overDueBooksLen, currentLightDarkMode} = useContext(AppContext)
   return (
-    <div className='pageTitle-notification'>
+    <div className={currentLightDarkMode.lightMode === false? 'pageTitle-notification pageTitle-notification-dark-mode' : 'pageTitle-notification'}>
       <div className='pageTitle'>{pageTitle}</div>
       <div className='notification'>
         {overDueBooksLen > 0?

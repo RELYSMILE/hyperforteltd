@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import NavBar from '../NavBar'
 import totalbooks from '../../assets/icons/totalbooks.png'
 import security from '../../assets/icons/security.png'
@@ -7,8 +7,10 @@ import './Dashboard.css'
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
 import { auth, db } from '../../firebase/config'
 import Spinner from '../../Components/Spinner'
+import { AppContext } from '../Context/Context'
 
 const Dashboard = () => {
+    const {currentLightDarkMode} = useContext(AppContext)
     const [totalBooksNum, setTotalBooksNum] = useState(0)
     const [totalAdmin, setTotalAdmin] = useState(0)
     const [isPageDimmed, setIsPageDimmed] = useState(false)
@@ -51,18 +53,18 @@ const Dashboard = () => {
     }, [])
 
   return <>
-  <div className={isPageDimmed? 'dashboard-container page-dimmed' : 'dashboard-container'}>
+  <div className={isPageDimmed? 'dashboard-container page-dimmed' : currentLightDarkMode.lightMode === false? 'dashboard-container dark-mode': 'dashboard-container'}>
     <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
     <div className='dashboard'>
         <PageTitle pageTitle = {pageTitle} />
         <div className='dashboard-items'>
             {dashboard.map((item, idx) => (
-            <div key={idx} className='dashboard-items-main'>
-                <div className='dashboard-items-flex'>
+            <div key={idx} className={currentLightDarkMode.lightMode === false? 'dashboard-items-main dashboard-items-main-dark-mode':'dashboard-items-main'}>
+                <div className={currentLightDarkMode.lightMode === false? 'dashboard-items-flex dashboard-items-flex-dark-mode':'dashboard-items-flex'}>
                     <img src={item?.icon} alt="" />
                     <div>{item.title}</div>
                 </div>
-                <div className='dashboard-items-num'>{item?.num<10 ? '0'+item?.num : item?.num}</div>
+                <div className={currentLightDarkMode.lightMode === false? 'dashboard-items-num dashboard-items-num-dark-mode' :'dashboard-items-num' }>{item?.num<10 ? '0'+item?.num : item?.num}</div>
             </div>
             ))}
         </div>

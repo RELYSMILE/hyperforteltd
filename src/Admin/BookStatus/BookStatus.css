@@ -1,3 +1,7 @@
+.book-status-container-dark-mode{
+    background: #000;
+}
+
 .form-container{
     .book-status{
                     box-shadow: -1px 5px 10px #c7c7c7;
@@ -27,9 +31,10 @@
                             height: 2rem;
                             border: 1px solid #c7c7c7;
                             font-size: 14px;
+                            font-weight: 600;
                             border-radius: 100%;
                             cursor: pointer;
-                            color: #181818;
+                            color: #686868;
                         }
 
                         .radio-active{
@@ -47,6 +52,9 @@
                             margin-bottom: 1rem;
                         }
                     }
+    }
+    .book-status-dark-mode{
+        box-shadow: none;
     }
     .btn-save-status{
         display: flex;

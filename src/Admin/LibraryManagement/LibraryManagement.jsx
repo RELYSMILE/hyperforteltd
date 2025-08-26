@@ -23,7 +23,7 @@ import { AppContext } from '../Context/Context'
 import Spinner from '../../Components/Spinner'
 
 const LibraryManagement = () => {
-    const {publicationLocation} = useContext(AppContext)
+    const {publicationLocation, currentLightDarkMode} = useContext(AppContext)
     const [pageTitle, setPageTitle] = useState('Publication Management')
     const [books, setBooks] = useState([])
     const [getBookID, setGetBookID] = useState('')
@@ -151,7 +151,7 @@ const LibraryManagement = () => {
         }
         window.addEventListener('scroll', handleScroll)
   return <>
-  <div className={isPageDimmed? 'librarymanagement-container page-dimmed' : 'librarymanagement-container'}>
+  <div className={isPageDimmed? 'librarymanagement-container page-dimmed' : currentLightDarkMode.lightMode === false? 'librarymanagement-container librarymanagement-container-dark-mode' : 'librarymanagement-container'}>
         <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
         <div  className='librarymanagement'>
@@ -159,10 +159,10 @@ const LibraryManagement = () => {
             <div id='scroll-bg-screen' className='title-add-book'>
                 <div className='PageTitle'><PageTitle pageTitle = {pageTitle} /></div>
                 {settingsTogglefetch.toggleAddBookSettings &&
-                <div className='add'><Link className='add-link' to='/add-new-book'><span>+</span>Publication</Link></div>}
+                <div className='add'><Link className={currentLightDarkMode.lightMode === false? 'add-link add-link-dark-mode' : 'add-link'} to='/add-new-book'><span>+</span>Publication</Link></div>}
             </div>
 
-            <div className='search-filter'>
+            <div className={currentLightDarkMode.lightMode === false? 'search-filter search-filter-dark-mode' : 'search-filter'}>
                 <div className='search'>
                     <img src={searchGreen} alt="icon" />
                     <input onChange={(e) => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search by Publication Title,Sub Title, Author/Editor, Type of Publication, Bucket Number, Publication by Subject, Publisher, location, Year of Publication, volume, edition, tag' />
@@ -170,8 +170,8 @@ const LibraryManagement = () => {
 
                 <div className='filter'>
                     <img src={filterGreen} alt="icon" />
-                    <div className='filter-select'>
-                        <div className='label'>Filter</div>
+                    <div className={currentLightDarkMode.lightMode === false? 'filter-select filter-select-dark-mode' : 'filter-select'}>
+                        <div className={currentLightDarkMode.lightMode === false?'label label-darl-mode' : 'label'}>Filter</div>
                         <select onChange={(e) => setSearch(e.target.value)} name="" id="">
                             <option value="">All</option>
                             <option value="vadetula@gmail.com">Victor Adetula</option>
@@ -202,7 +202,7 @@ const LibraryManagement = () => {
             <div id='scroll'></div>
             <div className='books-cont'>
                 <table>
-                    <tr>
+                    <tr className={currentLightDarkMode.lightMode === false? 'table-row table-row-dark-mode' : 'table-row'}>
                         <th style={{width: '1rem'}}>ID</th>
                         <th style={{width: '51%'}}>Publication Title</th>
                         <th>Author/Editor</th>
@@ -224,8 +224,8 @@ const LibraryManagement = () => {
                     (data?.bucketNumber + '')?.toLowerCase()?.includes(input) ||
                     (data?.addedBy + '')?.toLowerCase()?.includes(input)
                 }).map((book, idx) => (
-                <table className='publication-table' key={idx} style={{color: appearancesettingData.primaryColor}}>
-                    <tr className={book?.documentID === getBookID? 'tr': idx % 2 === 0? 'even': 'odd'}>
+                <table className={currentLightDarkMode.lightMode === false? 'publication-table publication-table-dark-mode' : 'publication-table'} key={idx} style={{color: appearancesettingData.primaryColor}}>
+                    <tr className={book?.documentID === getBookID? 'tr': idx % 2 === 0 && currentLightDarkMode.lightMode === false? 'even-dark-mode': idx % 2 != 0 && currentLightDarkMode.lightMode === false? 'odd-dark-mode' : idx % 2 === 0 && currentLightDarkMode.lightMode === true? 'even' : idx % 2 != 0 && currentLightDarkMode.lightMode === true && 'odd'}>
                         <td style={{width: '1rem'}}>{idx}</td>
                         <td style={{width: '50%', textTransform: 'capitalize'}}>{book?.title}</td>
                         <td>{book?.author}</td>
@@ -234,7 +234,7 @@ const LibraryManagement = () => {
 
                             <div className={`${morePanelClassName} morePanelClassName-main-container`}>
                                 <img onClick={handleCloseMorePanel} style={{width: '1.2rem', height: '1.2rem'}} src={cancel} alt="Close" />
-                                <div className='more-panel'>
+                                <div className={currentLightDarkMode.lightMode === false? 'more-panel more-panel-dark-mode' : 'more-panel'}>
                                     <div onClick={handleViewBookDetails} className='item'>
                                         <img src={visibilityIcon} alt="icon" />
                                         <div className='label'>View More</div>
@@ -259,7 +259,7 @@ const LibraryManagement = () => {
                 </table>
                 ))}
             </div>
-            <a className='bg-screen'  href='#scroll-bg-screen'><img src={statminus} alt="up" /></a>
+            <a className={currentLightDarkMode.lightMode === false? 'bg-screen bg-screen-dark-mode' : 'bg-screen'}  href='#scroll-bg-screen'><img src={statminus} alt="up" /></a>
             <a className='scroll'  href='#scroll'><img src={statminus} alt="up" /></a>
             {moreComponent &&
             <ViewBookDetails getBookID = {getBookID} handleCloseViewBookDetails = {handleCloseViewBookDetails} />}

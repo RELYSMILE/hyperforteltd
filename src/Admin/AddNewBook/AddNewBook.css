@@ -64,10 +64,12 @@
                 flex-direction: column;
                 gap: .1rem;
                 margin-bottom: 1rem;
-                label{
+                .label{
                     font-size: 16px;
                     color: teal;
-
+                }
+                .label-dark-mode{
+                    color: #fff;
                 }
 
                 .book-status{
@@ -98,7 +100,7 @@
                             font-size: 14px;
                             border-radius: 100%;
                             cursor: pointer;
-                            color: #181818;
+                            color: teal;
                         }
 
                         .radio-active{
@@ -108,7 +110,6 @@
                     }
 
                     .form-book-status{
-                        box-shadow: -1px 5px 10px #c7c7c7;
                         padding: 2rem;
                         margin-top: 1rem;
 
@@ -116,6 +117,17 @@
                             margin-bottom: 1rem;
                         }
                     }
+                    .form-book-status-dark-mode{
+                        box-shadow: -1px 5px 5px #333;
+                        border-radius: 1rem;
+                        .label{
+                            color: #fff;
+                        }
+                    }
+                }
+                .book-status-dark-mode{
+                    box-shadow: -1px 5px 5px #333;
+                    border-radius: 1rem;
                 }
 
                 input, select{
@@ -125,6 +137,11 @@
                     padding: .8rem;
                     color: teal;
                     font-size: 16px;
+
+                    &:focus{
+                        border: none;
+                        border-bottom: 1px solid teal;
+                    }
                 }
                 .sub-title{
                     padding: .5rem;
@@ -164,5 +181,20 @@
                 width: 60%;
             }
         }
+        .form-container-dark-mode{
+            box-shadow: none;
+            border-radius: 1rem;
+
+            .form-field, .select-field{
+                   input, select{
+                    border: 1px solid #333;
+                    background: #000;
+                }
+            }
+        }
     }
+}
+
+.new-book-container-dark-mode{
+    background: #000;
 }

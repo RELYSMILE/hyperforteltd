@@ -52,6 +52,9 @@
                 font-family: 'satoshi-black';
                 color: teal;
             }
+            .super-admin-dark-mode{
+                border-bottom: 1px solid #333;
+            }
             .admin-x{
                 margin-top: 2rem;
             }
@@ -59,7 +62,7 @@
                 color: #808080;
             }
 
-            ol{
+            .admin-role-list{
                 box-shadow: -1px 5px 10px #c7c7c7;
                 padding: 1rem 3rem;
                 width: fit-content;
@@ -69,6 +72,15 @@
                    color: #808080; 
                 }
             }
+            .admin-role-list-dark-mode{
+                box-shadow: none;
+            }
+        }
+        .admin-dark-mode{
+            box-shadow: -1px 5px 10px #333;
         }
     }
+}
+.admin-role-container-dark-mode{
+    background: #000;
 }

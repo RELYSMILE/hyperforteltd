@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './NavBar.css'
 import { Link } from 'react-router-dom'
 import logo from '../assets/icons/logo.png'
@@ -14,17 +14,17 @@ import menu from '../assets/icons/menu.png'
 import close from '../assets/icons/close.png'
 import settings from '../assets/icons/settings.png'
 import logoutIcon from '../assets/icons/logout.png'
-import { doc, getDoc } from 'firebase/firestore'
+import lightModeIcon from '../assets/icons/lightmode.png'
+import darkModeIcon from '../assets/icons/darkmode.png'
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { auth, db } from '../firebase/config'
 import { useNavigate } from 'react-router-dom'
-import { onAuthStateChanged } from 'firebase/auth'
+import { AppContext } from './Context/Context'
 
 const NavBar = ({setPageTitle, setIsPageDimmed}) => {
-    const [gsettingsData, setGsettingsData] = useState([])
-    const [appearancesettingData, setAppearancesettingsData] = useState([])
-    const [settingsToggle, setSettingsToggle] = useState([])
-    const [currentUser, setCurrentUser] = useState(null)
+    const {currentAdmin, currentLightDarkMode, gsettingsData, appearancesettingData} = useContext(AppContext)
     const [activeNavBar, setActiveNavBar] = useState(false)
+    const [lightDarkmodeStatus, setLightDarkmodeStatus] = useState(true)
     const navigate = useNavigate()
     const NavItems = [
         {icon: dashboard, item: 'Dashboard', link: '/dashboard'},
@@ -43,66 +43,55 @@ const NavBar = ({setPageTitle, setIsPageDimmed}) => {
         setActiveNavBar(false)
         setIsPageDimmed(false)
     }
+    const handleDarkMode = async() => {
+        setLightDarkmodeStatus((prev) => !prev)
+        try{
+            await updateDoc(doc(db, 'admin', currentAdmin.adminID), {
+                lightMode: lightDarkmodeStatus,
+            });
+            console.log('success')
 
-       useEffect(() => {
-        const fetchSettings = async() => {
-            try{
-                const generalSettingsData = await getDoc(doc(db, 'settings', 'XaeK0raHltvTWxbQkWn2'))
-                const appearanceSettingsData = await getDoc(doc(db, 'settings', '4hmGZ3GjgfK7bDbyC14g'))
-                const SettingsData = await getDoc(doc(db, 'settings', 'QnD2IfVSNvBI7kY4xEtI'))
-                if(generalSettingsData.exists()){
-                    setGsettingsData(generalSettingsData.data())
-                }
-                if(appearanceSettingsData.exists()){
-                    setAppearancesettingsData(appearanceSettingsData.data())
-                }
-                if(SettingsData.exists()){
-                    setSettingsToggle(SettingsData.data())
-                }
-            }catch(error){
-                console.log(error)
-            }
+        }catch(error){
+            console.log(error)
         }
-        fetchSettings()
-    })
+    }
+    const handleLightMode = async() => {
+        setLightDarkmodeStatus((prev) => !prev)
+        try{
+            await updateDoc(doc(db, 'admin', currentAdmin.adminID), {
+                lightMode: lightDarkmodeStatus,
+            });
+            console.log('success1')
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+       
     const handleSignOut = async() => {
         auth.signOut()
         navigate('/authentication')
     }
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth,async (user) => {
-          if (user) {
-            const userDoc = await getDoc(doc(db, 'admin', user.uid));
-            if (userDoc.exists()) {
-              setCurrentUser(userDoc.data());
-            } else {
-              console.log('No such user data!');
-            }
-          } else {
-            setCurrentUser(null);
-          }
-    });
-    
-     return () => unsubscribe();
-    }, []);
-  return<> <div className='nav-container'>
+
+
+  return<> <div className={currentLightDarkMode.lightMode === false? 'nav-container dark-mode' : 'nav-container' }>
     <div className='logo-admin-name-container'>
-        <div className='logo-container'>
+        <div className={currentLightDarkMode.lightMode === false? 'logo-container logo-container-dark-mode' : 'logo-container'}>
             <div className='logo-container-x'>
                 <img src={logo1} alt='Logo' />
                 <img src={logo} alt='Logo' />
             </div>
-            <div style={{color: appearancesettingData.logoColor}} className='logo-name'>{gsettingsData.appName}</div>
+            <div className='logo-name' style={{color: appearancesettingData.logoColor}}>{gsettingsData.appName}</div>
         </div>
 
-        <div className='currentUser-role-container'>
+        <div className={currentLightDarkMode.lightMode === false? 'currentUser-role-container currentUser-role-container-dark-mode' : 'currentUser-role-container'}>
             <div className='currentUser-container'>
                 <img src={user} alt="icon" />
-                <div className='currentUser'>{currentUser?.username}</div>
+                <div className='currentUser'>{currentAdmin?.username}</div>
             </div>
             <div className='role-container'>
                 <img src={verifiedx} alt="icon" />
-                <div className='role'>{currentUser?.adminRole}</div>
+                <div className='role'>{currentAdmin?.adminRole}</div>
             </div>
         </div>
     </div>
@@ -116,7 +105,19 @@ const NavBar = ({setPageTitle, setIsPageDimmed}) => {
             </div>
         </Link>
         ))}
-        <div onClick={handleSignOut} className='logout-button'>
+
+        {currentLightDarkMode?.lightMode === true?
+        <div onClick={handleDarkMode} className='light-dark-mode-container'>
+            <img src={lightModeIcon} alt="" />
+            <div>Light Mode</div>
+        </div>
+        :
+        <div onClick={handleLightMode} className='light-dark-mode-container'>
+            <img src={darkModeIcon} alt="" />
+            <div>Dark Mode</div>
+        </div>
+        }
+        <div onClick={handleSignOut} className={currentLightDarkMode.lightMode === false? 'logout-button logout-button-dark-mode' : 'logout-button'}>
             <img src={logoutIcon} alt="logout" />
             <div>Logout</div>
         </div>
@@ -138,11 +139,11 @@ const NavBar = ({setPageTitle, setIsPageDimmed}) => {
         <div className='currentUser-role-container'>
             <div className='currentUser-container'>
                 <img src={user} alt="icon" />
-                <div className='currentUser'>{currentUser?.username}</div>
+                <div className='currentUser'>{currentAdmin?.username}</div>
             </div>
             <div className='role-container'>
                 <img src={verifiedx} alt="icon" />
-                <div className='role'>{currentUser?.adminRole}</div>
+                <div className='role'>{currentAdmin?.adminRole}</div>
             </div>
         </div>
     </div>

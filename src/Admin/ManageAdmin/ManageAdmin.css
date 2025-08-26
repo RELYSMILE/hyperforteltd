@@ -44,6 +44,9 @@
             padding: .5rem 0;
             border-bottom: 1px solid #e0e0e0;
         }
+        .btn-add-admin-dark-mode{
+            border-bottom: 1px solid #333;
+        }
 
         .form-container{
             display: flex;
@@ -80,7 +83,7 @@
                 justify-content: center;
                 flex-direction: column;
                 margin-top: 1rem;
-                                    gap: .5rem;
+                gap: .5rem;
 
                 .form-input{
                     display: flex;
@@ -103,10 +106,17 @@
                         font-size: 16px;
                     }
                 }
+                .form-input-dark-mode{
+                    border: 1px solid #333;
+                }
             }
         }
+        .form-container-dark-mode{
+            background: #000;
+            box-shadow: -1px 5px 10px #333;
+        }
 
-        .admin-table {
+.admin-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
@@ -115,6 +125,9 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   overflow: hidden;
+}
+.admin-table-dark-mode{
+    background: #1a1a1a;
 }
 
 .admin-table thead {
@@ -127,9 +140,15 @@
   text-align: left;
   border-bottom: 1px solid #eaeaea;
 }
+.admin-table-dark-mode td{
+    border: 1px solid #333;
+}
 
 .admin-table tbody tr:hover {
   background-color: #f1f1f1;
+}
+.admin-table-dark-mode tbody tr:hover{
+    background: #272727;
 }
 
 .action-btn {
@@ -159,6 +178,9 @@
 }
 
     }
+}
+.admin-management-container-dark-mode{
+    background: #000;
 }
 
 @media (max-width: 739px){

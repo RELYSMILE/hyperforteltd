@@ -14,7 +14,7 @@ import { AppContext } from '../Context/Context';
 import Loading from '../../Components/Admin/Loading';
 
 const UpdateBook = () => {
-    const {publicationLocation} = useContext(AppContext)
+    const {publicationLocation, currentLightDarkMode} = useContext(AppContext)
     const [currentUser, setCurrentUser] = useState(null)
     const [bookCredentials, setBookCredentials] = useState([])
     const [location, setLocation] = useState([])
@@ -118,50 +118,50 @@ const UpdateBook = () => {
     }, [])
 
   return <>
-    <div className='new-book-container'>
+    <div className={currentLightDarkMode.lightMode === false? 'new-book-container new-book-container-dark-mode' : 'new-book-container'}>
      <NavBar setPageTitle = {setPageTitle} />
 
      <div className='new-book'>
         <PageTitle pageTitle = {pageTitle} />
 
-        <div className='form-container'>
+        <div className={currentLightDarkMode.lightMode === false? 'form-container form-container-dark-mode': 'form-container'}>
             <div onClick={handleBookSubTitleQuery} className='form-field'>
-                <label htmlFor="">Book title</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Book title</label>
                 <input style={{textTransform: 'capitalize'}} onChange={(e) => HandleBookCredentials(e)} type="text" name='title' placeholder={bookData.title} />
                 {/* {bookData.bookSubTitle && <input className='sub-title' onChange={(e) => setBookSubTitle(e.target.value)} type="text"  placeholder={bookData.bookSubTitle} />} */}
             </div>
             <div onClick={handleAuthorWarning} className='form-field'>
-                <label htmlFor="">Author/Editor</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Author/Editor</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='author' placeholder={bookData.author} />
                 {authorWarning &&
                 <marquee><small><span>*</span> Authors'/Editors' names should begin with the surname, followed by the other names — for example: Bell, Judith.</small></marquee>}
             </div>
             <div className='form-field'>
-                <label htmlFor="">Publication tag/Call mark/Call tag</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Publication tag/Call mark/Call tag</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='tag' placeholder={bookData.tag} />
             </div>
             <div className='form-field'>
-                <label htmlFor="">Number of copies</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Number of copies</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='bookCopy' placeholder={bookData.bookCopy} />
             </div>
             <div className='form-field'>
-                <label htmlFor="">Volume/Edition</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Volume/Edition</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='volume' placeholder={bookData.volume} />
             </div>
             <div className='form-field'>
-                <label htmlFor="">Publisher</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Publisher</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='publisher' placeholder={bookData.publisher} />
             </div>
             <div className='form-field'>
-                <label htmlFor="">Year of Publication</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Year of Publication</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='yearOfPublication' placeholder={bookData.yearOfPublication} />
             </div>
             <div className='form-field'>
-                <label htmlFor="">Location of the Publisher</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Location of the Publisher</label>
                 <input onChange={(e) => HandleBookCredentials(e)} type="text" name='publisherLocation' placeholder={bookData.publisherLocation} />
             </div>
             <div className='select-field'>
-                <label htmlFor="">Publication by Subject</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Publication by Subject</label>
                 <select onChange={(e) => setPublicationBySubject(e.target.value)} name="" id="">
                     <option disabled selected>{bookData?.publicationBySubject}</option>
                     {bookSubject.map((subject, idx) => (
@@ -170,7 +170,7 @@ const UpdateBook = () => {
                 </select>
             </div>
             <div className='select-field'>
-                <label htmlFor="">Type of Publication</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Type of Publication</label>
                 <select onChange={(e) => setTypeOfPublication(e.target.value)}>
                     <option disabled selected>{bookData?.typeOfPublication}</option>
                     <option value="book">Book</option>
@@ -184,7 +184,7 @@ const UpdateBook = () => {
                 </select>
             </div>
             <div className='select-field'>
-                <label htmlFor="">Location</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Location</label>
                 <select onChange={(e) => setLocation(e.target.value)} name="location" id="">
                     <option disabled selected>{bookData?.location}</option>
                     {publicationLocation.locations.map((location, idx) => (
@@ -192,7 +192,7 @@ const UpdateBook = () => {
                     ))}
                 </select>
             <div className='select-field'>
-                <label htmlFor="">Bucket</label>
+                <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Bucket</label>
                 <select  onChange={(e) => setBucket(e.target.value)} name="bucket" id="">
                     <option disabled selected>{bookData?.bucketNumber}</option>
                     {bucketNum.map((bucket, idx) => (

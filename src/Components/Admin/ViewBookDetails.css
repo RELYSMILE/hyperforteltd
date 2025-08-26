@@ -87,6 +87,10 @@
                 }
             }
 }
+.book-container-dark-mode{
+  background: #000;
+  border: 1px solid teal;
+}
 
 .book-container img {
   position: absolute;
@@ -117,6 +121,9 @@
   color: #333;
   margin-top: 2rem;
 }
+.book-title-author .title-dark-mode {
+  color: #fff;
+}
 
 .book-title-author .by {
   display: flex;
@@ -137,11 +144,17 @@
   color: #555;
   font-weight: 500;
 }
+.book-title-author .by-x-dark-mode {
+  color: #fff;
+}
 
 .book-title-author .author {
   font-size: 1.2rem;
   font-weight: 500;
   color: #555;
+}
+.book-title-author .author-dark-mode {
+  color: #fff;
 }
 
 .details {
@@ -170,4 +183,8 @@
   padding: 0.5rem 0.8rem;
   border-radius: 0.5rem;
   text-transform: capitalize;
+}
+.book-details .tag-dark-mode {
+  background: #1a1a1a;
+  color: #fff;
 }

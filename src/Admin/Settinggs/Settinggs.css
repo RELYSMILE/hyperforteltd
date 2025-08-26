@@ -79,9 +79,21 @@
                         height: 1.3rem;
                     }
                 }
+                .nav-item-dark-mode{
+                    color: #fff;
+                    border-radius: .5rem;
+                }
                 .nav-item-active{
                     box-shadow: -1px 5px 10px #c7c7c7;
                 }
+                .nav-item-active-dark-mode{
+                    box-shadow: -1px 5px 10px #242424;
+                    color: teal;
+                    
+                }
+            }
+            .navigate-container-dark-mode{
+                border-bottom: 1px solid #333;
             }
 
             .general-settings{
@@ -123,6 +135,11 @@
                         padding: .8rem;
                         color: teal;
                         font-size: 16px;
+                    }
+                }
+                .app-name-container-dark-mode{
+                    input{
+                        border: 1px solid #333;
                     }
                 }
                 .access{
@@ -198,8 +215,14 @@
                     }
                 }
             }
+            .general-settings-dark-mode{
+                color: #fff;
+            }
         }
     }
+}
+.settings-container-dark-mode{
+    background: #000;
 }
 
 @media (max-width: 768px){

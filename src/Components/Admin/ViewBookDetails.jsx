@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { toast } from 'react-toastify';
 import cancel from '../../assets/icons/piarrowfoward.png'
 import './ViewBookDetails.css'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase/config'
+import { AppContext } from '../../Admin/Context/Context';
 
 const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
+    const {currentLightDarkMode} = useContext(AppContext)
     const [bookCredentials, setBookCredentials] = useState([])
     const[bookData, setBookData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -41,7 +43,6 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
                 await updateDoc(doc(db, 'books', getBookID), {
                     collectorName: bookCredentials.collectorName,
                     isBookLoan: true,
-                    collectorName: bookCredentials.collectorName,
                     collectorPhone: bookCredentials.collectorPhone,
                     collectedDate: bookCredentials.collectedDate,
                     returnDate: bookCredentials.returnDate,
@@ -60,75 +61,74 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
         }
     
   return <div className='book-detail-container'>
-    <div className='book-container'>
+    <div className={currentLightDarkMode.lightMode === false? 'book-container book-container-dark-mode' : 'book-container'}>
         <img onClick={handleCloseViewBookDetails} src={cancel} alt="Back" />
 
         <div className='book-title-author'>
-            <div className='title'>{bookData.title}</div>
-            {/* <div className='sub-title'>{bookData?.bookSubTitle}</div> */}
+            <div className={currentLightDarkMode.lightMode === false? 'title title-dark-mode' : 'title'}>{bookData.title}</div>
             <div className='by'>
                 <div className='line'></div>
-                <div className='by-x'>BY</div>
+                <div className= {currentLightDarkMode.lightMode === false? 'by-x by-x-dark-mode' : 'by-x'}>BY</div>
                 <div className='line'></div>
             </div>
-            <div className='author'>{bookData.author}</div>
+            <div className={currentLightDarkMode.lightMode === false? 'author author-dark-mode' : 'author'}>{bookData.author}</div>
         </div>
 
         <div className='details'>
             {bookData?.publisher &&
             <div className='book-details'>
                 <label>Book Publisher</label>
-                <div className='tag'>{bookData?.publisher}</div>
+                <div className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.publisher}</div>
             </div>}
             {bookData?.publisherLocation &&
             <div className='book-details'>
                 <label>Publisher Location</label>
-                <div className='tag'>{bookData?.publisherLocation}</div>
+                <div className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.publisherLocation}</div>
             </div>}
             {bookData?.publicationBySubject &&
             <div className='book-details'>
                 <label>Publication by Subject</label>
-                <div className='tag'>{bookData?.publicationBySubject}</div>
+                <div className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.publicationBySubject}</div>
             </div>}
             <div className='book-details'>
                 <label>Type of Publication</label>
-                <div className='tag'>{bookData?.typeOfPublication}</div>
+                <div className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.typeOfPublication}</div>
             </div>
             {bookData?.yearOfPublication &&
             <div className='book-details'>
                 <label>Year Of Publication</label>
-                <div className='tag'>{bookData?.yearOfPublication}</div>
+                <div className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.yearOfPublication}</div>
             </div>}
             {bookData?.volume && 
             <div className='book-details'>
                 <label>Volume/Edition</label>
-                <div className='tag'>{bookData?.volume}</div>
+                <div className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.volume}</div>
             </div>}
             {bookData?.tag &&
             <div className='book-details'>
                 <label>Book Tag/Call mark/Call tag</label>
-                <div style={{textTransform: 'uppercase'}} className='tag'>{bookData?.tag}</div>
+                <div style={{textTransform: 'uppercase'}} className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.tag}</div>
             </div>}
             {bookData?.bookCopy &&
             <div className='book-details'>
                 <label>Copy</label>
-                <div style={{textTransform: 'uppercase'}} className='tag'>{bookData?.bookCopy}</div>
+                <div style={{textTransform: 'uppercase'}} className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.bookCopy}</div>
             </div>}
             <div className='book-details'>
                 <label>Book Location</label>
-                <div className='tag'>{bookData?.location}</div>
+                <div className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.location}</div>
             </div>
             <div className='book-details'>
                 <label>Bucket</label>
-                <div className='tag'>{bookData?.bucketNumber}</div>
+                <div className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.bucketNumber}</div>
             </div>
             <div className='book-details'>
                 <label>Book Status</label>
-                <div className='tag'>{bookData?.isBookLoan? 'On Loan' : 'Present'}</div>
+                <div className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.isBookLoan? 'On Loan' : 'Present'}</div>
             </div>
             <div className='book-details'>
                 <label>Added on the database</label>
-                <div className='tag'>{bookData?.cretedAt?.toDate()?.toLocaleDateString('en-US', {
+                <div className={currentLightDarkMode.lightMode === false? 'tag tag-dark-mode' : 'tag'}>{bookData?.cretedAt?.toDate()?.toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'

@@ -25,6 +25,7 @@
     src: url('../assets/fonts/UberMoveMedium.otf');
 }
 
+
 .nav-container{
     border-right: 1px solid #e8ebeb;
     width: 18rem;
@@ -53,6 +54,13 @@
             .logo-name{
                 font-family: 'satoshi-black';
                 text-transform: capitalize;
+            }
+        }
+        .logo-container-dark-mode{
+            border-bottom: 1px solid #333;
+
+            .logo-name{
+                color: #fff;
             }
         }
 
@@ -96,6 +104,9 @@
                 }
             }
         }
+        .currentUser-role-container-dark-mode{
+            border-bottom: 1px solid #333;
+        }
     }
     .nave-items{
         padding: .5rem;
@@ -117,7 +128,7 @@
             }
         }
 
-        .logout-button {
+        .logout-button, .light-dark-mode-container {
             display: flex;
             align-items: center;
             gap: .5rem;
@@ -140,12 +151,26 @@
                 width: 1.1rem;
             }
             }
+        .logout-button-dark-mode{
+            border: none;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+        
+        .light-dark-mode-container{
+            bottom: 5rem;
+            border: none;
+        }
 
             .logout-button:hover {
             background: #e8ebeb;
             color: #ff0000;
             }
     }
+}
+.dark-mode{
+    background: #000;
+    border-right: 1px solid #333;
 }
 .small-screen-nav{
     display: none;

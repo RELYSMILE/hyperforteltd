@@ -60,6 +60,9 @@
     }
 
 }
+.pageTitle-notification-dark-mode{
+    border-bottom: 1px solid #333;
+}
 @media (max-width: 768px){
     .pageTitle-notification{
         padding-left: .5rem;

@@ -51,6 +51,9 @@
     }
 }
 
+.dark-mode{
+  background: #000;
+}
 
 .dashboard-items {
   display: grid;
@@ -70,6 +73,10 @@
   transition: transform 0.2s ease-in-out;
 }
 
+.dashboard-items-main-dark-mode{
+  background: #1f1f1f;
+}
+
 .dashboard-items-main:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -84,6 +91,9 @@
   font-family: 'SpaceGrotesk';
   color: #333;
 }
+.dashboard-items-flex-dark-mode{
+  color: #fff;
+}
 
 .dashboard-items-flex img {
   width: 32px;
@@ -95,4 +105,7 @@
   font-weight: bold;
   margin-top: 1rem;
   color: #007BFF;
+}
+.dashboard-items-num-dark-mode{
+  color: #fff;
 }

@@ -8,7 +8,10 @@ export const AppContextProvider = (props) => {
     const [bookDatas, setBookDatas] = useState(null)
     const [overDueBooksLen, setOverDueBooksLen] = useState(0)
     const [currentAdmin, setCurrentAdmin] = useState(null)
+    const [currentLightDarkMode, setCurrentLightDarkMode] = useState(null)
     const [publicationLocation, setPublicationLocation] = useState({})
+    const [appearancesettingData, setAppearancesettingsData] = useState([])
+    const [gsettingsData, setGsettingsData] = useState(null)
     useEffect(() => {
         const fetchBooksData = async() => {
             try{
@@ -28,7 +31,21 @@ export const AppContextProvider = (props) => {
                 console.log(error)
             }
         }
+        const unsubscribe = auth.onAuthStateChanged(async(user) => {
+            if(user){
+                const {email, emailVerified, uid} = user;
 
+                const adminData = await getDoc(doc(db, 'admin', uid))
+                if(adminData.exists()){
+                    setCurrentLightDarkMode(adminData.data())
+                }else{
+                    console.log('No data')
+                }
+            }
+            else{
+                console.log('No user')
+            }
+        })
         fetchBooksData()
     })
 
@@ -61,12 +78,28 @@ export const AppContextProvider = (props) => {
                 console.log(error)
             }
         }
+        const fetchSettings = async() => {
+            try{
+                const appearanceSettingsData = await getDoc(doc(db, 'settings', '4hmGZ3GjgfK7bDbyC14g'))
+                const generalSettingsData = await getDoc(doc(db, 'settings', 'XaeK0raHltvTWxbQkWn2'))
+                if(appearanceSettingsData.exists()){
+                    setAppearancesettingsData(appearanceSettingsData.data())
+                }
+                if(generalSettingsData.exists()){
+                    setGsettingsData(generalSettingsData.data())
+                }
+            }catch(error){
+                console.log(error)
+            }
+        }
+        fetchSettings()
         fetchPublicationLocation()
         return () => unsubscribe()
     }, [])
 
     return (
-        <AppContext.Provider value = {{bookDatas, setBookDatas, overDueBooksLen, setOverDueBooksLen, currentAdmin, publicationLocation}}>
+        <AppContext.Provider value = {{bookDatas, setBookDatas, overDueBooksLen, setOverDueBooksLen, currentAdmin, currentLightDarkMode, publicationLocation,
+        appearancesettingData, gsettingsData}}>
             {props.children}
         </AppContext.Provider>
     )

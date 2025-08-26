@@ -62,6 +62,9 @@ body{
                 animation: scroll .5s ease-in-out infinite;
             }
         }
+        .bg-screen-dark-mode{
+            box-shadow: none;
+        }
         .scroll{
             display: none;
         }
@@ -97,6 +100,9 @@ body{
                         font-size: 20px;
                         border-radius: 100%;
                     }
+                }
+                .add-link-dark-mode{
+                    box-shadow: none;
                 }
             }
 
@@ -161,6 +167,10 @@ body{
                     align-items: center;
                     gap: .4rem;
 
+                    .label-darl-mode{
+                        color: #fff;
+                    }
+
                     select{
                         background: transparent;
                         color: teal;
@@ -170,7 +180,15 @@ body{
                         font-size: 16px;
                     }
                 }
+                .filter-select-dark-mode{
+                    select{
+                        background: #000;
+                    }
+                }
             }
+        }
+        .search-filter-dark-mode{
+            border: 1px solid #333;
         }
 
         .books-cont{
@@ -191,7 +209,8 @@ body{
                 .odd{
                     background: #f0f0f0;
                 }
-                tr{
+
+                .table-row, tr{
                     text-align: left;
                     margin: 0;
                     box-shadow: -1px 5px 10px #f1f1f1;
@@ -209,10 +228,31 @@ body{
                         box-shadow: -1px 5px 10px #f1f1f1;
                     }
                 }
+                .table-row-dark-mode{
+                    box-shadow: none;
+                }
             }
 
             .publication-table{
                 font-size: 15px;
+            }
+            .publication-table-dark-mode{
+                background: #000;
+                tr{
+                    box-shadow: none;
+
+                    td{
+                        box-shadow: none;
+                    }
+                }
+                .even-dark-mode{
+                    background: #1a1a1a;
+                    color: #fff;
+                    
+                }
+                .odd-dark-mode{
+                    background: #000;
+                }
             }
         }
         .morePanelClassName-main-container{
@@ -260,9 +300,14 @@ body{
                 }
             }
         }
+        .more-panel-dark-mode{
+            box-shadow: none;
+        }
     }
 }
-
+.librarymanagement-container-dark-mode{
+    background: #000;
+}
 @media (max-width: 768px){
     .librarymanagement-container{
         

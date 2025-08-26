@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import NavBar from '../NavBar'
 import PageTitle from '../../Components/Admin/PageTitle'
 import './AdminRole.css'
 import Spinner from '../../Components/Spinner'
+import { AppContext } from '../Context/Context'
 
 const AdminRole = () => {
+    const {currentLightDarkMode} = useContext(AppContext)
     const [pageTitle, setPageTitle] = useState('🔐 User Roles & Permissions')
     const [isPageDimmed, setIsPageDimmed] = useState(false)
     const [state, setState] = useState(false)
@@ -16,14 +18,14 @@ useEffect(() => {
   }, []);
 
     return <>
-  <div className={isPageDimmed? 'admin-role-container page-dimmed' : 'admin-role-container'}>
+  <div className={isPageDimmed? 'admin-role-container page-dimmed' : currentLightDarkMode.lightMode === false? 'admin-role-container admin-role-container-dark-mode' : 'admin-role-container'}>
     <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
     <div className='admin-role'>
         <PageTitle pageTitle = {pageTitle} />
-        <div className='admin'>
-            <div className='super-admin'>👑 Super Admin</div>
+        <div className={currentLightDarkMode.lightMode === false? 'admin admin-dark-mode' : 'admin'}>
+            <div className={currentLightDarkMode.lightMode === false? 'super-admin super-admin-dark-mode' : 'super-admin'}>👑 Super Admin</div>
             <i className='info'>The Super Admin has full access and control over the entire system. This role includes:</i>
-            <ol>
+            <ol className={currentLightDarkMode.lightMode === false? 'admin-role-list admin-role-list-dark-mode' : 'admin-role-list'}>
                 <li>Managing all users (including other Admins)</li>
                 <li>Creating and deleting Admins</li>
                 <li>Resetting any user’s password</li>
@@ -34,9 +36,9 @@ useEffect(() => {
             <i className='info'>Super Admin is the highest-level role with unrestricted access.</i>
 
 
-            <div className='super-admin admin-x'>🛠️ Admin</div>
+            <div className={currentLightDarkMode.lightMode === false? 'super-admin super-admin-dark-mode admin-x' : 'super-admin admin-x'}>🛠️ Admin</div>
             <i className='info'>Admins have limited control and responsibilities. This role includes:</i>
-            <ol>
+            <ol className={currentLightDarkMode.lightMode === false? 'admin-role-list admin-role-list-dark-mode' : 'admin-role-list'}>
                 <li>Adding and updating regular records (e.g., books)</li>
                 <li>Viewing and editing all system data</li>
                 <li>Access to some settings and configurations</li>

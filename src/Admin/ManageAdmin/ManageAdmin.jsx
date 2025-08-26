@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import {auth, db}  from '../../firebase/config'
 import { toast } from 'react-toastify';
 import NavBar from '../NavBar'
-import Login from '../../Public/Login/Login';
 import visibilityOff from '../../assets/icons/visibilityoff.png'
 import lock from '../../assets/icons/lock.png'
 import mail from '../../assets/icons/mail.png'
@@ -11,12 +10,14 @@ import visibilityOn from '../../assets/icons/visibility.png'
 import user from '../../assets/icons/user.png'
 import shield from '../../assets/icons/shield.png'
 import PageTitle from '../../Components/Admin/PageTitle'
+import { AppContext } from '../Context/Context';
 import './ManageAdmin.css'
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
 import { collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import Spinner from '../../Components/Spinner'
 
 const ManageAdmin = () => {
+    const {currentLightDarkMode} = useContext(AppContext)
     const[userCredential, setUserCredential] = useState({})
     const [passwordVisibility, setPasswordVisibility] = useState(true)
     const [pageTitle, setPageTitle] = useState('Admin Management')
@@ -247,7 +248,7 @@ const ManageAdmin = () => {
               fetchSettings()
     })
   return <>
-  <div className={isPageDimmed? 'admin-management-container page-dimmed' : 'admin-management-container'}>
+  <div className={isPageDimmed? 'admin-management-container page-dimmed' : currentLightDarkMode.lightMode === false? 'admin-management-container admin-management-container-dark-mode': 'admin-management-container'}>
         <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
 
         <div className='admin-management'>
@@ -264,21 +265,21 @@ const ManageAdmin = () => {
             </div>}
 
             {formPanel &&
-            <div className='form-container'>
+            <div className={currentLightDarkMode.lightMode === false? 'form-container form-container-dark-mode':'form-container' }>
                 <div className='nav'>
                     <img onClick={handleCloseForm} src={piarrowfoward} alt="" />
                     <div className='label'>Create Admin Here</div>
                 </div>
                 <div className='form-field'>
                     <label htmlFor="">Username</label>
-                    <div className='form-input'>
+                    <div className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                         <img src={user} alt="" />
                         <input onChange={(e) => handleAdminCredentials(e)} type="text" name="username" id="" placeholder='Enter your username' />
                     </div>
                 </div>
                 <div className='form-field'>
                     <label htmlFor="">Role</label>
-                    <div className='form-input'>
+                    <div className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                         <img src={shield} alt="" />
                         <select onChange={(e) => setAdminRole(e.target.value)} name="" id="">
                             <option disabled selected>Select admin role</option>
@@ -289,14 +290,14 @@ const ManageAdmin = () => {
                 </div>
                 <div className='form-field'>
                     <label htmlFor="">Email</label>
-                    <div className='form-input'>
+                    <div className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                         <img src={mail} alt="" />
                         <input onChange={(e) => handleAdminCredentials(e)} type="text" name="email" id="" placeholder='Enter your email address' />
                     </div>
                 </div>
                 <div className='form-field'>
                     <label htmlFor="">Password</label>
-                    <div className='form-input'>
+                    <div className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                         <img src={lock} alt="" />
                         <input onChange={(e) => handleAdminCredentials(e)} type={passwordVisibility? 'password':'text'} name="password" id="" placeholder='Enter your passcode' />
                         {passwordVisibility?
@@ -305,13 +306,13 @@ const ManageAdmin = () => {
                         <img onClick={(e) => setPasswordVisibility((prev) => !prev)} src={visibilityOn} alt="icon" />}
                     </div>
                 </div>
-                <div onClick={creatAdmin} className='btn-add-admin'>
+                <div onClick={creatAdmin} className={currentLightDarkMode.lightMode === false? 'btn-add-admin btn-add-admin-dark-mode' : 'btn-add-admin'}>
                     <div div className='btn'>{isLoading? 'Processing...' : 'Create'}</div>
                 </div>
             </div>}
 
             <div className='admin'>
-  <table className="admin-table">
+  <table className={currentLightDarkMode.lightMode === false? 'admin-table admin-table-dark-mode' : 'admin-table'}>
     <thead>
       <tr>
         <th>Username</th>
@@ -348,21 +349,21 @@ const ManageAdmin = () => {
 </>}
 
 {adminsUpdateComponent &&
-  <div className='form-container'>
+  <div className={currentLightDarkMode.lightMode === false? 'form-container form-container-dark-mode':'form-container' }>
                 <div className='nav'>
                     <img onClick={handleCloseAdminsUpdateComponent} src={piarrowfoward} alt="" />
                     <div className='label'>{`${adminDetail.username}'s Information`}</div>
                 </div>
                 <div className='form-field'>
                     <label htmlFor="">Username</label>
-                    <div className='form-input'>
+                    <div className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                         <img src={user} alt="" />
                         <input disabled type="text" name="username" id="" value={adminDetail.username} />
                     </div>
                 </div>
                 <div className='form-field'>
                     <label htmlFor="">Role</label>
-                    <div className='form-input'>
+                    <div className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                         <img src={shield} alt="" />
                         <select onChange={(e) => setAdminRole(e.target.value)} name="" id="">
                             <option disabled selected>Select admin role</option>
@@ -373,31 +374,31 @@ const ManageAdmin = () => {
                 </div>
                 <div className='form-field'>
                     <label htmlFor="">Email</label>
-                    <div className='form-input'>
+                    <div className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                         <img src={mail} alt="" />
                         <input disabled type="text" name="email" id="" value={adminDetail.email} />
                     </div>
                 </div>
-                <div onClick={updateAdmin} className='btn-add-admin'>
+                <div onClick={updateAdmin} className={currentLightDarkMode.lightMode === false? 'btn-add-admin btn-add-admin-dark-mode' : 'btn-add-admin'}>
                     <div div className='btn'>{isLoading? 'Processing...' : 'Update'}</div>
                 </div>
   </div>}
 
   {adminsPasswordResetComponent &&
 
-  <div className='form-container'>
+  <div className={currentLightDarkMode.lightMode === false? 'form-container form-container-dark-mode':'form-container' }>
                 <div className='nav'>
                     <img onClick={handleCloseAdminsPasswordResetComponent} src={piarrowfoward} alt="" />
                     <div className='label'>{`${adminDetail.username}'s Email`}</div>
                 </div>
                 <div className='form-field'>
                     <label htmlFor="">Email</label>
-                    <div className='form-input'>
+                    <div  className={currentLightDarkMode.lightMode === false? 'form-input form-input-dark-mode' : 'form-input'}>
                         <img src={mail} alt="" />
                         <input onChange={(e) => setResetEmail(e.target.value)} type="text" name="email" id="" value={adminDetail.email} />
                     </div>
                 </div>
-                <div onClick={resetPassword} className='btn-add-admin'>
+                <div onClick={resetPassword} className={currentLightDarkMode.lightMode === false? 'btn-add-admin btn-add-admin-dark-mode' : 'btn-add-admin'}>
                     <div div className='btn'>{isLoading? 'Sending...' : 'Send link'}</div>
                 </div>
   </div>}

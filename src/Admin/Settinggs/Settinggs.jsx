@@ -14,7 +14,7 @@ import { AppContext } from '../Context/Context'
 
 
 const Settinggs = () => {
-    const {currentAdmin} = useContext(AppContext)
+    const {currentAdmin, currentLightDarkMode} = useContext(AppContext)
     const [pageTitle, setPageTitle] = useState('Settings')
     const [generalActiveStyle, setGeneralActiveStyle] = useState(true)
     const [apearanceActiveStyle, setApearanceActiveStyle] = useState(false)
@@ -204,7 +204,7 @@ const Settinggs = () => {
     })
 
   return <>
-  <div className={isPageDimmed? 'settings-container page-dimmed' : 'settings-container'}>
+  <div className={isPageDimmed? 'settings-container page-dimmed' : currentLightDarkMode.lightMode === false? 'settings-container settings-container-dark-mode': 'settings-container'}>
     <NavBar setPageTitle = {setPageTitle} setIsPageDimmed = {setIsPageDimmed} />
     <div className='settings'>
         <PageTitle pageTitle = {pageTitle} />
@@ -217,16 +217,16 @@ const Settinggs = () => {
                 </div>}
             </div>
 
-            <div className='navigate-container'>
-                <div onClick={handleGeneralActiveStyle} className={generalActiveStyle? 'nav-item nav-item-active': 'nav-item'}>
+            <div className={currentLightDarkMode.lightMode === false? 'navigate-container navigate-container-dark-mode' : 'navigate-container'}>
+                <div onClick={handleGeneralActiveStyle} className={generalActiveStyle && currentLightDarkMode.lightMode === false? 'nav-item nav-item-active nav-item-dark-mode nav-item-active-dark-mode ': !generalActiveStyle && currentLightDarkMode.lightMode === false? 'nav-item  nav-item-dark-mode' : generalActiveStyle && currentLightDarkMode.lightMode === true? 'nav-item nav-item-active': 'nav-item'}>
                     <img src={settings} alt="icon" />
                     <div>General</div>
                 </div>
-                <div onClick={handleApearanceActiveStyle} className={apearanceActiveStyle? 'nav-item nav-item-active': 'nav-item'}>
+                <div onClick={handleApearanceActiveStyle} className={apearanceActiveStyle && currentLightDarkMode.lightMode === false? 'nav-item nav-item-active nav-item-dark-mode nav-item-active-dark-mode ': !apearanceActiveStyle && currentLightDarkMode.lightMode === false? 'nav-item  nav-item-dark-mode' : apearanceActiveStyle && currentLightDarkMode.lightMode === true? 'nav-item nav-item-active': 'nav-item'}>
                     <img src={palette} alt="icon" />
                     <div>Apearance</div>
                 </div>
-                <div onClick={handleFeaturesActiveStyle} className={featuresActiveStyle? 'nav-item nav-item-active': 'nav-item'}>
+                <div onClick={handleFeaturesActiveStyle} className={featuresActiveStyle && currentLightDarkMode.lightMode === false? 'nav-item nav-item-active nav-item-dark-mode nav-item-active-dark-mode ': !featuresActiveStyle && currentLightDarkMode.lightMode === false? 'nav-item  nav-item-dark-mode' : featuresActiveStyle && currentLightDarkMode.lightMode === true? 'nav-item nav-item-active': 'nav-item'}>
                     <img src={extension} alt="icon" />
                     <div>Features</div>
                 </div>
@@ -234,17 +234,17 @@ const Settinggs = () => {
 
             {generalActiveStyle &&
 
-            <div className='general-settings'>
+            <div className={currentLightDarkMode.lightMode === false? 'general-settings general-settings-dark-mode' : 'general-settings'}>
                 <div className='title'>General Settings</div>
                 <div className='info'>Manage app basic information and configuration</div>
                 {currentAdmin?.adminRole === 'super admin'?
                 <>
-                    <div className='app-name-container'>
+                    <div className={currentLightDarkMode.lightMode === false? 'app-name-container app-name-container-dark-mode' : 'app-name-container'}>
                         <label>App name</label>
                         <input onChange={(e) => setAppName(e.target.value)} type="text" value={appName} />
                         <div className='app-info'>App Original name: <span style={{color: 'teal'}}>Eur-Africa</span></div>
                     </div>
-                    <div className='app-name-container'>
+                    <div className={currentLightDarkMode.lightMode === false? 'app-name-container app-name-container-dark-mode' : 'app-name-container'}>
                         <label>Add new Location</label>
                         <input onChange={(e) => setNewLocation(e.target.value)} type="text" placeholder='Add extra Location here' />
                     </div>
@@ -253,7 +253,7 @@ const Settinggs = () => {
             </div>}
             {featuresActiveStyle &&
 
-            <div className='general-settings'>
+            <div className={currentLightDarkMode.lightMode === false? 'general-settings general-settings-dark-mode' : 'general-settings'}>
                 <div className='title'>Feature Settings</div>
                 <div className='info'>Enable or disable specific features on your app</div>
 
@@ -346,7 +346,7 @@ const Settinggs = () => {
             </div>}
 
             {apearanceActiveStyle &&
-            <div className='general-settings'>
+            <div className={currentLightDarkMode.lightMode === false? 'general-settings general-settings-dark-mode' : 'general-settings'}>
                 <div className='title'>Appearance Settings</div>
                 <div className='info'>Customize the look and feel of the app</div>
 
