@@ -75,20 +75,20 @@ const AddNewBook = () => {
         {subject: 'Autobiography/Biography'},
     ]
 
+
     const HandleAddNewBook = async() => {
         setIsLoading(true)
+        const bookTitleTolowerCase = bookCredentials.title?.trim().toLowerCase(); //cover the title to lower case for uniformity and easy search
        try {
             const dataBaseRef = collection(db, 'books')
             const newDocRef = doc(dataBaseRef)
 
-            const Query = query(dataBaseRef, where('title', '==', bookCredentials.title));
+            const Query = query(dataBaseRef, where('title', '==', bookTitleTolowerCase));
             const BookSnap = await getDocs(Query)
-
             if(BookSnap.empty){
                 await setDoc(newDocRef, {
                 documentID: newDocRef.id,
-                title: bookCredentials.title,
-                // bookSubTitle: bookSubTitle,
+                title: bookTitleTolowerCase,
                 author: bookCredentials.author,
                 tag: bookCredentials.tag,
                 bookCopy: bookCredentials.bookCopy,
