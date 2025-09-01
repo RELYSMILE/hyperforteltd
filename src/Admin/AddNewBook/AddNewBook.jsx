@@ -78,8 +78,8 @@ const AddNewBook = () => {
 
     const HandleAddNewBook = async() => {
         setIsLoading(true)
-        const bookTitleTolowerCase = bookCredentials.title?.trim().toUpperCase(); //cover the title to lower case for uniformity and easy search
-        try {
+        const bookTitleTolowerCase = bookCredentials.title?.trim().toLowerCase(); //cover the title to lower case for uniformity and easy search
+       try {
             const dataBaseRef = collection(db, 'books')
             const newDocRef = doc(dataBaseRef)
 
