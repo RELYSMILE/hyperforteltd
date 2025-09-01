@@ -6,7 +6,7 @@ import PageTitle from '../../Components/Admin/PageTitle'
 import NavBar from '../NavBar'
 import save from '../../assets/icons/save.png'
 import './AddNewBook.css'
-import { collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, where } from 'firebase/firestore';
+import { collection, doc, getDocs, query, serverTimestamp, setDoc, where } from 'firebase/firestore';
 import { AppContext } from '../Context/Context';
 import Spinner from '../../Components/Spinner';
 import Loading from '../../Components/Admin/Loading';
@@ -78,6 +78,8 @@ const AddNewBook = () => {
 
     const HandleAddNewBook = async() => {
         setIsLoading(true)
+        const bookNormalize = bookCredentials.title
+        console.log(bookNormalize)
         const bookTitleTolowerCase = bookCredentials.title?.trim().toLowerCase(); //cover the title to lower case for uniformity and easy search
        try {
             const dataBaseRef = collection(db, 'books')
@@ -89,6 +91,7 @@ const AddNewBook = () => {
                 await setDoc(newDocRef, {
                 documentID: newDocRef.id,
                 title: bookTitleTolowerCase,
+                bookNormalize: bookNormalize,
                 author: bookCredentials.author,
                 tag: bookCredentials.tag,
                 bookCopy: bookCredentials.bookCopy,

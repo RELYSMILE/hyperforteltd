@@ -127,7 +127,7 @@ const UpdateBook = () => {
         <div className={currentLightDarkMode.lightMode === false? 'form-container form-container-dark-mode': 'form-container'}>
             <div onClick={handleBookSubTitleQuery} className='form-field'>
                 <label className={currentLightDarkMode.lightMode === false? 'label label-dark-mode' : 'label'} htmlFor="">Book title</label>
-                <input style={{textTransform: 'capitalize'}} onChange={(e) => HandleBookCredentials(e)} type="text" name='title' placeholder={bookData.title} />
+                <input style={{textTransform: 'capitalize'}} onChange={(e) => HandleBookCredentials(e)} type="text" name='title' placeholder={bookData?.bookNormalize || bookData.title} />
                 {/* {bookData.bookSubTitle && <input className='sub-title' onChange={(e) => setBookSubTitle(e.target.value)} type="text"  placeholder={bookData.bookSubTitle} />} */}
             </div>
             <div onClick={handleAuthorWarning} className='form-field'>

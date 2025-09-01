@@ -65,7 +65,7 @@ const ViewBookDetails = ({getBookID, handleCloseViewBookDetails}) => {
         <img onClick={handleCloseViewBookDetails} src={cancel} alt="Back" />
 
         <div className='book-title-author'>
-            <div className={currentLightDarkMode.lightMode === false? 'title title-dark-mode' : 'title'}>{bookData.title}</div>
+            <div className={currentLightDarkMode.lightMode === false? 'title title-dark-mode' : 'title'}>{bookData?.bookNormalize || bookData.title}</div>
             <div className='by'>
                 <div className='line'></div>
                 <div className= {currentLightDarkMode.lightMode === false? 'by-x by-x-dark-mode' : 'by-x'}>BY</div>

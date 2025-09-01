@@ -227,7 +227,7 @@ const LibraryManagement = () => {
                 <table className={currentLightDarkMode.lightMode === false? 'publication-table publication-table-dark-mode' : 'publication-table'} key={idx} style={{color: appearancesettingData.primaryColor}}>
                     <tr className={book?.documentID === getBookID? 'tr': idx % 2 === 0 && currentLightDarkMode.lightMode === false? 'even-dark-mode': idx % 2 != 0 && currentLightDarkMode.lightMode === false? 'odd-dark-mode' : idx % 2 === 0 && currentLightDarkMode.lightMode === true? 'even' : idx % 2 != 0 && currentLightDarkMode.lightMode === true && 'odd'}>
                         <td style={{width: '1rem'}}>{idx}</td>
-                        <td style={{width: '50%', textTransform: 'capitalize'}}>{book?.title}</td>
+                        <td style={{width: '50%', textTransform: 'capitalize'}}>{book?.bookNormalize || book?.title}</td>
                         <td>{book?.author}</td>
                         <td style={{width: '2rem', cursor: 'pointer'}} >
                             {book?.documentID === getBookID?
