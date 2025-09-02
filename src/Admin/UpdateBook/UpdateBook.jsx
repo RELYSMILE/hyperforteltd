@@ -71,10 +71,14 @@ const UpdateBook = () => {
 
     const HandleUpdateBook = async() => {
         setIsLoading(true)
+        const bookNormalize = bookCredentials.title
+        console.log('bookNormalize: ' + bookNormalize)
+        const bookTitleTolowerCase = bookCredentials.title?.trim().toLowerCase();
+        console.log('bookTitleTolowerCase: ' + bookTitleTolowerCase)
        try {
             await updateDoc(doc(db, 'books', bookID), {
-                title: bookCredentials.title || bookData?.title,
-                // bookSubTitle: bookCredentials.bookSubTitle || bookData.bookSubTitle,
+                title: bookTitleTolowerCase || bookData?.title,
+                bookNormalize: bookNormalize || bookData?.bookNormalize  || bookData?.title,
                 author: bookCredentials.author || bookData?.author,
                 tag: bookCredentials.tag || bookData?.tag,
                 bookCopy: bookCredentials.bookCopy ||  bookData.bookCopy,

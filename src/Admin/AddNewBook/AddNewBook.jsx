@@ -79,7 +79,6 @@ const AddNewBook = () => {
     const HandleAddNewBook = async() => {
         setIsLoading(true)
         const bookNormalize = bookCredentials.title
-        console.log(bookNormalize)
         const bookTitleTolowerCase = bookCredentials.title?.trim().toLowerCase(); //cover the title to lower case for uniformity and easy search
        try {
             const dataBaseRef = collection(db, 'books')
