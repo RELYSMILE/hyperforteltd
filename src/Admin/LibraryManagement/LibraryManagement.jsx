@@ -23,7 +23,7 @@ import { AppContext } from '../Context/Context'
 import Spinner from '../../Components/Spinner'
 
 const LibraryManagement = () => {
-    const {publicationLocation, currentLightDarkMode} = useContext(AppContext)
+    const {publicationLocation, currentLightDarkMode, newSubject, newPublicationType} = useContext(AppContext)
     const [pageTitle, setPageTitle] = useState('Publication Management')
     const [books, setBooks] = useState([])
     const [getBookID, setGetBookID] = useState('')
@@ -182,16 +182,14 @@ const LibraryManagement = () => {
                             {publicationLocation.locations.map((location, idx) => (
                                 <>{location.location && <option key={idx} value={location.location}>{location.location}</option>}</>
                             ))}
-                            <option value="book">Book</option>
-                            <option value="journal">Journal</option>
-                            <option value="working paper/pamflet/news letter">Working Paper/Pamflet/News Letter</option>
-                            <option value="conference/workshop proceedings">Conference/Workshop Proceedings</option>
-                            <option value="newspaper/magazine">Newspaper/Magazine</option>
-                            <option value="project/research/report/thesis">Project/Research/Report/Thesis</option>
-                            <option value="monograph">Monograph</option>
-                            <option value="autobiography/biography">Autobiography/Biography</option>
+                            {newPublicationType?.publicationTypes?.map((publicationType, idx) => (
+                                <>{publicationType?.newPublicationType && <option style={{textTransform: 'capitalize'}} key={idx} value={publicationType?.newPublicationType}>{publicationType?.newPublicationType}</option>}</> //coming from database
+                            ))}
                             {bookSubject.map((subject, idx) => (
                                 <option key={idx} value={subject.subject}>{subject.subject}</option>
+                            ))}
+                            {newSubject?.subjects?.map((subject, idx) => (
+                                <>{subject?.newSubject && <option key={idx} value={subject?.newSubject}>{subject?.newSubject}</option>}</> //coming from database
                             ))}
                             
                         </select>

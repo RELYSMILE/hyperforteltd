@@ -128,7 +128,7 @@
             }
         }
 
-        .logout-button, .light-dark-mode-container {
+        .logout-button, .light-dark-mode-container, .version{
             display: flex;
             align-items: center;
             gap: .5rem;
@@ -151,6 +151,14 @@
                 width: 1.1rem;
             }
             }
+        .version{
+            bottom: 0;
+            border: none;
+            color: #cfcfcf;
+        }
+        .version-dark-mode{
+            color: #414141;
+        }
         .logout-button-dark-mode{
             border: none;
             border-top: 1px solid #333;
@@ -161,6 +169,7 @@
             bottom: 5rem;
             border: none;
         }
+
 
             .logout-button:hover {
             background: #e8ebeb;

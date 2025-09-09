@@ -10,6 +10,8 @@ export const AppContextProvider = (props) => {
     const [currentAdmin, setCurrentAdmin] = useState(null)
     const [currentLightDarkMode, setCurrentLightDarkMode] = useState(null)
     const [publicationLocation, setPublicationLocation] = useState({})
+    const [newSubject, setNewSubject] = useState({})
+    const [newPublicationType, setNewPublicationType] = useState({})
     const [appearancesettingData, setAppearancesettingsData] = useState([])
     const [gsettingsData, setGsettingsData] = useState(null)
     useEffect(() => {
@@ -78,6 +80,30 @@ export const AppContextProvider = (props) => {
                 console.log(error)
             }
         }
+        const fetchPublicationBySubject = async() => {
+            try{
+                const newSubjectRef= await getDoc(doc(db, 'settings', 'newSubject'))
+
+                if(newSubjectRef.exists()){
+                    const newSubjectInfo = newSubjectRef.data()
+                    setNewSubject(newSubjectInfo)
+                }
+            }catch(error){
+                console.log(error)
+            }
+        }
+        const fetchPublicationType = async() => {
+            try{
+                const PublicationTypeRef= await getDoc(doc(db, 'settings', 'publicationType'))
+
+                if(PublicationTypeRef.exists()){
+                    const PublicationTypeRefInfo = PublicationTypeRef.data()
+                    setNewPublicationType(PublicationTypeRefInfo)
+                }
+            }catch(error){
+                console.log(error)
+            }
+        }
         const fetchSettings = async() => {
             try{
                 const appearanceSettingsData = await getDoc(doc(db, 'settings', '4hmGZ3GjgfK7bDbyC14g'))
@@ -94,12 +120,14 @@ export const AppContextProvider = (props) => {
         }
         fetchSettings()
         fetchPublicationLocation()
+        fetchPublicationBySubject()
+        fetchPublicationType()
         return () => unsubscribe()
     }, [])
 
     return (
         <AppContext.Provider value = {{bookDatas, setBookDatas, overDueBooksLen, setOverDueBooksLen, currentAdmin, currentLightDarkMode, publicationLocation,
-        appearancesettingData, gsettingsData}}>
+        appearancesettingData, gsettingsData, newSubject, newPublicationType}}>
             {props.children}
         </AppContext.Provider>
     )

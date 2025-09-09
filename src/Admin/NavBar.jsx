@@ -121,6 +121,9 @@ const NavBar = ({setPageTitle, setIsPageDimmed}) => {
             <img src={logoutIcon} alt="logout" />
             <div>Logout</div>
         </div>
+        <div onClick={handleSignOut} className={currentLightDarkMode.lightMode === false? 'version version-dark-mode': 'version'}>
+            <div>Version 1.0.0.1</div>
+        </div>
     </div>
   </div>
 

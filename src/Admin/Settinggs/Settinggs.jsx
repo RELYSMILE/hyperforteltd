@@ -8,7 +8,7 @@ import settings from '../../assets/icons/settings.png'
 import palette from '../../assets/icons/palette.png'
 import extension from '../../assets/icons/extension.png'
 import './Settinggs.css'
-import { arrayUnion, doc, getDoc, serverTimestamp, updateDoc } from 'firebase/firestore'
+import { arrayUnion, doc, getDoc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
 import Spinner from '../../Components/Spinner'
 import { AppContext } from '../Context/Context'
 
@@ -35,6 +35,8 @@ const Settinggs = () => {
     const [isPageDimmed, setIsPageDimmed] = useState(false)
     const [state, setState] = useState(false)
     const [newLocation, setNewLocation] = useState('')
+    const [newSubject, setNewSubject] = useState('')
+    const [newPublicationType, setNewPublicationType] = useState('')
 
     const handleGeneralActiveStyle = () => {
         setGeneralActiveStyle(true)
@@ -59,14 +61,24 @@ const Settinggs = () => {
             await updateDoc(doc(db, 'settings', 'XaeK0raHltvTWxbQkWn2'), {
                 appName: appName,
                 updatedAt: serverTimestamp()
-            })
+            });
             await updateDoc(doc(db, 'settings', '4hmGZ3GjgfK7bDbyC14g'), {
                 logoColor: logoColorPicker || appearancesettingData.logoColor,
                 primaryColor: primaryColorPicker || appearancesettingData.primaryColorPicker,
-            })
+            });
             await updateDoc(doc(db, 'settings', 'locations-array'), {
                 locations: arrayUnion({
                     location: newLocation && newLocation ,
+                })
+            });
+            await updateDoc(doc(db, 'settings', 'newSubject'), {
+                subjects: arrayUnion({
+                    newSubject: newSubject && newSubject,
+                })
+            })
+            await updateDoc(doc(db, 'settings', 'publicationType'), {
+                publicationTypes: arrayUnion({
+                    newPublicationType: newPublicationType && newPublicationType,
                 })
             })
             toast.success('Settings saved successfully', {
@@ -248,6 +260,14 @@ const Settinggs = () => {
                         <label>Add new Location</label>
                         <input onChange={(e) => setNewLocation(e.target.value)} type="text" placeholder='Add extra Location here' />
                     </div>
+                    <div className={currentLightDarkMode.lightMode === false? 'app-name-container app-name-container-dark-mode' : 'app-name-container'}>
+                        <label>Add new Publication by Subject</label>
+                        <input onChange={(e) => setNewSubject(e.target.value)} type="text" placeholder='Add new Subject here' />
+                    </div>
+                    <div className={currentLightDarkMode.lightMode === false? 'app-name-container app-name-container-dark-mode' : 'app-name-container'}>
+                        <label>Add new Publication Type</label>
+                        <input onChange={(e) => setNewPublicationType(e.target.value)} type="text" placeholder='Add new Publication Type here' />
+                    </div><br /><br /><br />
                 </>:
                 <div className='access'>Access denied, {currentAdmin?.username} You are not authorized to perform this operation.</div>}
             </div>}

@@ -29,11 +29,11 @@
     display: flex;
     gap: 2rem;
     height: 100vh;
-    overflow-y: scroll;
     background-color: #f9f9f9;
 
     .settings{
         width: 100%;
+        overflow-y: scroll;
 
 
         .settings-items{
