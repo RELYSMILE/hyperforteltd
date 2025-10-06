@@ -1245,7 +1245,7 @@
                                 }
                             }
                             .text{
-
+                                font-size: 16px;
                             }
                             .action-button{
                                 top: 13rem;
@@ -1316,10 +1316,10 @@
             .item{
 
                 .number{
-                    font-size: 1.4rem;
+                    font-size: 2rem;
                 }
                 .label{
-                    font-size: 14px;
+                    font-size: 16px;
                 }
             }
             }
