@@ -108,6 +108,15 @@
     .animation-container{
         width: 90%;
         padding-right: 0;
+        .animation-content{
+            .animation-tag{
+            color: tomato;
+            font-size: 19px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 600;
+        }
+        }
+        
         .tack-button-container{
         font-size: 14px;
         width: 80%;
