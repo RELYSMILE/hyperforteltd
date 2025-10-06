@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'satoshi-black';
+    src: url('../assets/fonts/Satoshi-Black.otf');
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Book.otf');
+}
+.testimonial-section-container{
+    position: relative;
+    background-image: url('../assets/images/map.png');
+    text-align: center;
+    height: 30rem;
+    overflow: hidden;
+    margin-top: 2rem;
+
+    .label{
+        font-family: 'satoshi-black';
+        font-size: 3rem;
+        color: #264653;
+    }
+    .testimonial-section{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 7rem;
+        right: 8%;
+        left: 8%;
+        padding: 5rem;
+        border-radius: 1rem;
+        background: #264653;
+
+
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: #000;
+            opacity: 0;
+        }
+
+        .quote-author-image{
+            img{
+                width: 6rem;
+                height: 6rem;
+                border-radius: 100%;
+            }
+            .quote-author{
+                font-family: 'satoshi-black';
+                color: #fff;
+                font-size: 20px;
+                margin-bottom: 1rem;
+            }
+        }
+        .quote-text{
+            font-family: 'Gotham';
+            color: #d4d4d4;
+            line-height: 2rem;
+            width: 45rem;
+        }
+        .quote-book{
+            margin-top: 1rem;
+            font-family: 'Gotham';
+            color: tomato;
+        }
+    }
+}
+
+@media(max-width: 931px){
+.testimonial-section-container{
+
+    .label{
+
+    }
+    .testimonial-section{
+
+        .quote-author-image{
+
+            img{
+
+            }
+            .quote-author{
+
+            }
+        }
+        .quote-text{
+            width: fit-content;
+
+        }
+        .quote-book{
+
+        }
+    }
+}
+}
+@media(max-width: 650px){
+.testimonial-section-container{
+    .label{
+
+    }
+    .testimonial-section{
+        right: 1%;
+        left: 1%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        .quote-author-image{
+
+            img{
+
+            }
+            .quote-author{
+
+            }
+        }
+        .quote-text{
+            width: fit-content;
+
+        }
+        .quote-book{
+
+        }
+    }
+}
+}

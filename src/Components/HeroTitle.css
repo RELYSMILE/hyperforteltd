@@ -1,0 +1,160 @@
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Book.otf');
+}
+@font-face {
+    font-family: 'satoshi-black';
+    src: url('../assets/fonts/Satoshi-Black.otf');
+}
+
+.animation-container{
+    margin-top: 10rem;
+    padding: 2.85rem 7%;
+    width: 40rem;
+    .animation-content{
+        .animation-tag{
+            color: tomato;
+            font-size: 17px;
+            letter-spacing: .2rem;
+            font-family: 'Gotham';
+            margin-bottom: 2rem;
+        }
+        h1{
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 4.5rem;
+            letter-spacing: .1rem;
+        }
+        .animation-info{
+            margin-top: 1rem;
+            font-family: 'Gotham';
+            color: #8a8a8a;
+            font-size: 18px;
+        }
+    }
+
+    .tack-button-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .4rem;
+        color: #fff;
+        font-size: 18px;
+        width: fit-content;
+        padding: .6rem 2rem;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 2rem;
+        border-radius: .2rem;
+        cursor: pointer;
+        background: tomato;
+
+        img{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
+
+/* ================================ Mobile Version ========================= */
+
+@media(max-width: 1291px){
+    .animation-container{
+    margin-top: 10rem;
+    padding: 2.85rem 0%;
+    padding-left: 3%;
+    width: 90%;
+    .animation-content{
+        .animation-tag{
+            color: tomato;
+            font-size: 17px;
+            letter-spacing: .2rem;
+            font-family: 'Gotham';
+            margin-bottom: 2rem;
+        }
+        h1{
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 4.5rem;
+            letter-spacing: .1rem;
+        }
+        .animation-info{
+            margin-top: 1rem;
+            font-family: 'Gotham';
+            color: #8a8a8a;
+            font-size: 18px;
+        }
+    }
+
+    .tack-button-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .4rem;
+        color: #fff;
+        font-size: 18px;
+        width: fit-content;
+        padding: .6rem 2rem;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 2rem;
+        border-radius: .2rem;
+        cursor: pointer;
+        background: tomato;
+
+        img{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
+}
+@media(max-width: 768px){
+    .animation-container{
+        width: 90%;
+        padding-right: 0;
+        .tack-button-container{
+        font-size: 14px;
+        width: 80%;
+    }
+}
+}
+@media(max-width: 500px){
+    .animation-container{
+    .animation-content{
+
+        h1{
+            line-height: 2.5rem;
+            font-size: 2rem;
+        }
+        .animation-info{
+            font-size: 18px;
+        }
+    }
+        .tack-button-container{
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 2rem;
+        border-radius: .2rem;
+        cursor: pointer;
+        background: tomato;
+
+        img{
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+    }
+}
+}
+@media(max-width: 400px){
+    .animation-container{
+    .animation-content{
+        .animation-tag{
+            font-size: 11px;
+        }
+        h1{
+            line-height: 2.5rem;
+            font-size: 1.5rem;
+        }
+        .animation-info{
+            font-size: 14px;
+        }
+    }
+}
+}

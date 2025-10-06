@@ -1,0 +1,223 @@
+.app-footer-container{
+    margin-top: -2rem;
+    background: #fff;
+    .app-footer-logo-container{
+        display: flex;
+        justify-content: space-between;
+        background-color: #161f2e;
+        padding: 7rem 3%;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #1b2638;
+        .footer-logo-container{
+            width: 32%;
+            .logo-container{
+                display: flex;
+                align-items: center;
+                gap: .3rem;
+                .logo{
+                    border-radius: 100%;     
+                    padding: .4rem;
+                    width: 3.2rem;
+                    height: 3.2rem;
+                }
+                .logo_alpha{
+                    width: 8.2rem;
+                }
+            }
+            .info{
+                color: #c2c2c2;
+                margin-top: 1rem;
+            }
+            .contact{
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+                margin-top: 2rem;
+                a{
+                    svg{
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        transition: 1s;
+
+                        &:hover{
+                            background: #cacaca;
+                            padding: .1rem;
+                            border-radius: 100%;
+                            transition: .2s;
+                        }
+                    }
+                }
+            }
+        }
+        .qiuck-links{
+            .lable{
+                position: relative;
+                color: tomato;
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+
+                &::before{
+                    content: '';
+                    position: absolute;
+                    top: 1.7rem;
+                    bottom: 0rem;
+                    background: #42932d;
+                    right: 85%;
+                    left: 0;
+
+                }
+            }
+            .link{
+                color: #c2c2c2;
+                margin: 1rem;
+                cursor: pointer;
+                transition: .5s;
+                &:hover{
+                    color: #fff;
+                    transition: .5s;
+                }
+            }
+            .contact{
+                display: flex;
+                align-items: center;
+                gap: .4rem;
+                margin-top: 1rem;
+
+                a{
+                    color: #c2c2c2;
+                }
+
+                img{
+                    width: 1rem;
+                    height: 1rem;
+                }
+                .location{
+                    color: #c2c2c2;
+                }
+            }
+        }
+    }
+    .Privacy{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #161f2e;
+        padding: 1rem 3% 2rem 3%;
+        
+        .copyright{
+            color: #8f8f8f;
+            padding: 1rem 0 2rem 0;
+            font-size: .9rem;
+        }
+        .developer{
+            color: #fff;
+            font-size: .9rem;
+            font-weight: 700;
+            border-bottom: 1px solid #8f8f8f;
+            padding-bottom: .3rem;
+            margin-bottom: 1rem;
+        }
+        .Privacy-terms{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            div{
+                cursor: pointer;
+                font-size: .9rem;
+                color: #8f8f8f;
+            }
+        }
+    }
+    
+}
+
+@media (max-width: 966px){
+    .app-footer-container{
+        .app-footer-logo-container{
+            flex-wrap: wrap;
+            gap: 3rem;
+            .footer-logo-container{
+                width: 28rem;
+            }
+            .qiuck-links{
+                margin-right: 2rem;
+            }
+        }
+        
+    }
+}
+@media (max-width: 678px){
+    .app-footer-container{
+        .app-footer-logo-container{
+            flex-wrap: wrap;
+            gap: 3rem;
+            .footer-logo-container{
+                width: 100%;
+
+                .logo-container{
+                    .title{
+                        color: #808080;
+                    }
+                }
+
+                .info{
+                    color: #53575f;
+                    font-size: .85rem;
+                }
+            }
+            .qiuck-links{
+                margin-right: 2rem;
+                .lable{
+                    color: #808080;
+                }
+                .link{
+                    color: #53575f;
+                    font-size: .85rem;
+                }
+                .lable{
+                    color: #808080;
+                }
+
+                .contact{
+    
+                    a{
+                        color: #53575f;
+                    }
+                    .location{
+                        color: #53575f;
+                        font-size: .85rem;
+                    }
+                }
+            }
+        }
+        .Privacy{
+            flex-wrap: wrap;
+            justify-content: center;
+            
+            .copyright{
+                width: 100%;
+                text-align: center;
+            }
+            .Privacy-terms{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                gap: 1rem;
+            }
+        }
+    }
+}
+@media (max-width: 286px){
+    .app-footer-container{
+        .app-footer-logo-container{
+            .footer-logo-container{
+                .contact{
+                    flex-wrap: wrap;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+.about{
+    position: fixed;
+    top: 5rem;
+    left: 20rem;
+    right: 20rem;
+    padding: 3rem;
+    border-radius: 1rem;
+    background: #fff;
+    color: #808080;
+    z-index: 1;
+
+    .close{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background: tomato;
+        width: fit-content;
+        padding: .1rem;
+        border-radius: 100%;
+        margin-bottom: 2rem;
+    }
+    
+}
+@media (max-width: 1000px){
+    .about{
+        left: 10rem;
+        right: 10rem;
+    }
+}
+@media (max-width: 768px){
+    .about{
+        top: 0;
+        left: 0rem;
+        right: 0rem;
+        bottom: 0;
+    }
+}
