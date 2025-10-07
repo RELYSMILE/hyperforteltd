@@ -8,8 +8,8 @@
 }
 
 .animation-container{
-    margin-top: 10rem;
-    padding: 2.85rem 7%;
+    padding-top: 10rem;
+    padding-left: 3%;
     width: 40rem;
     .animation-content{
         .animation-tag{
@@ -58,8 +58,6 @@
 
 @media(max-width: 1291px){
     .animation-container{
-    margin-top: 10rem;
-    padding: 2.85rem 0%;
     padding-left: 3%;
     width: 90%;
     .animation-content{
@@ -117,7 +115,7 @@
         }
         }
         
-        .tack-button-container{
+    .tack-button-container{
         font-size: 18px;
         width: 80%;
     }

@@ -101,11 +101,13 @@ const Home = () => {
   }, []);
 
   return <div className='home-parent-container'>
+    <div>
     <div id={homeId} className='hero-section'>
         <video src={heroAdVideo} autoPlay muted loop playsInline></video> {/*hero background video*/}
         <PublicNavigation isNavBgVisible = {isNavBgVisible} homeId = {homeId} /> {/*Nav bar*/}
         <HeroTitle />
         {!isNavBgVisible && <div className='more_down'><img src={more_down} alt="" /></div>}
+    </div>
     </div>
     <div className='home-content-parent-container'>
       <div className='content-fluid-container-1'>
