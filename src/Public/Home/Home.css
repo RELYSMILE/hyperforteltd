@@ -60,7 +60,7 @@
 
         .content-fluid-container-1{
             position: relative;
-            padding: 5rem 8%;
+            padding: 2rem 8%;
 
             .content-fluid-image-text{
                 display: flex;
@@ -387,7 +387,7 @@
         }
         .content-fluid-container-5{
             background: #ebf3f5;
-            padding-bottom: 20rem;
+            padding-bottom: 10rem;
             .tab-0-container{
                 position: relative;
                 display: flex;
@@ -1319,7 +1319,7 @@
             }
             }
             .content-fluid-container-5{
-            
+                padding-bottom: 5rem;
             .tab-0-container{
                
                 img{
