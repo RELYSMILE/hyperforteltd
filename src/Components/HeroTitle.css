@@ -118,7 +118,7 @@
         }
         
         .tack-button-container{
-        font-size: 14px;
+        font-size: 18px;
         width: 80%;
     }
 }
@@ -136,7 +136,6 @@
         }
     }
         .tack-button-container{
-        font-size: 14px;
         font-family: Arial, Helvetica, sans-serif;
         margin-top: 2rem;
         border-radius: .2rem;
