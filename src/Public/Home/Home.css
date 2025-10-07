@@ -1498,7 +1498,7 @@
      .home-parent-container{
         .home-content-parent-container{
             .content-fluid-container-1{
-                padding: 4%;
+                padding:0 4% 4% 4%;
 
                 .content-fluid-image-text{
                     width: 100%;
@@ -1615,8 +1615,6 @@
          .home-parent-container{
         .home-content-parent-container{
             .content-fluid-container-1{
-                padding-top: 0;
-
     }
                 .content-fluid-container-2{
                 .partners{
@@ -1631,23 +1629,10 @@
     }
 
 }
-@media(max-width: 415px){
-         .home-parent-container{
-        .home-content-parent-container{
-            .content-fluid-container-1{
-                padding-top: 0;
-
-    }
-        }
-    }
-
-}
 @media(max-width: 390px){
      .home-parent-container{
         .home-content-parent-container{
             .content-fluid-container-1{
-                padding-top: 0;
-
                 .content-fluid-image-text{
 
                     .content-fluid-text{
