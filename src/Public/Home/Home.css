@@ -541,6 +541,7 @@
             .content-fluid-container-1{
                 position: relative;
                 padding: 5rem 8%;
+                padding-top: 0;
 
                 .content-fluid-image-text{
                     display: flex;
